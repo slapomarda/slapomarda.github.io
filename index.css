@@ -494,14 +494,23 @@ p {
 
 
 @media screen and (max-width: 768px) {
-    body {
-        padding: 1rem 0;
+    html, body {
+        overflow: hidden !important;
+        height: 100%;
+        margin: 0;
+        padding: 0;
     }
     .app-container {
-        padding: 1rem;
+        padding: 0;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto;
     }
     .glass-panel {
         padding: 1.25rem;
+        border-radius: 0;
+        border: none;
     }
     h1 {
         font-size: 1.8rem;
