@@ -233,6 +233,7 @@ p {
 .option-value pre {
     overflow-x: auto;
     display: block;
+    width: max-content;
     max-width: 100%;
     font-size: 0.85em;
 }
@@ -506,6 +507,7 @@ p {
         display: flex;
         flex-direction: column;
         overflow-y: auto;
+        justify-content: center;
     }
     .glass-panel {
         padding: 1.25rem;
