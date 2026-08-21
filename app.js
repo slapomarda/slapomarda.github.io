@@ -1746,7 +1746,16 @@ function navigate(view) {
     
     // Tell MathJax to re-render if loaded
     if (window.MathJax && typeof window.MathJax.typesetPromise === 'function') {
-        window.MathJax.typesetPromise();
+        window.MathJax.typesetPromise().then(() => {
+            // Post-process: wrap wide mjx-container in a scrollable span
+            document.querySelectorAll('mjx-container').forEach(el => {
+                if (el.parentElement && el.parentElement.classList.contains('math-scroll-wrap')) return;
+                const wrapper = document.createElement('span');
+                wrapper.className = 'math-scroll-wrap';
+                el.parentNode.insertBefore(wrapper, el);
+                wrapper.appendChild(el);
+            });
+        });
     }
 }
 
@@ -1837,29 +1846,38 @@ function renderQuizQuestion() {
         const isSelected = userAnswers[currentQuestionIndex] === key;
         optionsHtml += `
             <li class="option-item ${isSelected ? 'selected' : ''}" data-key="${key}" onclick="selectOption('${key}')">
-                <span style="font-weight:bold; margin-right:10px;">${key.toUpperCase()}.</span> ${value}
+                <span class="option-key">${key.toUpperCase()}.</span><span class="option-value">${value}</span>
             </li>
         `;
     });
     
     const html = `
-        <div class="view-container glass-panel">
-            <div class="progress-container">
-                <div class="progress-bar" style="width: ${progressPercent}%"></div>
+        <div class="view-container glass-panel quiz-card">
+
+            <!-- Zona 0: barra progresso -->
+            <div class="quiz-progress">
+                <div class="quiz-progress-bar" style="width: ${progressPercent}%"></div>
             </div>
-            <div class="question-header">
-                <span style="color:var(--text-secondary)">Domanda ${currentQuestionIndex + 1} di 20</span>
-                <div>
-                    <span class="badge" style="background:var(--accent-color); padding:4px 8px; border-radius:4px; font-size:0.8rem; margin-right:10px; color:white;">${q.category || 'Generale'}</span>
-                    <button class="btn btn-secondary" style="padding: 4px 8px; font-size: 0.8rem; border-color: var(--error-color); color: var(--error-color);" onclick="if(confirm('Vuoi davvero uscire dal quiz in corso? I progressi andranno persi.')) navigate('home')">Esci</button>
+
+            <!-- Zona 1: header fisso -->
+            <div class="quiz-header">
+                <span class="quiz-header-left">Domanda ${currentQuestionIndex + 1} di 20</span>
+                <div class="quiz-header-right">
+                    <span style="background:var(--accent-color); padding:4px 10px; border-radius:20px; font-size:0.78rem; color:white; font-weight:600;">${q.category || 'Generale'}</span>
+                    <button class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem; border-color: var(--error-color); color: var(--error-color);" onclick="if(confirm('Vuoi davvero uscire dal quiz in corso? I progressi andranno persi.')) navigate('home')">Esci</button>
                 </div>
             </div>
-            <h2 class="question-text">${q.question}</h2>
-            <ul class="options-list">
-                ${optionsHtml}
-            </ul>
-            
-            <div class="btn-group" style="margin-top: 2rem; justify-content: space-between;">
+
+            <!-- Zona 2: contenuto scorrevole -->
+            <div class="quiz-scroll">
+                <h2 class="question-text">${q.question}</h2>
+                <ul class="options-list">
+                    ${optionsHtml}
+                </ul>
+            </div>
+
+            <!-- Zona 3: footer nav fisso -->
+            <div class="quiz-footer">
                 <button class="btn btn-secondary" onclick="prevQuestion()" ${currentQuestionIndex === 0 ? 'disabled style="opacity:0.5;cursor:not-allowed;"' : ''}>Precedente</button>
                 <button class="btn" onclick="nextQuestion()">${currentQuestionIndex === 19 ? 'Termina Quiz' : 'Successiva'}</button>
             </div>
@@ -1921,18 +1939,22 @@ function renderResults() {
             else if (key === userAns && !isCorrect) className += ' wrong';
             
             optionsHtml += `
-                <li class="${className}" style="pointer-events:none; margin-bottom:0.5rem; padding:0.75rem;">
-                    <span style="font-weight:bold; margin-right:10px;">${key.toUpperCase()}.</span> ${value}
+                <li class="${className}" style="pointer-events:none; margin-bottom:0.5rem;">
+                    <span class="option-key">${key.toUpperCase()}.</span><span class="option-value">${value}</span>
                 </li>
             `;
         });
         
+        const icon = isCorrect ? '✅' : '❌';
         resultsHtml += `
-            <div style="margin-bottom: 2rem; border-bottom: 1px solid var(--glass-border); padding-bottom: 1rem;">
-                <h3 style="font-size:1.3rem; margin-bottom:1rem; color:var(--text-primary);">
-                    ${index + 1}. ${q.question}
+            <div style="margin-bottom: 1.5rem; border-bottom: 1px solid var(--glass-border); padding-bottom: 1rem;">
+                <p style="font-size:0.85rem; color:var(--text-secondary); margin-bottom:0.4rem; font-weight:600;">
+                    ${icon} Domanda ${index + 1} · <span style="color:var(--accent-color)">${q.category || 'Generale'}</span>
+                </p>
+                <h3 style="font-size:1rem; margin-bottom:0.75rem; color:var(--text-primary); font-weight:500; overflow-wrap:break-word; word-break:break-word;">
+                    ${q.question}
                 </h3>
-                <ul class="options-list" style="font-size:1.1rem;">
+                <ul class="options-list">
                     ${optionsHtml}
                 </ul>
             </div>
@@ -1940,29 +1962,37 @@ function renderResults() {
     });
     
     const scorePercent = Math.round((correctCount / 20) * 100);
+    const scoreColor = scorePercent >= 60 ? 'var(--success-color)' : 'var(--error-color)';
     
     const html = `
-        <div class="view-container glass-panel">
-            <h1>Risultati</h1>
-            <div class="stats-grid" style="margin-bottom: 2rem;">
-                <div class="stat-card">
-                    <div class="stat-value" style="color: ${scorePercent >= 60 ? 'var(--success-color)' : 'var(--error-color)'}">${correctCount} / 20</div>
-                    <div class="stat-label">Risposte Corrette</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-value" style="color: ${scorePercent >= 60 ? 'var(--success-color)' : 'var(--error-color)'}">${scorePercent}%</div>
-                    <div class="stat-label">Punteggio</div>
+        <div class="view-container glass-panel quiz-card">
+
+            <!-- Header fisso: punteggio -->
+            <div class="quiz-header" style="justify-content:center; flex-direction:column; text-align:center; gap:0.5rem;">
+                <h1 style="margin:0; font-size:1.8rem;">Risultati</h1>
+                <div style="display:flex; gap:2rem; justify-content:center; margin-top:0.5rem;">
+                    <div>
+                        <div style="font-size:2rem; font-weight:700; color:${scoreColor}">${correctCount}/20</div>
+                        <div style="font-size:0.78rem; color:var(--text-secondary); text-transform:uppercase; letter-spacing:1px;">Corrette</div>
+                    </div>
+                    <div>
+                        <div style="font-size:2rem; font-weight:700; color:${scoreColor}">${scorePercent}%</div>
+                        <div style="font-size:0.78rem; color:var(--text-secondary); text-transform:uppercase; letter-spacing:1px;">Punteggio</div>
+                    </div>
                 </div>
             </div>
-            
-            <div style="max-height: 50vh; overflow-y: auto; padding-right: 10px; margin-bottom: 2rem;">
+
+            <!-- Zona scorrevole: revisione domande -->
+            <div class="quiz-scroll">
                 ${resultsHtml}
             </div>
-            
-            <div class="btn-group">
-                <button class="btn btn-secondary" onclick="navigate('home')">Torna alla Home</button>
+
+            <!-- Footer: bottoni -->
+            <div class="quiz-footer">
+                <button class="btn btn-secondary" onclick="navigate('home')">Home</button>
                 <button class="btn" onclick="navigate('quiz')">Nuovo Quiz</button>
             </div>
+
         </div>
     `;
     
@@ -1996,14 +2026,15 @@ function renderProgress() {
         categories[cat].questions.push(q);
     });
 
-    let listHtml = '';
+    let desktopListHtml = '';
+    let mobileListHtml = '';
     let navHtml = '';
 
     Object.keys(categories).sort().forEach(cat => {
         const catData = categories[cat];
         const catId = `cat_${cat.replace(/\\s+/g, '_')}`;
         
-        // Navigation Link
+        // Navigation Link (Desktop)
         navHtml += `
             <a href="#${catId}" class="nav-link">
                 ${cat}
@@ -2011,8 +2042,11 @@ function renderProgress() {
             </a>
         `;
         
-        // Category Header
-        listHtml += `<div id="${catId}" class="category-header" style="scroll-margin-top: 2rem;">${cat}</div>`;
+        // Category Header (Desktop)
+        desktopListHtml += `<div id="${catId}" class="category-header" style="scroll-margin-top: 2rem;">${cat}</div>`;
+        
+        // Category Header (Mobile) - Sticky!
+        mobileListHtml += `<div class="category-header mobile-sticky-header">${cat}</div>`;
         
         // Questions in Category
         catData.questions.forEach((q) => {
@@ -2029,24 +2063,26 @@ function renderProgress() {
                 });
             }
 
-            listHtml += `
-                <div style="padding: 1.5rem; border-bottom: 1px solid var(--glass-border); display:flex; gap: 1rem; align-items: flex-start; background: ${isSeen ? 'transparent' : 'rgba(0,0,0,0.01)'};">
-                    <div style="width:24px; height:24px; min-width:24px; border-radius:50%; background:${isSeen ? 'var(--success-color)' : 'transparent'}; border:2px solid ${isSeen ? 'var(--success-color)' : 'var(--text-secondary)'}; display:flex; align-items:center; justify-content:center; margin-top: 4px;">
-                        ${isSeen ? '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>' : ''}
+            const qHtml = `
+                <div class="progress-q-item" style="background: ${isSeen ? 'transparent' : 'rgba(0,0,0,0.01)'};">
+                    <div class="progress-q-icon" style="background:${isSeen ? 'var(--success-color)' : 'transparent'}; border-color:${isSeen ? 'var(--success-color)' : 'var(--text-secondary)'};">
+                        ${isSeen ? '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>' : ''}
                     </div>
                     <div style="flex:1; text-align: left; min-width: 0;">
-                        <p style="margin:0 0 0.75rem 0; color:var(--text-primary); font-size:1.25rem; font-weight: ${isSeen ? '600' : '400'}; text-align: left;">${q.question}</p>
-                        ${isSeen ? `<ul style="list-style: none; padding-left: 0; font-size: 1.1rem; margin-top: 1rem;">${optionsHtml}</ul>` : '<p style="color:var(--text-secondary); font-size:0.9rem; font-style:italic; margin-top: 0.5rem; text-align: left;">Non hai ancora incontrato questa domanda.</p>'}
+                        <p class="progress-q-text" style="font-weight: ${isSeen ? '600' : '400'};">${q.question}</p>
+                        ${isSeen ? `<ul class="progress-q-options">${optionsHtml}</ul>` : '<p class="progress-q-unseen">Non hai ancora incontrato questa domanda.</p>'}
                     </div>
                 </div>
             `;
+            desktopListHtml += qHtml;
+            mobileListHtml += qHtml;
         });
     });
     
     const html = `
-        <div class="view-container">
+        <!-- DESKTOP VIEW -->
+        <div class="view-container desktop-progress-view">
             <h1 style="margin-bottom: 2rem;">I Miei Progressi</h1>
-            
             <div class="progress-layout">
                 <!-- Sidebar (Fixed) -->
                 <div class="progress-sidebar">
@@ -2065,22 +2101,19 @@ function renderProgress() {
                                 <div class="stat-label">Completamento</div>
                             </div>
                         </div>
-                        
                         <div class="btn-group" style="flex-direction: column; gap: 0.5rem; margin-top: 1.5rem;">
                             <button class="btn btn-secondary" onclick="navigate('home')">Torna alla Home</button>
                             <button class="btn" style="background:var(--error-color)" onclick="if(confirm('Sei sicuro di voler azzerare i progressi?')) clearProgress()">Azzera Progressi</button>
                         </div>
                     </div>
                 </div>
-                
-                <!-- Main Content (Scrollable List) -->
+                <!-- Main Content -->
                 <div class="progress-main">
                     <div class="glass-panel" style="padding: 0; overflow: hidden; padding-bottom: 2rem; padding-left: 1.5rem; padding-right: 1.5rem;">
-                        ${listHtml}
+                        ${desktopListHtml}
                     </div>
                 </div>
-                
-                <!-- Nav Sidebar (Fixed) -->
+                <!-- Nav Sidebar -->
                 <div class="progress-nav">
                     <div class="glass-panel" style="position: sticky; top: 2rem; padding: 1.5rem;">
                         <h3 style="margin-bottom: 1rem; color: var(--text-primary); text-align: left; font-size: 1.2rem;">Categorie</h3>
@@ -2089,6 +2122,40 @@ function renderProgress() {
                 </div>
             </div>
         </div>
+
+        <!-- MOBILE VIEW (App-like layout) -->
+        <div class="mobile-progress-view glass-panel" style="padding: 0; border: none; animation: fadeIn 0.4s ease-out forwards;">
+                
+                <!-- Header fisso in alto con le statistiche -->
+                <div class="quiz-header" style="justify-content: space-around; padding: 0.75rem 0.5rem; margin-bottom: 0; background: rgba(255,255,255,0.8); backdrop-filter: blur(10px);">
+                    <div style="text-align:center;">
+                        <div style="font-size:1.2rem; font-weight:700; color:var(--text-primary)">${seenCount}</div>
+                        <div style="font-size:0.7rem; color:var(--text-secondary); text-transform:uppercase;">Viste</div>
+                    </div>
+                    <div style="text-align:center;">
+                        <div style="font-size:1.2rem; font-weight:700; color:var(--text-primary)">${totalCount - seenCount}</div>
+                        <div style="font-size:0.7rem; color:var(--text-secondary); text-transform:uppercase;">Rimanenti</div>
+                    </div>
+                    <div style="text-align:center;">
+                        <div style="font-size:1.2rem; font-weight:700; color:var(--accent-color)">${progressPercent}%</div>
+                        <div style="font-size:0.7rem; color:var(--text-secondary); text-transform:uppercase;">Completato</div>
+                    </div>
+                </div>
+                
+                <!-- Corpo centrale scorrevole -->
+                <div class="quiz-scroll" style="padding: 0;">
+                    ${mobileListHtml}
+                </div>
+                
+                <!-- Footer fisso in basso con i bottoni -->
+                <div class="quiz-footer" style="padding: 0.75rem; margin-top: 0; background: var(--bg-color);">
+                    <button class="btn btn-secondary" onclick="navigate('home')">Home</button>
+                    <button class="btn" style="background:var(--error-color); color:white; border:none;" onclick="if(confirm('Azzera progressi?')) clearProgress()">Azzera</button>
+                </div>
+
+            </div>
+        </div>
+
     `;
     
     appDiv.innerHTML = html;

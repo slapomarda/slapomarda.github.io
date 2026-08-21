@@ -111,73 +111,189 @@ p {
     gap: 1rem;
     justify-content: center;
     margin-top: 1rem;
+    flex-wrap: wrap;
 }
 
-/* Quiz Specifics */
-.question-header {
+/* ============================================================
+   QUIZ — Architettura a 3 zone fisse (Header | Scroll | Footer)
+   ============================================================ */
+
+/* Zona 0 — Barra di avanzamento sopra tutto */
+.quiz-progress {
+    height: 6px;
+    background: rgba(0,0,0,0.05);
+    border-radius: 3px;
+    overflow: hidden;
+    flex-shrink: 0;
+    margin-bottom: 1rem;
+}
+.quiz-progress-bar {
+    height: 100%;
+    background: var(--accent-color);
+    transition: width 0.3s ease;
+}
+
+/* Zona 1 — Header fisso */
+.quiz-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 1rem;
+    flex-wrap: wrap;
+    gap: 8px;
+    flex-shrink: 0;
     padding-bottom: 1rem;
     border-bottom: 1px solid var(--glass-border);
+    margin-bottom: 1rem;
+}
+.quiz-header-left {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+.quiz-header-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
 }
 
+/* Zona 2 — Contenuto scorrevole: testo domanda + opzioni */
+.quiz-scroll {
+    flex: 1 1 auto;
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    min-height: 0; /* fondamentale in flexbox per far funzionare overflow */
+    padding-right: 4px;
+}
+
+/* Testo della domanda */
 .question-text {
-    font-size: 1.25rem;
+    font-size: 1.2rem;
     font-weight: 500;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.25rem;
     text-align: left;
     color: var(--text-primary);
+    overflow-wrap: break-word;
+    word-break: break-word;
+    line-height: 1.7;
 }
 
-.question-text img, .progress-main img {
-    max-width: 100%;
-    max-height: 400px;
-    object-fit: contain;
-    height: auto;
-    border-radius: 8px;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+.question-text img, .progress-main img, .quiz-scroll img {
+    max-width: 100% !important;
+    max-height: 220px !important;
+    width: auto !important;
+    height: auto !important;
+    object-fit: contain !important;
     display: block;
+    margin: 0.5rem auto;
+    border-radius: 8px;
 }
 
+/* Lista opzioni */
 .options-list {
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
+    gap: 0.6rem;
+    margin-top: 0.5rem;
 }
 
+/* Singola opzione — layout robusto */
 .option-item {
     background-color: rgba(0, 0, 0, 0.02);
     border: 1px solid var(--glass-border);
     border-radius: 8px;
-    padding: 1rem;
+    padding: 0.7rem 1rem;
     cursor: pointer;
     transition: var(--transition);
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
+    display: grid;
+    grid-template-columns: 1.8rem 1fr;
+    align-items: start;
+    gap: 0.3rem;
+    line-height: 1.7;
+}
+.option-item .option-key {
+    font-weight: bold;
+    color: var(--text-secondary);
+    padding-top: 0.05em;
+}
+.option-item .option-value {
+    overflow-wrap: break-word;
+    word-break: break-word;
+    white-space: normal;
+    min-width: 0;
+}
+/* Entità logiche (chiavi sottolineate, formule brevi) non si spezzano */
+.option-value u,
+.option-value code {
+    white-space: nowrap;
+}
+/* Contenuto complesso (tabelle) dentro le opzioni: scroll interno */
+.option-value table,
+.option-value pre {
+    overflow-x: auto;
+    display: block;
+    max-width: 100%;
+    font-size: 0.85em;
 }
 
-.option-item:hover {
-    background-color: rgba(0, 0, 0, 0.05);
-}
-
+.option-item:hover { background-color: rgba(0, 0, 0, 0.05); }
 .option-item.selected {
     border-color: var(--accent-color);
     background-color: rgba(59, 130, 246, 0.1);
 }
-
 .option-item.correct {
     border-color: var(--success-color);
     background-color: rgba(16, 185, 129, 0.1);
 }
-
 .option-item.wrong {
     border-color: var(--error-color);
     background-color: rgba(239, 68, 68, 0.1);
+}
+
+/* Zona 3 — Footer nav fisso in basso */
+.quiz-footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-shrink: 0;
+    padding-top: 1rem;
+    border-top: 1px solid var(--glass-border);
+    margin-top: 1rem;
+}
+.quiz-footer .btn {
+    flex: 1;
+}
+
+/* Struttura padre che tiene le 3 zone */
+.quiz-card {
+    display: flex;
+    flex-direction: column;
+    max-height: calc(100dvh - 6rem);
+    overflow: hidden;
+    max-width: 860px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+/* Riduci blocchi codice/tabelle su mobile */
+@media screen and (max-width: 768px) {
+    .quiz-card {
+        max-height: calc(100svh - 3rem);
+    }
+    .question-text {
+        font-size: 1rem;
+    }
+    .quiz-scroll pre {
+        font-size: 0.78rem;
+        padding: 0.5rem;
+        line-height: 1.4;
+    }
+    .quiz-scroll table.table th,
+    .quiz-scroll table.table td {
+        padding: 0.15rem 0.25rem;
+        font-size: 0.72rem;
+    }
 }
 
 /* Animations */
@@ -185,12 +301,11 @@ p {
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
 }
-
 .view-container {
     animation: fadeIn 0.4s ease-out forwards;
 }
 
-/* Progress Bar */
+/* Progress Bar (barra progressi utente, non quiz) */
 .progress-container {
     width: 100%;
     height: 8px;
@@ -283,33 +398,141 @@ p {
     font-weight: 600;
 }
 
+/* Progress Views */
+.desktop-progress-view { display: block; }
+.mobile-progress-view { display: none; }
+
+.progress-q-item {
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--glass-border);
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+}
+.progress-q-icon {
+    width: 24px; height: 24px; min-width: 24px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    display: flex; align-items: center; justify-content: center;
+    margin-top: 4px;
+}
+.progress-q-text {
+    margin: 0 0 0.75rem 0;
+    color: var(--text-primary);
+    font-size: 1.1rem;
+    text-align: left;
+}
+.progress-q-options {
+    list-style: none;
+    padding-left: 0;
+    font-size: 1rem;
+    margin-top: 0.75rem;
+}
+.progress-q-unseen {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    font-style: italic;
+    margin-top: 0.5rem;
+    text-align: left;
+}
+
 @media screen and (max-width: 992px) {
-    .progress-layout {
-        grid-template-columns: 1fr;
+    .desktop-progress-view { display: none !important; }
+    .mobile-progress-view { 
+        display: flex; 
+        flex-direction: column;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100dvh;
+        max-height: 100dvh;
+        margin: 0;
+        padding: 0;
+        border-radius: 0;
+        background: var(--bg-primary);
+        z-index: 100;
     }
-    
-    .progress-sidebar .glass-panel, .progress-nav .glass-panel {
-        position: relative !important;
-        top: 0 !important;
-        margin-bottom: 2rem;
+    .mobile-progress-view .mobile-sticky-header {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        margin: 0;
+        padding: 0.75rem 1rem;
+        font-size: 1.05rem;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--glass-border);
+        border-radius: 0;
+        color: var(--text-primary);
+        font-weight: 600;
+    }
+    .mobile-progress-view .progress-q-item {
+        padding: 1rem;
+        gap: 0.75rem;
+    }
+    .mobile-progress-view .progress-q-text {
+        font-size: 0.95rem;
+    }
+    .mobile-progress-view .progress-q-options {
+        font-size: 0.85rem;
+    }
+    .mobile-progress-view .progress-q-icon {
+        width: 20px; height: 20px; min-width: 20px;
+        margin-top: 2px;
     }
 }
 
+
+@media screen and (max-width: 768px) {
+    body {
+        padding: 1rem 0;
+    }
+    .app-container {
+        padding: 1rem;
+    }
+    .glass-panel {
+        padding: 1.25rem;
+    }
+    h1 {
+        font-size: 1.8rem;
+    }
+    .btn {
+        width: 100%;
+    }
+    /* Scaling down question text also scales MathJax (uses 'ex' units relative to font-size) */
+    .question-text, .progress-main p {
+        font-size: 0.95rem;
+    }
+    pre {
+        font-size: 0.85rem;
+        padding: 0.75rem;
+    }
+}
+
+
+/* Tables: let them size naturally and scroll inside the wrapper */
 .table-responsive {
     max-width: 100%;
     overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
     margin: 1rem 0;
-}
-
-table.table {
-    width: 100%;
-    border-collapse: collapse;
-    background: rgba(255, 255, 255, 0.5);
     border-radius: 8px;
 }
 
+table.table {
+    width: auto;
+    max-width: 100%;
+    border-collapse: collapse;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 8px;
+    white-space: nowrap;
+    font-size: 0.9rem;
+    margin: 0 auto 1rem auto;
+}
+
 table.table th, table.table td {
-    padding: 0.75rem;
+    padding: 4px 8px;
     border: 1px solid var(--glass-border);
     text-align: left;
 }
@@ -324,9 +547,30 @@ table.table th {
     min-width: 0;
 }
 
-/* Evita che le formule matematiche distruggano la griglia */
-.progress-main mjx-container, 
-.progress-main svg {
+/* Wrapper scrollabile iniettato via JS attorno a ogni formula MathJax */
+.math-scroll-wrap {
+    display: inline-block;
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    vertical-align: middle;
+}
+
+/* Formule matematiche MathJax */
+mjx-container {
+    display: inline !important;
+    vertical-align: middle;
+}
+
+mjx-container svg {
+    max-width: 100% !important;
+    height: auto !important;
+    display: inline-block !important;
+}
+
+/* SVG generici (icone ecc.) — solo limita la dimensione */
+svg:not(mjx-container svg) {
     max-width: 100%;
     height: auto;
 }
@@ -342,8 +586,8 @@ pre {
     overflow-x: auto;
     white-space: pre-wrap; 
     word-wrap: break-word;
-    font-size: 1.05rem;
-    line-height: 1.6;
+    font-size: 0.9rem;
+    line-height: 1.5;
     margin: 1rem 0;
     text-align: left !important;
     box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
