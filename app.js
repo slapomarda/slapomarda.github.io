@@ -1705,6 +1705,238 @@ window.QUIZ_DATA = [
 		"correctAnswer": "a",
 		"category": "SQL"
 	}
+,
+	{
+	    "question": "Qual è lo scopo principale del 'Glossario dei termini' nella fase di analisi dei requisiti?",
+	    "answers": {
+	        "a": "Descrivere i dettagli fisici e le tipologie di dato di ogni colonna del database",
+	        "b": "Descrivere le entità individuate, collegarle tra loro e definire eventuali sinonimi per evitare ambiguità",
+	        "c": "Tradurre i requisiti direttamente in un modello relazionale normalizzato",
+	        "d": "Definire la cardinalità esatta di tutte le relazioni presenti nel modello E-R"
+	    },
+	    "correctAnswer": "b",
+	    "category": "Extra IA"
+	},
+	{
+	    "question": "Cos'è un Entity Type Debole (Weak Entity)?",
+	    "answers": {
+	        "a": "Un'entità che non possiede attributi propri ma eredita tutto da una superclasse",
+	        "b": "Un'entità che partecipa solo a relazioni con cardinalità 1:1",
+	        "c": "Un'entità la cui identificazione dipende univocamente dall'esistenza di un'altra entità ad essa collegata",
+	        "d": "Un'entità che non ha cardinalità minima obbligatoria nelle sue relazioni"
+	    },
+	    "correctAnswer": "c",
+	    "category": "Extra IA"
+	},
+	{
+	    "question": "Nei diagrammi E-R, perché le relazioni n-arie (ternarie, ecc.) sono spesso più difficili da gestire rispetto alle relazioni binarie?",
+	    "answers": {
+	        "a": "Perché i DBMS relazionali classici non permettono di rappresentare chiavi esterne multiple in una singola tabella",
+	        "b": "Perché le cardinalità (min, max) in una relazione n-aria hanno un significato meno intuitivo e l'implementazione fisica richiede sempre la frammentazione in relazioni binarie",
+	        "c": "Perché una relazione n-aria non può possedere attributi propri",
+	        "d": "Perché le relazioni n-arie possono coinvolgere solo entity type deboli"
+	    },
+	    "correctAnswer": "b",
+	    "category": "Extra IA"
+	},
+	{
+	    "question": "Che cos'è una Relazione Ricorsiva nel modello E-R?",
+	    "answers": {
+	        "a": "Una relazione in cui l'entità derivata eredita dalla superclasse e viceversa in un ciclo continuo",
+	        "b": "Una relazione che coinvolge due volte o più lo stesso Entity Type, ma con ruoli diversi (es. impiegato e supervisore)",
+	        "c": "Una relazione che collega tre entità distinte formando un anello",
+	        "d": "Una relazione in cui un attributo multivalore è collegato a un'entità forte"
+	    },
+	    "correctAnswer": "b",
+	    "category": "Extra IA"
+	},
+	{
+	    "question": "Quale delle seguenti opzioni rappresenta correttamente la notazione UML per la progettazione concettuale?",
+	    "answers": {
+	        "a": "I diagrammi UML usano rombi per le classi e cerchi per gli attributi",
+	        "b": "L'UML non può essere utilizzato per modellare basi di dati, ma solo per la programmazione orientata agli oggetti",
+	        "c": "Le classi (entity) sono riquadri a tre sezioni (nome, attributi, operazioni) e le associazioni (relazioni) sono linee che le collegano",
+	        "d": "Le associazioni in UML sono rappresentate tramite tabelle separate fin dalla fase concettuale"
+	    },
+	    "correctAnswer": "c",
+	    "category": "Extra IA"
+	},
+	{
+	    "question": "Nel contesto dei Design Pattern per l'E-R, a cosa serve il pattern di 'Reificazione'?",
+	    "answers": {
+	        "a": "A convertire un attributo o una relazione in un'entità indipendente, permettendo così di associare ad essa ulteriori attributi o relazioni",
+	        "b": "A fondere due entità distinte in una singola entità per ridurre le ridondanze",
+	        "c": "A trasformare un'entità debole in un'entità forte assegnandole una chiave primaria surrogata",
+	        "d": "A dividere orizzontalmente una tabella per ottimizzare gli accessi ai dati storici"
+	    },
+	    "correctAnswer": "a",
+	    "category": "Extra IA"
+	},
+	{
+	    "question": "Se si deve modellare l'assegnamento di un impiegato a un progetto che varia nel tempo (mantenendo traccia delle vecchie assegnazioni), quale pattern si deve utilizzare?",
+	    "answers": {
+	        "a": "Il pattern Instance-Of",
+	        "b": "Il pattern Part-Of",
+	        "c": "Il pattern di Storicizzazione di Entità",
+	        "d": "Il pattern di Storicizzazione di Relazione"
+	    },
+	    "correctAnswer": "d",
+	    "category": "Extra IA"
+	},
+	{
+	    "question": "Durante la ristrutturazione di uno schema E-R, come ci si deve comportare di fronte alle 'Ridondanze'?",
+	    "answers": {
+	        "a": "Vanno sempre eliminate perché causano errori di sintassi in fase di creazione delle tabelle",
+	        "b": "Si valuta se eliminarle per risparmiare spazio e facilitare gli aggiornamenti, o se mantenerle per velocizzare le letture, documentandole con regole di derivazione",
+	        "c": "Vanno mantenute sempre, in quanto i database moderni non soffrono di problemi di spazio",
+	        "d": "Vengono automaticamente risolte traducendo il modello E-R nel modello logico relazionale"
+	    },
+	    "correctAnswer": "b",
+	    "category": "Extra IA"
+	},
+	{
+	    "question": "In Algebra Relazionale, qual è l'effetto di un'operazione di 'Left Outer Join' (⟕) tra una relazione R (sinistra) e S (destra)?",
+	    "answers": {
+	        "a": "Restituisce solo le tuple che non hanno corrispondenza tra R e S",
+	        "b": "Mantiene tutte le tuple di R, e se non c'è corrispondenza in S, gli attributi di S vengono riempiti con valori NULL",
+	        "c": "Mantiene tutte le tuple di S ignorando quelle di R che non corrispondono",
+	        "d": "Esegue il prodotto cartesiano di R e S, ma scarta le tuple con valori NULL"
+	    },
+	    "correctAnswer": "b",
+	    "category": "Extra IA"
+	},
+	{
+	    "question": "In Algebra Relazionale, l'operatore di 'Quoziente' (Divisione ÷) viene tipicamente utilizzato per risolvere quale tipo di interrogazione?",
+	    "answers": {
+	        "a": "Per trovare tuple che soddisfano almeno una condizione tra due tabelle",
+	        "b": "Per calcolare il rapporto matematico tra due attributi numerici",
+	        "c": "Per trovare gli elementi di una relazione che sono associati a *tutti* gli elementi di un'altra relazione (es. chi lavora su tutti i progetti)",
+	        "d": "Per eliminare le tuple duplicate da un prodotto cartesiano"
+	    },
+	    "correctAnswer": "c",
+	    "category": "Extra IA"
+	},
+	{
+	    "question": "Per tradurre una gerarchia EER (superclasse e sottoclassi) nel modello relazionale usando l''Opzione 8A' (più relazioni), quale di queste affermazioni è corretta?",
+	    "answers": {
+	        "a": "Si crea un'unica tabella contenente tutti gli attributi della superclasse e di tutte le sottoclassi, con molti valori NULL",
+	        "b": "Si crea una relazione per la superclasse e una per ogni sottoclasse. Le sottoclassi hanno come chiave primaria la stessa chiave della superclasse (che funge anche da chiave esterna)",
+	        "c": "Si creano solo le tabelle per le sottoclassi, duplicando in ognuna di esse gli attributi della superclasse",
+	        "d": "Si utilizza un attributo booleano per ogni possibile sottoclasse all'interno della superclasse"
+	    },
+	    "correctAnswer": "b",
+	    "category": "Extra IA"
+	},
+	{
+	    "question": "L''Opzione 8B' per il mapping delle gerarchie EER prevede la creazione di tabelle SOLO per le sottoclassi. In quale caso questa opzione è raccomandata?",
+	    "answers": {
+	        "a": "Solo quando la specializzazione è Parziale e Disgiunta (Disjoint, Partial)",
+	        "b": "Sempre, perché fa risparmiare il maggior numero di join",
+	        "c": "Solo quando la specializzazione è Totale (Total Specialization), altrimenti si perderebbero le entità della superclasse non specializzate",
+	        "d": "Quando la superclasse possiede chiavi surrogate"
+	    },
+	    "correctAnswer": "c",
+	    "category": "Extra IA"
+	},
+	{
+	    "question": "Nella teoria della Normalizzazione, cos'è la 'Chiusura' di un insieme di attributi X (indicata con X+)?",
+	    "answers": {
+	        "a": "L'insieme di tutti gli attributi che compongono l'unica chiave primaria della relazione",
+	        "b": "L'insieme di tutti gli attributi che possono essere determinati funzionalmente a partire da X, seguendo le dipendenze funzionali date",
+	        "c": "L'algoritmo per eliminare le anomalie di inserimento da una tabella BCNF",
+	        "d": "L'insieme degli attributi che non compaiono in nessuna dipendenza funzionale"
+	    },
+	    "correctAnswer": "b",
+	    "category": "Extra IA"
+	},
+	{
+	    "question": "Cosa si intende per 'Copertura Ridotta' (Minimal Cover) di un insieme di dipendenze funzionali F?",
+	    "answers": {
+	        "a": "Un insieme equivalente ad F in cui ogni dipendenza ha un singolo attributo a destra, non vi sono dipendenze ridondanti e non vi sono attributi ridondanti a sinistra",
+	        "b": "L'insieme ottenuto eliminando tutte le dipendenze funzionali che non coinvolgono la chiave primaria",
+	        "c": "L'insieme delle sole dipendenze banali derivabili da F",
+	        "d": "La traduzione in Terza Forma Normale delle dipendenze funzionali di F"
+	    },
+	    "correctAnswer": "a",
+	    "category": "Extra IA"
+	},
+	{
+	    "question": "In merito alla scomposizione in tabelle (decomposizione binaria), la 'Proprietà NJB (Non-additive join / Decomposizione senza perdita)' si verifica se e solo se:",
+	    "answers": {
+	        "a": "L'intersezione degli attributi delle due tabelle risultanti è vuota",
+	        "b": "La chiave esterna di una delle due tabelle ammette valori NULL",
+	        "c": "L'intersezione degli attributi delle due tabelle (R1 ∩ R2) determina funzionalmente tutti gli attributi di almeno una delle due tabelle (R1 o R2)",
+	        "d": "Le due tabelle risultanti non condividono alcuna dipendenza funzionale"
+	    },
+	    "correctAnswer": "c",
+	    "category": "Extra IA"
+	},
+	{
+	    "question": "In SQL, qual è la differenza fondamentale tra l'operatore IN e l'operatore EXISTS?",
+	    "answers": {
+	        "a": "IN controlla se una query è vuota, EXISTS confronta una colonna specifica con un elenco di valori",
+	        "b": "IN non può essere utilizzato all'interno di query annidate, mentre EXISTS sì",
+	        "c": "IN confronta un valore esterno con una lista di valori restituiti dalla subquery, mentre EXISTS valuta solo se la subquery restituisce almeno una riga (vero o falso)",
+	        "d": "Non c'è alcuna differenza logica o di comportamento, sono perfetti sinonimi in qualsiasi contesto"
+	    },
+	    "correctAnswer": "c",
+	    "category": "Extra IA"
+	},
+	{
+	    "question": "Perché in SQL l'espressione 'WHERE attributo NOT IN (SELECT ...)' può essere molto pericolosa se la subquery restituisce dei valori NULL?",
+	    "answers": {
+	        "a": "Perché genererebbe un errore di sintassi 'Division by zero'",
+	        "b": "Perché se c'è un NULL nella lista, l'intera espressione valuta a 'Unknown', col risultato che la query esterna non restituirà nessuna riga",
+	        "c": "Perché i valori NULL vengono automaticamente convertiti in zero, falsando il risultato",
+	        "d": "Perché causerebbe un loop infinito nell'interprete SQL"
+	    },
+	    "correctAnswer": "b",
+	    "category": "Extra IA"
+	},
+	{
+	    "question": "In una query SQL complessa, cosa definisce un 'Select Interno Collegato' (Correlated Subquery)?",
+	    "answers": {
+	        "a": "Una subquery che utilizza clausole JOIN al suo interno per collegare più tabelle in FROM",
+	        "b": "Una subquery il cui risultato viene salvato in una VIEW temporanea",
+	        "c": "Una subquery che contiene nella sua clausola WHERE un riferimento ad una tabella dichiarata nel FROM della query esterna",
+	        "d": "Una subquery che viene eseguita esattamente una sola volta e il cui risultato è riutilizzato per tutte le tuple esterne"
+	    },
+	    "correctAnswer": "c",
+	    "category": "Extra IA"
+	},
+	{
+	    "question": "Se si desidera creare una Vista (VIEW) temporanea che sparisce al termine della sessione, quale sintassi SQL è corretta?",
+	    "answers": {
+	        "a": "CREATE SHORT VIEW nome_vista AS ...",
+	        "b": "CREATE VOLATILE VIEW nome_vista AS ...",
+	        "c": "CREATE TEMP VIEW nome_vista AS ...",
+	        "d": "CREATE SESSION VIEW nome_vista AS ..."
+	    },
+	    "correctAnswer": "c",
+	    "category": "Extra IA"
+	},
+	{
+	    "question": "In SQL, per confrontare se un attributo non possiede alcun valore (è nullo), quale operatore si deve TASSATIVAMENTE usare?",
+	    "answers": {
+	        "a": "attributo == NULL",
+	        "b": "attributo = NULL",
+	        "c": "attributo EQUALS NULL",
+	        "d": "attributo IS NULL"
+	    },
+	    "correctAnswer": "d",
+	    "category": "Extra IA"
+	},
+	{
+	    "question": "A cosa servono le 'Interrogazioni Parametriche'?",
+	    "answers": {
+	        "a": "A eseguire query all'interno di un ciclo FOR nel database",
+	        "b": "A definire query all'interno di funzioni o procedure che accettano variabili in input, permettendo di rieseguire la stessa logica con valori diversi",
+	        "c": "A interrogare contemporaneamente due database relazionali differenti",
+	        "d": "A ottimizzare gli indici della tabella ricalcolandone i parametri statistici"
+	    },
+	    "correctAnswer": "b",
+	    "category": "Extra IA"
+	}
 ]
 ;
 // State
