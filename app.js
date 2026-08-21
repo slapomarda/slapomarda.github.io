@@ -1782,7 +1782,7 @@ function renderHome() {
     const totalCount = allQuestions.length;
     
     const html = `
-        <div class="view-container glass-panel">
+        <div class="view-container glass-panel" style="max-width: 800px; margin: 0 auto;">
             <h1>Basi di Dati Quiz</h1>
             <p>Testa le tue conoscenze con un quiz di 20 domande selezionate casualmente. Le domande che non hai ancora visto avranno la priorità.</p>
             
