@@ -405,6 +405,13 @@ p {
     color: var(--accent-color);
 }
 
+.nav-link.active {
+    background: rgba(14, 165, 233, 0.15);
+    color: var(--accent-color);
+    font-weight: 600;
+    border-left: 3px solid var(--accent-color);
+}
+
 .nav-badge {
     background: rgba(0,0,0,0.1);
     padding: 2px 8px;

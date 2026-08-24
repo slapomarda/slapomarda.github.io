@@ -2862,5 +2862,31 @@ function renderProgress() {
     }
 }
 
+
+// ScrollSpy per la sidebar dei progressi
+window.addEventListener('scroll', () => {
+    if (!document.querySelector('.desktop-progress-view')) return;
+    const headers = document.querySelectorAll('.desktop-progress-view .category-header');
+    let currentId = null;
+    headers.forEach(h => {
+        const rect = h.getBoundingClientRect();
+        if (rect.top <= 160) {
+            currentId = h.id;
+        }
+    });
+    if (!currentId && headers.length > 0 && window.scrollY < 50) {
+        currentId = headers[0].id;
+    }
+    if (currentId) {
+        document.querySelectorAll('.nav-link').forEach(link => {
+            if (link.getAttribute('href') === '#' + currentId) {
+                link.classList.add('active');
+            } else {
+                link.classList.remove('active');
+            }
+        });
+    }
+});
+
 // Start
 init();
