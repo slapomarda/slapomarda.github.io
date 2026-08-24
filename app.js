@@ -2492,6 +2492,12 @@ function renderHome() {
                 <button class="btn" onclick="navigate('quiz')">Avvia Quiz (20 Domande)</button>
                 <button class="btn btn-secondary" onclick="navigate('progress')">I Miei Progressi</button>
             </div>
+            
+            <div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--glass-border); text-align: center;">
+                <p style="font-size: 0.85rem; color: var(--text-secondary); max-width: 600px; margin: 0 auto; line-height: 1.5;">
+                    Le domande contrassegnate con <span title="Generata da IA" style="display:inline-flex; align-items:center; justify-content:center; background:#8b5cf6; color:white; font-size:0.7rem; font-weight:bold; padding:2px 6px; border-radius:4px; margin:0 4px; vertical-align:middle; line-height:1;">🤖 IA</span> sono state generate automaticamente da un'Intelligenza Artificiale per arricchire e completare il quiz originale.
+                </p>
+            </div>
         </div>
     `;
     appDiv.innerHTML = html;
