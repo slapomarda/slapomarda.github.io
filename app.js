@@ -1708,8 +1708,6 @@ window.QUIZ_DATA = [
 ,
 	{
 	    "question": "Qual è lo scopo principale del 'Glossario dei termini' nella fase di analisi dei requisiti?",
-	{
-	    "question": "Qual è lo scopo principale del 'Glossario dei termini' nella fase di analisi dei requisiti?",
 	    "answers": {
 	        "a": "Descrivere entità e sinonimi per evitare ambiguità nell'interpretazione",
 	        "b": "Definire i vincoli di chiave primaria e le foreign key nel modello logico",
