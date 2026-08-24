@@ -2477,8 +2477,12 @@ function renderHome() {
     const totalCount = allQuestions.length;
     
     const html = `
-        <div class="view-container glass-panel" style="max-width: 800px; margin: 0 auto;">
-            <h1>Basi di Dati Quiz</h1>
+        <a href="https://github.com/slapomarda/slapomarda.github.io/issues/new?title=%5BNuova+Domanda%5D+...&body=%23%23%23%20%F0%9F%93%9D%20Testo%20della%20Domanda%0A%5BScrivi%20qui%20la%20domanda%5D%0A%0A%23%23%23%20%F0%9F%85%B0%EF%B8%8F%20Opzione%20A%0A%5BScrivi%20qui%20l%27opzione%20A%5D%0A%0A%23%23%23%20%F0%9F%85%B1%EF%B8%8F%20Opzione%20B%0A%5BScrivi%20qui%20l%27opzione%20B%5D%0A%0A%23%23%23%20%F0%9F%85%BE%EF%B8%8F%20Opzione%20C%0A%5BScrivi%20qui%20l%27opzione%20C%5D%0A%0A%23%23%23%20%F0%9F%85%B3%20Opzione%20D%0A%5BScrivi%20qui%20l%27opzione%20D%5D%0A%0A%23%23%23%20%E2%9C%85%20Risposta%20Corretta%0A%5BIndica%20la%20lettera%3A%20A%2C%20B%2C%20C%20oppure%20D%5D%0A%0A%23%23%23%20%F0%9F%8F%B7%EF%B8%8F%20Categoria%0A%5BSQL%2C%20Teoria%2C%20Entit%C3%A0-Relazione%2C%20ecc...%5D" target="_blank" rel="noopener noreferrer" class="proponi-link">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
+                Proponi Domanda
+            </a>
+        <div class="view-container glass-panel" style="max-width: 800px; margin: 0 auto; position: relative;">
+                        <h1>Basi di Dati Quiz</h1>
             <p>Testa le tue conoscenze con un quiz di 20 domande selezionate casualmente. Le domande che non hai ancora visto avranno la priorità.</p>
             
             <div class="stats-grid" style="margin-bottom: 2rem;">

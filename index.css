@@ -632,3 +632,31 @@ pre {
 .progress-main pre {
     max-width: 100%;
 }
+
+/* Bottone Proponi Domanda */
+.proponi-link {
+    position: fixed;
+    top: 1rem;
+    right: 1.25rem;
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+    z-index: 10;
+}
+.proponi-link:hover {
+    opacity: 1;
+}
+
+@media screen and (max-width: 768px) {
+    .proponi-link {
+        position: fixed;
+        top: 1rem;
+        right: 1rem;
+        font-size: 0.8rem;
+    }
+}
