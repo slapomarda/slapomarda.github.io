@@ -368,7 +368,7 @@ p {
 /* Progress Layout */
 .progress-layout {
     display: grid;
-    grid-template-columns: 220px 1fr 220px;
+    grid-template-columns: 220px 1fr 400px;
     gap: 2rem;
     align-items: stretch;
 }
