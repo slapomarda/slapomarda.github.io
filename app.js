@@ -2558,7 +2558,8 @@ function renderQuizQuestion() {
             <div class="quiz-header">
                 <span class="quiz-header-left">Domanda ${currentQuestionIndex + 1} di 20</span>
                 <div class="quiz-header-right">
-                    <span style="background:var(--accent-color); padding:4px 10px; border-radius:20px; font-size:0.78rem; color:white; font-weight:600;">${q.category || 'Generale'}${q.isAI ? ' <span title="Generata da IA" style="display:inline-flex; align-items:center; justify-content:center; background:var(--accent-color); color:white; font-size:0.7rem; font-weight:bold; padding:2px 6px; border-radius:4px; margin-right:6px; vertical-align:middle; line-height:1;">🤖 IA</span>' : ''}</span>
+                    <span style="background:var(--accent-color); padding:4px 10px; border-radius:20px; font-size:0.78rem; color:white; font-weight:600; margin-right: 6px;">${q.category || 'Generale'}</span>
+                    ${q.isAI ? '<span title="Generata da IA" style="display:inline-flex; align-items:center; justify-content:center; background:#8b5cf6; color:white; font-size:0.7rem; font-weight:bold; padding:4px 8px; border-radius:4px; vertical-align:middle; line-height:1;">🤖 IA</span>' : ''}
                     <button class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem; border-color: var(--error-color); color: var(--error-color);" onclick="if(confirm('Vuoi davvero uscire dal quiz in corso? I progressi andranno persi.')) navigate('home')">Esci</button>
                 </div>
             </div>
@@ -2647,7 +2648,7 @@ function renderResults() {
                     ${icon} Domanda ${index + 1} · <span style="color:var(--accent-color)">${q.category || 'Generale'}</span>
                 </p>
                 <h3 style="font-size:1rem; margin-bottom:0.75rem; color:var(--text-primary); font-weight:500; overflow-wrap:break-word; word-break:break-word;">
-                    ${q.isAI ? '<span title="Generata da IA" style="display:inline-flex; align-items:center; justify-content:center; background:var(--accent-color); color:white; font-size:0.7rem; font-weight:bold; padding:2px 6px; border-radius:4px; margin-right:6px; vertical-align:middle; line-height:1;">🤖 IA</span>' : ''}${q.question}
+                    ${q.isAI ? '<span title="Generata da IA" style="display:inline-flex; align-items:center; justify-content:center; background:#8b5cf6; color:white; font-size:0.7rem; font-weight:bold; padding:4px 8px; border-radius:4px; margin-right:6px; vertical-align:middle; line-height:1;">🤖 IA</span>' : ''}${q.question}
                 </h3>
                 <ul class="options-list">
                     ${optionsHtml}
@@ -2764,7 +2765,7 @@ function renderProgress() {
                         ${isSeen ? '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>' : ''}
                     </div>
                     <div style="flex:1; text-align: left; min-width: 0;">
-                        <p class="progress-q-text" style="font-weight: ${isSeen ? '600' : '400'};">${q.isAI ? '<span title="Generata da IA" style="display:inline-flex; align-items:center; justify-content:center; background:var(--accent-color); color:white; font-size:0.7rem; font-weight:bold; padding:2px 6px; border-radius:4px; margin-right:6px; vertical-align:middle; line-height:1;">🤖 IA</span>' : ''}${q.question}</p>
+                        <p class="progress-q-text" style="font-weight: ${isSeen ? '600' : '400'};">${q.isAI ? '<span title="Generata da IA" style="display:inline-flex; align-items:center; justify-content:center; background:#8b5cf6; color:white; font-size:0.7rem; font-weight:bold; padding:4px 8px; border-radius:4px; margin-right:6px; vertical-align:middle; line-height:1;">🤖 IA</span>' : ''}${q.question}</p>
                         ${isSeen ? `<ul class="progress-q-options">${optionsHtml}</ul>` : '<p class="progress-q-unseen">Non hai ancora incontrato questa domanda.</p>'}
                     </div>
                 </div>
