@@ -2109,7 +2109,7 @@ window.QUIZ_DATA = [
 	        "d": "Lo Stato riguarda l'hardware fisico del server, lo Schema riguarda i file del database"
 	    },
 	    "correctAnswer": "b",
-	    "category": "Generalità",
+	    "category": "Teoria",
 		"isAI": true
 	},
 	{
@@ -2181,7 +2181,7 @@ window.QUIZ_DATA = [
 	        "d": "È matematicamente impossibile e richiede sempre una scomposizione in fase concettuale"
 	    },
 	    "correctAnswer": "b",
-	    "category": "Generalità",
+	    "category": "Teoria",
 		"isAI": true
 	},
 	{
