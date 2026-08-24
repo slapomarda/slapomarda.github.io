@@ -252,7 +252,6 @@ window.QUIZ_DATA = [
 		"correctAnswer": "a",
 		"category": "Algebra Relazionale"
 	},
-
 	{
 		"question": "La seguente relazione:<br><div class='table-responsive'><table class='table table-bordered'><tbody><tr><td colspan=\"4\" style=\"text-align:center\"><b>PARTITA<b/></td></tr><tr><th>SquadraCasa</th><th>SquadraOspite</th><th>Risultato</th></tr><tr><td>Juventus</td><td>Inter</td><td>1-1</td></tr><tr><td>Milan</td><td>Torino</td><td>0-0</td></tr></tbody></table></div>",
 		"answers": {
@@ -1704,8 +1703,7 @@ window.QUIZ_DATA = [
 		},
 		"correctAnswer": "a",
 		"category": "SQL"
-	}
-,
+	},
 	{
 	    "question": "Qual è lo scopo principale del 'Glossario dei termini' nella fase di analisi dei requisiti?",
 	    "answers": {
@@ -1727,7 +1725,7 @@ window.QUIZ_DATA = [
 	        "d": "Un'entità isolata nel diagramma E-R che non ha legami cardinali"
 	    },
 	    "correctAnswer": "c",
-	    "category": "Progettazione Concettuale",
+	    "category": "Teoria",
 		"isAI": true
 	},
 	{
@@ -1739,7 +1737,7 @@ window.QUIZ_DATA = [
 	        "d": "I DBMS relazionali non supportano chiavi esterne multiple all'interno delle tuple"
 	    },
 	    "correctAnswer": "c",
-	    "category": "SQL",
+	    "category": "Entità-Relazione",
 		"isAI": true
 	},
 	{
@@ -1751,7 +1749,7 @@ window.QUIZ_DATA = [
 	        "d": "Richiedono in ogni caso l'utilizzo di una chiave surrogata indipendente"
 	    },
 	    "correctAnswer": "a",
-	    "category": "Progettazione Concettuale",
+	    "category": "Entità-Relazione",
 		"isAI": true
 	},
 	{
@@ -1763,7 +1761,7 @@ window.QUIZ_DATA = [
 	        "d": "Le relazioni non possono possedere cardinalità esplicite lungo gli archi"
 	    },
 	    "correctAnswer": "a",
-	    "category": "Progettazione Concettuale",
+	    "category": "Teoria",
 		"isAI": true
 	},
 	{
@@ -1775,7 +1773,7 @@ window.QUIZ_DATA = [
 	        "d": "Identificare un'entità debole tramite una chiave esterna parziale"
 	    },
 	    "correctAnswer": "b",
-	    "category": "SQL",
+	    "category": "Entità-Relazione",
 		"isAI": true
 	},
 	{
@@ -1787,7 +1785,7 @@ window.QUIZ_DATA = [
 	        "d": "Il pattern Instance-Of per le associazioni"
 	    },
 	    "correctAnswer": "b",
-	    "category": "Modello Relazionale",
+	    "category": "Teoria",
 		"isAI": true
 	},
 	{
@@ -1799,7 +1797,7 @@ window.QUIZ_DATA = [
 	        "d": "Vanno eliminate in ogni caso perché causano immancabilmente anomalie di inserimento"
 	    },
 	    "correctAnswer": "a",
-	    "category": "SQL",
+	    "category": "Entità-Relazione",
 		"isAI": true
 	},
 	{
@@ -1811,7 +1809,7 @@ window.QUIZ_DATA = [
 	        "d": "Mantiene tutte le tuple di sinistra, inserendo valori NULL dove non c'è corrispondenza a destra"
 	    },
 	    "correctAnswer": "d",
-	    "category": "Modello Relazionale",
+	    "category": "SQL",
 		"isAI": true
 	},
 	{
@@ -1823,7 +1821,7 @@ window.QUIZ_DATA = [
 	        "d": "Calcola la media o la somma dei valori raggruppati preventivamente per dipartimento"
 	    },
 	    "correctAnswer": "c",
-	    "category": "SQL",
+	    "category": "Algebra Relazionale",
 		"isAI": true
 	},
 	{
@@ -1835,7 +1833,7 @@ window.QUIZ_DATA = [
 	        "d": "Si duplicano fisicamente tutti gli attributi della superclasse all'interno delle sottoclassi"
 	    },
 	    "correctAnswer": "c",
-	    "category": "Progettazione Fisica",
+	    "category": "Entità-Relazione",
 		"isAI": true
 	},
 	{
@@ -1847,7 +1845,7 @@ window.QUIZ_DATA = [
 	        "d": "È l'unica opzione strutturale possibile se e solo se la generalizzazione è disgiunta"
 	    },
 	    "correctAnswer": "a",
-	    "category": "Progettazione Concettuale",
+	    "category": "Entità-Relazione",
 		"isAI": true
 	},
 	{
@@ -1859,7 +1857,7 @@ window.QUIZ_DATA = [
 	        "d": "La procedura per la sicura rimozione dei valori NULL all'interno di una possibile chiave candidata"
 	    },
 	    "correctAnswer": "b",
-	    "category": "SQL",
+	    "category": "Dipendenze Funzionali",
 		"isAI": true
 	},
 	{
@@ -1871,7 +1869,7 @@ window.QUIZ_DATA = [
 	        "d": "La conversione in tempo reale dello schema ER direttamente verso la forma normale di Boyce-Codd"
 	    },
 	    "correctAnswer": "b",
-	    "category": "Normalizzazione",
+	    "category": "SQL",
 		"isAI": true
 	},
 	{
@@ -1883,7 +1881,7 @@ window.QUIZ_DATA = [
 	        "d": "Nessuna delle tabelle derivate dalla scomposizione presenta internamente delle dipendenze funzionali"
 	    },
 	    "correctAnswer": "a",
-	    "category": "SQL",
+	    "category": "Teoria",
 		"isAI": true
 	},
 	{
@@ -1955,7 +1953,7 @@ window.QUIZ_DATA = [
 	        "d": "Interrogazioni di manutenzione che si occupano di aggiornare silenziosamente i parametri di normalizzazione logica"
 	    },
 	    "correctAnswer": "c",
-	    "category": "Normalizzazione",
+	    "category": "Teoria",
 		"isAI": true
 	},
 	{
@@ -1967,7 +1965,7 @@ window.QUIZ_DATA = [
 	        "d": "Nessuna, sono due nomi diversi per la stessa identica forma normale"
 	    },
 	    "correctAnswer": "c",
-	    "category": "Modello Relazionale",
+	    "category": "Normalizzazione",
 		"isAI": true
 	},
 	{
@@ -1979,7 +1977,7 @@ window.QUIZ_DATA = [
 	        "d": "Che nel database c'è esattamente un solo studente per ogni N relazioni di iscrizione registrate"
 	    },
 	    "correctAnswer": "c",
-	    "category": "Modello Relazionale",
+	    "category": "SQL",
 		"isAI": true
 	},
 	{
@@ -2003,7 +2001,7 @@ window.QUIZ_DATA = [
 	        "d": "Un vincolo che obbliga un attributo (chiave esterna) ad assumere solo valori presenti come chiave primaria in un'altra relazione, o valori NULL"
 	    },
 	    "correctAnswer": "d",
-	    "category": "Progettazione Fisica",
+	    "category": "Modello Relazionale",
 		"isAI": true
 	},
 	{
@@ -2027,7 +2025,7 @@ window.QUIZ_DATA = [
 	        "d": "Si lascia invariato lo schema, poiché i database relazionali moderni supportano nativamente array di dati"
 	    },
 	    "correctAnswer": "c",
-	    "category": "SQL",
+	    "category": "Entità-Relazione",
 		"isAI": true
 	},
 	{
@@ -2051,7 +2049,7 @@ window.QUIZ_DATA = [
 	        "d": "Perché la parte destra delle dipendenze funzionali deve contenere solo attributi multivalore per essere minimale"
 	    },
 	    "correctAnswer": "a",
-	    "category": "Normalizzazione",
+	    "category": "Dipendenze Funzionali",
 		"isAI": true
 	},
 	{
@@ -2075,7 +2073,7 @@ window.QUIZ_DATA = [
 	        "d": "A calcolare l'ingombro in byte di ciascun attributo su disco"
 	    },
 	    "correctAnswer": "c",
-	    "category": "Progettazione Concettuale",
+	    "category": "Progettazione Fisica",
 		"isAI": true
 	},
 	{
@@ -2123,7 +2121,7 @@ window.QUIZ_DATA = [
 	        "d": "Data Validation Language (DVL)"
 	    },
 	    "correctAnswer": "b",
-	    "category": "Generalità",
+	    "category": "SQL",
 		"isAI": true
 	},
 	{
@@ -2147,7 +2145,7 @@ window.QUIZ_DATA = [
 	        "d": "Chiave parziale"
 	    },
 	    "correctAnswer": "c",
-	    "category": "SQL",
+	    "category": "Entità-Relazione",
 		"isAI": true
 	},
 	{
@@ -2159,7 +2157,7 @@ window.QUIZ_DATA = [
 	        "d": "Creare una nuova tabella contenente il valore dell'attributo e la chiave esterna dell'entità proprietaria, formando una chiave composta"
 	    },
 	    "correctAnswer": "d",
-	    "category": "Progettazione Concettuale",
+	    "category": "Entità-Relazione",
 		"isAI": true
 	},
 	{
@@ -2171,7 +2169,7 @@ window.QUIZ_DATA = [
 	        "d": "Colorando il rombo della relazione di grigio scuro"
 	    },
 	    "correctAnswer": "b",
-	    "category": "Progettazione Concettuale",
+	    "category": "Entità-Relazione",
 		"isAI": true
 	},
 	{
@@ -2183,7 +2181,7 @@ window.QUIZ_DATA = [
 	        "d": "È matematicamente impossibile e richiede sempre una scomposizione in fase concettuale"
 	    },
 	    "correctAnswer": "b",
-	    "category": "Progettazione Concettuale",
+	    "category": "Generalità",
 		"isAI": true
 	},
 	{
@@ -2195,7 +2193,7 @@ window.QUIZ_DATA = [
 	        "d": "Una chiave esterna che candida un record ad essere aggiornato"
 	    },
 	    "correctAnswer": "c",
-	    "category": "SQL",
+	    "category": "Modello Relazionale",
 		"isAI": true
 	},
 	{
@@ -2207,7 +2205,7 @@ window.QUIZ_DATA = [
 	        "d": "Non possono esistere due tabelle con lo stesso identico nome nello schema"
 	    },
 	    "correctAnswer": "a",
-	    "category": "Generalità",
+	    "category": "Entità-Relazione",
 		"isAI": true
 	},
 	{
@@ -2327,7 +2325,7 @@ window.QUIZ_DATA = [
 	        "d": "Sottrae i valori numerici di due colonne riga per riga"
 	    },
 	    "correctAnswer": "b",
-	    "category": "Progettazione Fisica",
+	    "category": "SQL",
 		"isAI": true
 	},
 	{
@@ -2351,7 +2349,7 @@ window.QUIZ_DATA = [
 	        "d": "A collegare la colonna con la chiave primaria di un'altra tabella esterna"
 	    },
 	    "correctAnswer": "a",
-	    "category": "Progettazione Fisica",
+	    "category": "Modello Relazionale",
 		"isAI": true
 	},
 	{
@@ -2363,7 +2361,7 @@ window.QUIZ_DATA = [
 	        "d": "No, per le chiavi multiple bisogna obbligatoriamente utilizzare i vincoli di UNIQUE multipli"
 	    },
 	    "correctAnswer": "b",
-	    "category": "Progettazione Fisica",
+	    "category": "SQL",
 		"isAI": true
 	},
 	{
@@ -2375,7 +2373,7 @@ window.QUIZ_DATA = [
 	        "d": "L'inserimento involontario di tuple spurie a causa di join effettuati su chiavi non primarie"
 	    },
 	    "correctAnswer": "b",
-	    "category": "SQL",
+	    "category": "Normalizzazione",
 		"isAI": true
 	},
 	{
@@ -2399,7 +2397,7 @@ window.QUIZ_DATA = [
 	        "d": "Parte dalle specifiche iniziali elementari e atomiche, per poi raggrupparle e integrarle via via in concetti sempre più ampi (schema finale)"
 	    },
 	    "correctAnswer": "d",
-	    "category": "SQL",
+	    "category": "Progettazione Concettuale",
 		"isAI": true
 	}
 ]
@@ -2814,7 +2812,7 @@ function renderProgress() {
                 <div class="progress-nav">
                     <div class="glass-panel" style="position: sticky; top: 2rem; padding: 1.5rem;">
                         <h3 style="margin-bottom: 1rem; color: var(--text-primary); text-align: left; font-size: 1.2rem;">Categorie</h3>
-                        <div style="column-count: 2; column-gap: 1rem;">
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;">
                             ${navHtml}
                         </div>
                     </div>
