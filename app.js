@@ -1715,7 +1715,8 @@ window.QUIZ_DATA = [
 	        "d": "Tradurre i requisiti raccolti in un modello relazionale in Terza Forma Normale"
 	    },
 	    "correctAnswer": "a",
-	    "category": "Extra IA"
+	    "category": "Progettazione Concettuale",
+		"isAI": true
 	},
 	{
 	    "question": "Cos'è un Entity Type Debole (Weak Entity)?",
@@ -1726,7 +1727,8 @@ window.QUIZ_DATA = [
 	        "d": "Un'entità isolata nel diagramma E-R che non ha legami cardinali"
 	    },
 	    "correctAnswer": "c",
-	    "category": "Extra IA"
+	    "category": "Progettazione Concettuale",
+		"isAI": true
 	},
 	{
 	    "question": "Nei diagrammi E-R, perché le relazioni n-arie sono spesso più difficili da gestire rispetto alle binarie?",
@@ -1737,7 +1739,8 @@ window.QUIZ_DATA = [
 	        "d": "I DBMS relazionali non supportano chiavi esterne multiple all'interno delle tuple"
 	    },
 	    "correctAnswer": "c",
-	    "category": "Extra IA"
+	    "category": "SQL",
+		"isAI": true
 	},
 	{
 	    "question": "Che cos'è una Relazione Ricorsiva nel modello E-R?",
@@ -1748,7 +1751,8 @@ window.QUIZ_DATA = [
 	        "d": "Richiedono in ogni caso l'utilizzo di una chiave surrogata indipendente"
 	    },
 	    "correctAnswer": "a",
-	    "category": "Extra IA"
+	    "category": "Progettazione Concettuale",
+		"isAI": true
 	},
 	{
 	    "question": "Quale delle seguenti opzioni rappresenta correttamente la notazione UML per la progettazione concettuale?",
@@ -1759,7 +1763,8 @@ window.QUIZ_DATA = [
 	        "d": "Le relazioni non possono possedere cardinalità esplicite lungo gli archi"
 	    },
 	    "correctAnswer": "a",
-	    "category": "Extra IA"
+	    "category": "Progettazione Concettuale",
+		"isAI": true
 	},
 	{
 	    "question": "Nel contesto dei Design Pattern per l'E-R, a cosa serve il pattern di 'Reificazione'?",
@@ -1770,7 +1775,8 @@ window.QUIZ_DATA = [
 	        "d": "Identificare un'entità debole tramite una chiave esterna parziale"
 	    },
 	    "correctAnswer": "b",
-	    "category": "Extra IA"
+	    "category": "SQL",
+		"isAI": true
 	},
 	{
 	    "question": "Per modellare l'assegnamento di un impiegato a un progetto che varia nel tempo (mantenendo lo storico), quale pattern uso?",
@@ -1781,7 +1787,8 @@ window.QUIZ_DATA = [
 	        "d": "Il pattern Instance-Of per le associazioni"
 	    },
 	    "correctAnswer": "b",
-	    "category": "Extra IA"
+	    "category": "Modello Relazionale",
+		"isAI": true
 	},
 	{
 	    "question": "Durante la ristrutturazione di uno schema E-R, come ci si deve comportare di fronte alle 'Ridondanze'?",
@@ -1792,7 +1799,8 @@ window.QUIZ_DATA = [
 	        "d": "Vanno eliminate in ogni caso perché causano immancabilmente anomalie di inserimento"
 	    },
 	    "correctAnswer": "a",
-	    "category": "Extra IA"
+	    "category": "SQL",
+		"isAI": true
 	},
 	{
 	    "question": "In Algebra Relazionale, qual è l'effetto di un'operazione di 'Left Outer Join' (⟕) tra R e S?",
@@ -1803,7 +1811,8 @@ window.QUIZ_DATA = [
 	        "d": "Mantiene tutte le tuple di sinistra, inserendo valori NULL dove non c'è corrispondenza a destra"
 	    },
 	    "correctAnswer": "d",
-	    "category": "Extra IA"
+	    "category": "Modello Relazionale",
+		"isAI": true
 	},
 	{
 	    "question": "In Algebra Relazionale, l'operatore di 'Quoziente' (Divisione ÷) viene utilizzato tipicamente per risolvere quale tipo di interrogazione?",
@@ -1814,7 +1823,8 @@ window.QUIZ_DATA = [
 	        "d": "Calcola la media o la somma dei valori raggruppati preventivamente per dipartimento"
 	    },
 	    "correctAnswer": "c",
-	    "category": "Extra IA"
+	    "category": "SQL",
+		"isAI": true
 	},
 	{
 	    "question": "Per tradurre una gerarchia EER creando 'una relazione per la superclasse e una per ogni sottoclasse', quale affermazione è vera?",
@@ -1825,7 +1835,8 @@ window.QUIZ_DATA = [
 	        "d": "Si duplicano fisicamente tutti gli attributi della superclasse all'interno delle sottoclassi"
 	    },
 	    "correctAnswer": "c",
-	    "category": "Extra IA"
+	    "category": "Progettazione Fisica",
+		"isAI": true
 	},
 	{
 	    "question": "Quando è raccomandato il mapping di una gerarchia EER che prevede la creazione di tabelle SOLO per le sottoclassi?",
@@ -1836,7 +1847,8 @@ window.QUIZ_DATA = [
 	        "d": "È l'unica opzione strutturale possibile se e solo se la generalizzazione è disgiunta"
 	    },
 	    "correctAnswer": "a",
-	    "category": "Extra IA"
+	    "category": "Progettazione Concettuale",
+		"isAI": true
 	},
 	{
 	    "question": "Nella teoria della Normalizzazione, cos'è la 'Chiusura' di un insieme di attributi X (indicata con X+)?",
@@ -1847,7 +1859,8 @@ window.QUIZ_DATA = [
 	        "d": "La procedura per la sicura rimozione dei valori NULL all'interno di una possibile chiave candidata"
 	    },
 	    "correctAnswer": "b",
-	    "category": "Extra IA"
+	    "category": "SQL",
+		"isAI": true
 	},
 	{
 	    "question": "Cosa si intende per 'Copertura Ridotta' (Minimal Cover) di un insieme di dipendenze funzionali F?",
@@ -1858,7 +1871,8 @@ window.QUIZ_DATA = [
 	        "d": "La conversione in tempo reale dello schema ER direttamente verso la forma normale di Boyce-Codd"
 	    },
 	    "correctAnswer": "b",
-	    "category": "Extra IA"
+	    "category": "Normalizzazione",
+		"isAI": true
 	},
 	{
 	    "question": "In una decomposizione binaria in due tabelle R1 e R2, la 'Proprietà NJB (Decomposizione senza perdita)' si verifica se:",
@@ -1869,7 +1883,8 @@ window.QUIZ_DATA = [
 	        "d": "Nessuna delle tabelle derivate dalla scomposizione presenta internamente delle dipendenze funzionali"
 	    },
 	    "correctAnswer": "a",
-	    "category": "Extra IA"
+	    "category": "SQL",
+		"isAI": true
 	},
 	{
 	    "question": "In SQL, qual è la differenza fondamentale tra l'operatore IN e l'operatore EXISTS?",
@@ -1880,7 +1895,8 @@ window.QUIZ_DATA = [
 	        "d": "IN confronta un valore con una lista, EXISTS restituisce vero solo se la subquery non è un insieme vuoto"
 	    },
 	    "correctAnswer": "d",
-	    "category": "Extra IA"
+	    "category": "SQL",
+		"isAI": true
 	},
 	{
 	    "question": "Perché in SQL l'espressione 'WHERE attributo NOT IN (SELECT ...)' è considerata pericolosa se la subquery restituisce dei NULL?",
@@ -1891,7 +1907,8 @@ window.QUIZ_DATA = [
 	        "d": "La subquery restituirà magicamente tutte le righe della tabella ignorando solo quella contenente fisicamente il NULL"
 	    },
 	    "correctAnswer": "c",
-	    "category": "Extra IA"
+	    "category": "SQL",
+		"isAI": true
 	},
 	{
 	    "question": "In una complessa interrogazione SQL, cosa definisce strutturalmente un 'Select Interno Collegato' (Correlated Subquery)?",
@@ -1902,7 +1919,8 @@ window.QUIZ_DATA = [
 	        "d": "Un select annidato che impone l'uso rigoroso dell'operatore logico INTERSECT in sostituzione dei vari tipi di JOIN"
 	    },
 	    "correctAnswer": "c",
-	    "category": "Extra IA"
+	    "category": "SQL",
+		"isAI": true
 	},
 	{
 	    "question": "Se si desidera creare in SQL una Vista (VIEW) temporanea destinata a sparire al termine della sessione, la sintassi corretta è:",
@@ -1913,7 +1931,8 @@ window.QUIZ_DATA = [
 	        "d": "CREATE SESSION VIEW nome_vista AS ..."
 	    },
 	    "correctAnswer": "a",
-	    "category": "Extra IA"
+	    "category": "SQL",
+		"isAI": true
 	},
 	{
 	    "question": "In SQL, per confrontare se un attributo non possiede alcun valore effettivo (è nullo), quale operatore si usa TASSATIVAMENTE?",
@@ -1924,7 +1943,8 @@ window.QUIZ_DATA = [
 	        "d": "attributo EQUALS NULL"
 	    },
 	    "correctAnswer": "a",
-	    "category": "Extra IA"
+	    "category": "SQL",
+		"isAI": true
 	},
 	{
 	    "question": "A cosa servono, nell'ambito dello sviluppo database, le 'Interrogazioni Parametriche'?",
@@ -1935,7 +1955,8 @@ window.QUIZ_DATA = [
 	        "d": "Interrogazioni di manutenzione che si occupano di aggiornare silenziosamente i parametri di normalizzazione logica"
 	    },
 	    "correctAnswer": "c",
-	    "category": "Extra IA"
+	    "category": "Normalizzazione",
+		"isAI": true
 	},
 	{
 	    "question": "Qual è la differenza principale tra la Terza Forma Normale (3NF) e la Forma Normale di Boyce-Codd (BCNF)?",
@@ -1946,7 +1967,8 @@ window.QUIZ_DATA = [
 	        "d": "Nessuna, sono due nomi diversi per la stessa identica forma normale"
 	    },
 	    "correctAnswer": "c",
-	    "category": "Extra IA"
+	    "category": "Modello Relazionale",
+		"isAI": true
 	},
 	{
 	    "question": "In un diagramma E-R, se l'entità 'Studente' partecipa a una relazione 'Iscrizione' con cardinalità (min, max) pari a (1, N), cosa significa?",
@@ -1957,7 +1979,8 @@ window.QUIZ_DATA = [
 	        "d": "Che nel database c'è esattamente un solo studente per ogni N relazioni di iscrizione registrate"
 	    },
 	    "correctAnswer": "c",
-	    "category": "Extra IA"
+	    "category": "Modello Relazionale",
+		"isAI": true
 	},
 	{
 	    "question": "Che errore strutturale si commette eseguendo la query: SELECT Dipartimento, Nome, MAX(Stipendio) FROM Impiegati GROUP BY Dipartimento;",
@@ -1968,7 +1991,8 @@ window.QUIZ_DATA = [
 	        "d": "L'istruzione GROUP BY deve obbligatoriamente precedere la clausola FROM nella sintassi SQL"
 	    },
 	    "correctAnswer": "b",
-	    "category": "Extra IA"
+	    "category": "SQL",
+		"isAI": true
 	},
 	{
 	    "question": "Cos'è un vincolo di integrità referenziale nel Modello Relazionale?",
@@ -1979,7 +2003,8 @@ window.QUIZ_DATA = [
 	        "d": "Un vincolo che obbliga un attributo (chiave esterna) ad assumere solo valori presenti come chiave primaria in un'altra relazione, o valori NULL"
 	    },
 	    "correctAnswer": "d",
-	    "category": "Extra IA"
+	    "category": "Progettazione Fisica",
+		"isAI": true
 	},
 	{
 	    "question": "Se in una query SQL si utilizza la condizione WHERE Cognome LIKE '_a%', quali cognomi verranno selezionati?",
@@ -1990,7 +2015,8 @@ window.QUIZ_DATA = [
 	        "d": "Solamente i cognomi che iniziano con la sequenza testuale esatta '_a'"
 	    },
 	    "correctAnswer": "a",
-	    "category": "Extra IA"
+	    "category": "SQL",
+		"isAI": true
 	},
 	{
 	    "question": "Come si traduce correttamente un attributo multivalore (es. i recapiti di una persona) passando dal modello E-R al Relazionale?",
@@ -2001,7 +2027,8 @@ window.QUIZ_DATA = [
 	        "d": "Si lascia invariato lo schema, poiché i database relazionali moderni supportano nativamente array di dati"
 	    },
 	    "correctAnswer": "c",
-	    "category": "Extra IA"
+	    "category": "SQL",
+		"isAI": true
 	},
 	{
 	    "question": "Quale dei seguenti è uno dei vantaggi principali dell'utilizzare una Vista (VIEW) in un database?",
@@ -2012,7 +2039,8 @@ window.QUIZ_DATA = [
 	        "d": "Permettere l'esecuzione di interrogazioni ignorando intenzionalmente i vincoli di chiave esterna"
 	    },
 	    "correctAnswer": "c",
-	    "category": "Extra IA"
+	    "category": "SQL",
+		"isAI": true
 	},
 	{
 	    "question": "Dato l'insieme di dipendenze funzionali F = { A → B, AB → C, A → C }, perché si afferma che esso NON è in 'copertura ridotta'?",
@@ -2023,7 +2051,8 @@ window.QUIZ_DATA = [
 	        "d": "Perché la parte destra delle dipendenze funzionali deve contenere solo attributi multivalore per essere minimale"
 	    },
 	    "correctAnswer": "a",
-	    "category": "Extra IA"
+	    "category": "Normalizzazione",
+		"isAI": true
 	},
 	{
 	    "question": "Qual è la differenza concettuale e strutturale tra un operatore UNION e un operatore JOIN in SQL?",
@@ -2034,7 +2063,8 @@ window.QUIZ_DATA = [
 	        "d": "Non c'è differenza, entrambi vengono tradotti nell'Algebra Relazionale come Prodotti Cartesiani"
 	    },
 	    "correctAnswer": "c",
-	    "category": "Extra IA"
+	    "category": "SQL",
+		"isAI": true
 	},
 	{
 	    "question": "Nello studio delle prestazioni durante la ristrutturazione di uno schema ER, a quale scopo specifico viene compilata la 'Tavola degli Accessi'?",
@@ -2045,7 +2075,8 @@ window.QUIZ_DATA = [
 	        "d": "A calcolare l'ingombro in byte di ciascun attributo su disco"
 	    },
 	    "correctAnswer": "c",
-	    "category": "Extra IA"
+	    "category": "Progettazione Concettuale",
+		"isAI": true
 	},
 	{
 	    "question": "Quando in una clausola FROM si ridenomina formalmente una tabella (es. FROM DIPARTIMENTI AS D), qual è lo 'scope' di tale ridenominazione?",
@@ -2056,7 +2087,8 @@ window.QUIZ_DATA = [
 	        "d": "Vale unicamente per le clausole WHERE e HAVING, ma non per la SELECT"
 	    },
 	    "correctAnswer": "b",
-	    "category": "Extra IA"
+	    "category": "SQL",
+		"isAI": true
 	},
 	{
 	    "question": "Nella logica a tre valori (Three-Valued Logic) implementata nei motori SQL, qual è il risultato esatto dell'espressione booleana: FALSO AND UNKNOWN?",
@@ -2067,7 +2099,8 @@ window.QUIZ_DATA = [
 	        "d": "Genera un errore di sintassi a runtime"
 	    },
 	    "correctAnswer": "a",
-	    "category": "Extra IA"
+	    "category": "SQL",
+		"isAI": true
 	},
 	{
 	    "question": "Qual è la differenza concettuale tra lo 'Schema' e lo 'Stato' di un database relazionale?",
@@ -2078,7 +2111,8 @@ window.QUIZ_DATA = [
 	        "d": "Lo Stato riguarda l'hardware fisico del server, lo Schema riguarda i file del database"
 	    },
 	    "correctAnswer": "b",
-	    "category": "Extra IA"
+	    "category": "Generalità",
+		"isAI": true
 	},
 	{
 	    "question": "Quale sotto-linguaggio SQL viene utilizzato specificamente per definire la struttura delle tabelle (CREATE TABLE) e i loro vincoli?",
@@ -2089,7 +2123,8 @@ window.QUIZ_DATA = [
 	        "d": "Data Validation Language (DVL)"
 	    },
 	    "correctAnswer": "b",
-	    "category": "Extra IA"
+	    "category": "Generalità",
+		"isAI": true
 	},
 	{
 	    "question": "Come procede la strategia di progettazione concettuale 'Top-Down'?",
@@ -2100,7 +2135,8 @@ window.QUIZ_DATA = [
 	        "d": "Partendo da un concetto generale molto astratto e raffinandolo via via con dettagli sempre maggiori"
 	    },
 	    "correctAnswer": "d",
-	    "category": "Extra IA"
+	    "category": "Progettazione Concettuale",
+		"isAI": true
 	},
 	{
 	    "question": "In un diagramma E-R, un attributo come 'Indirizzo' suddiviso in 'Via', 'Civico' e 'CAP' è l'esempio di:",
@@ -2111,7 +2147,8 @@ window.QUIZ_DATA = [
 	        "d": "Chiave parziale"
 	    },
 	    "correctAnswer": "c",
-	    "category": "Extra IA"
+	    "category": "SQL",
+		"isAI": true
 	},
 	{
 	    "question": "Qual è la tecnica standard per mappare un 'Attributo Multivalore' dal modello E-R al modello Relazionale?",
@@ -2122,7 +2159,8 @@ window.QUIZ_DATA = [
 	        "d": "Creare una nuova tabella contenente il valore dell'attributo e la chiave esterna dell'entità proprietaria, formando una chiave composta"
 	    },
 	    "correctAnswer": "d",
-	    "category": "Extra IA"
+	    "category": "Progettazione Concettuale",
+		"isAI": true
 	},
 	{
 	    "question": "In un diagramma E-R, se una relazione presenta una 'partecipazione obbligatoria' (esistenza dipendente) per un'entità, come viene spesso raffigurata?",
@@ -2133,7 +2171,8 @@ window.QUIZ_DATA = [
 	        "d": "Colorando il rombo della relazione di grigio scuro"
 	    },
 	    "correctAnswer": "b",
-	    "category": "Extra IA"
+	    "category": "Progettazione Concettuale",
+		"isAI": true
 	},
 	{
 	    "question": "Come si traduce correttamente una relazione molti-a-molti (M:N) passando dallo schema concettuale allo schema relazionale?",
@@ -2144,7 +2183,8 @@ window.QUIZ_DATA = [
 	        "d": "È matematicamente impossibile e richiede sempre una scomposizione in fase concettuale"
 	    },
 	    "correctAnswer": "b",
-	    "category": "Extra IA"
+	    "category": "Progettazione Concettuale",
+		"isAI": true
 	},
 	{
 	    "question": "Che cos'è una 'Chiave Candidata' all'interno di una relazione?",
@@ -2155,7 +2195,8 @@ window.QUIZ_DATA = [
 	        "d": "Una chiave esterna che candida un record ad essere aggiornato"
 	    },
 	    "correctAnswer": "c",
-	    "category": "Extra IA"
+	    "category": "SQL",
+		"isAI": true
 	},
 	{
 	    "question": "Cosa impone il 'Vincolo di Integrità di Entità' nel Modello Relazionale?",
@@ -2166,7 +2207,8 @@ window.QUIZ_DATA = [
 	        "d": "Non possono esistere due tabelle con lo stesso identico nome nello schema"
 	    },
 	    "correctAnswer": "a",
-	    "category": "Extra IA"
+	    "category": "Generalità",
+		"isAI": true
 	},
 	{
 	    "question": "In SQL, specificando l'opzione 'ON DELETE CASCADE' su un vincolo di chiave esterna, cosa accade se cancello la riga referenziata?",
@@ -2177,7 +2219,8 @@ window.QUIZ_DATA = [
 	        "d": "La riga referenziata viene solo nascosta (soft delete) finché ci sono altre righe che la puntano"
 	    },
 	    "correctAnswer": "c",
-	    "category": "Extra IA"
+	    "category": "SQL",
+		"isAI": true
 	},
 	{
 	    "question": "In SQL, a cosa serve la clausola 'ON DELETE SET NULL' su una Foreign Key?",
@@ -2188,7 +2231,8 @@ window.QUIZ_DATA = [
 	        "d": "Ad azzerare tutti i contatori (autoincrement) della tabella padre"
 	    },
 	    "correctAnswer": "c",
-	    "category": "Extra IA"
+	    "category": "SQL",
+		"isAI": true
 	},
 	{
 	    "question": "Quale operatore SQL estrae tutti i cognomi che NON iniziano con la lettera 'B'?",
@@ -2199,7 +2243,8 @@ window.QUIZ_DATA = [
 	        "d": "WHERE Cognome EXCLUDES 'B_'"
 	    },
 	    "correctAnswer": "c",
-	    "category": "Extra IA"
+	    "category": "SQL",
+		"isAI": true
 	},
 	{
 	    "question": "Se la colonna numerica 'Premio' di una tabella contiene i valori [100, 200, NULL, 50], quale sarà il risultato di COUNT(Premio)?",
@@ -2210,7 +2255,8 @@ window.QUIZ_DATA = [
 	        "d": "Genera errore a causa del NULL"
 	    },
 	    "correctAnswer": "b",
-	    "category": "Extra IA"
+	    "category": "SQL",
+		"isAI": true
 	},
 	{
 	    "question": "L'operatore SQL MAX() può essere applicato a una colonna di tipo testo (es. Nome)?",
@@ -2221,7 +2267,8 @@ window.QUIZ_DATA = [
 	        "d": "Sì, ma solo se si usa anche la clausola DISTINCT"
 	    },
 	    "correctAnswer": "c",
-	    "category": "Extra IA"
+	    "category": "SQL",
+		"isAI": true
 	},
 	{
 	    "question": "Avendo la clausola 'SELECT Dipartimento, SUM(Stipendio) FROM Impiegati', quale altra clausola è obbligatorio inserire in SQL?",
@@ -2232,7 +2279,8 @@ window.QUIZ_DATA = [
 	        "d": "Nessuna, la query è già sintatticamente completa"
 	    },
 	    "correctAnswer": "b",
-	    "category": "Extra IA"
+	    "category": "SQL",
+		"isAI": true
 	},
 	{
 	    "question": "Qual è la differenza fondamentale tra l'utilizzo della clausola WHERE e della clausola HAVING in SQL?",
@@ -2243,7 +2291,8 @@ window.QUIZ_DATA = [
 	        "d": "HAVING può essere utilizzato soltanto se la query non contiene alcuna funzione di aggregazione"
 	    },
 	    "correctAnswer": "a",
-	    "category": "Extra IA"
+	    "category": "SQL",
+		"isAI": true
 	},
 	{
 	    "question": "Quale sintassi si usa in SQL per ordinare i risultati dal più grande al più piccolo in base all'attributo 'Punteggio'?",
@@ -2254,7 +2303,8 @@ window.QUIZ_DATA = [
 	        "d": "GROUP BY Punteggio REVERSE"
 	    },
 	    "correctAnswer": "c",
-	    "category": "Extra IA"
+	    "category": "SQL",
+		"isAI": true
 	},
 	{
 	    "question": "In SQL, l'operatore insiemistico INTERSECT serve a:",
@@ -2265,7 +2315,8 @@ window.QUIZ_DATA = [
 	        "d": "Restituire solo le righe che sono presenti esattamente in ENTRAMBI i risultati di due SELECT distinte"
 	    },
 	    "correctAnswer": "d",
-	    "category": "Extra IA"
+	    "category": "SQL",
+		"isAI": true
 	},
 	{
 	    "question": "Come si comporta l'operatore insiemistico EXCEPT (o MINUS) in SQL?",
@@ -2276,7 +2327,8 @@ window.QUIZ_DATA = [
 	        "d": "Sottrae i valori numerici di due colonne riga per riga"
 	    },
 	    "correctAnswer": "b",
-	    "category": "Extra IA"
+	    "category": "Progettazione Fisica",
+		"isAI": true
 	},
 	{
 	    "question": "Di default, una VIEW in un DBMS relazionale è memorizzata fisicamente su disco occupando spazio come una normale tabella?",
@@ -2287,7 +2339,8 @@ window.QUIZ_DATA = [
 	        "d": "No, risiede permanentemente nella RAM del server per garantire velocità estreme"
 	    },
 	    "correctAnswer": "c",
-	    "category": "Extra IA"
+	    "category": "SQL",
+		"isAI": true
 	},
 	{
 	    "question": "A cosa serve definire un vincolo UNIQUE su una o più colonne di una tabella?",
@@ -2298,7 +2351,8 @@ window.QUIZ_DATA = [
 	        "d": "A collegare la colonna con la chiave primaria di un'altra tabella esterna"
 	    },
 	    "correctAnswer": "a",
-	    "category": "Extra IA"
+	    "category": "Progettazione Fisica",
+		"isAI": true
 	},
 	{
 	    "question": "È possibile in SQL definire una PRIMARY KEY composta da due o più attributi?",
@@ -2309,7 +2363,8 @@ window.QUIZ_DATA = [
 	        "d": "No, per le chiavi multiple bisogna obbligatoriamente utilizzare i vincoli di UNIQUE multipli"
 	    },
 	    "correctAnswer": "b",
-	    "category": "Extra IA"
+	    "category": "Progettazione Fisica",
+		"isAI": true
 	},
 	{
 	    "question": "Cosa si intende per 'Anomalia di Aggiornamento' in una base di dati non normalizzata?",
@@ -2320,7 +2375,8 @@ window.QUIZ_DATA = [
 	        "d": "L'inserimento involontario di tuple spurie a causa di join effettuati su chiavi non primarie"
 	    },
 	    "correctAnswer": "b",
-	    "category": "Extra IA"
+	    "category": "SQL",
+		"isAI": true
 	},
 	{
 	    "question": "Concettualmente, un RIGHT OUTER JOIN tra la Tabella A e la Tabella B produce lo stesso identico risultato di:",
@@ -2331,7 +2387,8 @@ window.QUIZ_DATA = [
 	        "d": "Un'operazione insiemistica di INTERSECT tra A e B"
 	    },
 	    "correctAnswer": "c",
-	    "category": "Extra IA"
+	    "category": "SQL",
+		"isAI": true
 	},
 	{
 	    "question": "Nella strategia di progettazione 'Bottom-Up', qual è il punto di partenza dell'analista?",
@@ -2342,7 +2399,8 @@ window.QUIZ_DATA = [
 	        "d": "Parte dalle specifiche iniziali elementari e atomiche, per poi raggrupparle e integrarle via via in concetti sempre più ampi (schema finale)"
 	    },
 	    "correctAnswer": "d",
-	    "category": "Extra IA"
+	    "category": "SQL",
+		"isAI": true
 	}
 ]
 ;
@@ -2502,7 +2560,7 @@ function renderQuizQuestion() {
             <div class="quiz-header">
                 <span class="quiz-header-left">Domanda ${currentQuestionIndex + 1} di 20</span>
                 <div class="quiz-header-right">
-                    <span style="background:var(--accent-color); padding:4px 10px; border-radius:20px; font-size:0.78rem; color:white; font-weight:600;">${q.category || 'Generale'}</span>
+                    <span style="background:var(--accent-color); padding:4px 10px; border-radius:20px; font-size:0.78rem; color:white; font-weight:600;">${q.category || 'Generale'}${q.isAI ? ' <span title="Generato da IA" style="font-size:1.1em; cursor:help;">🤖</span>' : ''}</span>
                     <button class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem; border-color: var(--error-color); color: var(--error-color);" onclick="if(confirm('Vuoi davvero uscire dal quiz in corso? I progressi andranno persi.')) navigate('home')">Esci</button>
                 </div>
             </div>
