@@ -2646,7 +2646,7 @@ function renderResults() {
         resultsHtml += `
             <div style="margin-bottom: 1.5rem; border-bottom: 1px solid var(--glass-border); padding-bottom: 1rem;">
                 <p style="font-size:0.85rem; color:var(--text-secondary); margin-bottom:0.4rem; font-weight:600;">
-                    ${icon} Domanda ${index + 1} · <span style="color:var(--accent-color)">${q.category || 'Generale'}</span>
+                    ${icon} Domanda ${index + 1} · <span style="color:var(--accent-color)">${q.category || 'Generale'}${q.isAI ? ' <span title="Generato da IA" style="font-size:1.1em; cursor:help;">🤖</span>' : ''}</span>
                 </p>
                 <h3 style="font-size:1rem; margin-bottom:0.75rem; color:var(--text-primary); font-weight:500; overflow-wrap:break-word; word-break:break-word;">
                     ${q.question}
@@ -2766,7 +2766,7 @@ function renderProgress() {
                         ${isSeen ? '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>' : ''}
                     </div>
                     <div style="flex:1; text-align: left; min-width: 0;">
-                        <p class="progress-q-text" style="font-weight: ${isSeen ? '600' : '400'};">${q.question}</p>
+                        <p class="progress-q-text" style="font-weight: ${isSeen ? '600' : '400'};">${q.question}${q.isAI ? ' <span title="Generato da IA" style="font-size:1.1em; cursor:help;">🤖</span>' : ''}</p>
                         ${isSeen ? `<ul class="progress-q-options">${optionsHtml}</ul>` : '<p class="progress-q-unseen">Non hai ancora incontrato questa domanda.</p>'}
                     </div>
                 </div>
@@ -2814,7 +2814,9 @@ function renderProgress() {
                 <div class="progress-nav">
                     <div class="glass-panel" style="position: sticky; top: 2rem; padding: 1.5rem;">
                         <h3 style="margin-bottom: 1rem; color: var(--text-primary); text-align: left; font-size: 1.2rem;">Categorie</h3>
-                        ${navHtml}
+                        <div style="column-count: 2; column-gap: 1rem;">
+                            ${navHtml}
+                        </div>
                     </div>
                 </div>
             </div>
