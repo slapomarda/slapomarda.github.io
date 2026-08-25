@@ -2896,7 +2896,7 @@ function renderProgress() {
                 <div class="progress-nav">
                     <div class="glass-panel" style="position: sticky; top: 2rem; padding: 1.5rem;">
                         <h3 style="margin-bottom: 1rem; color: var(--text-primary); text-align: left; font-size: 1.2rem;">Categorie</h3>
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;">
+                        <div style="display: grid; grid-template-columns: 1fr; gap: 0.5rem;">
                             ${navHtml}
                         </div>
                     </div>

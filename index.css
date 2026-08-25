@@ -368,9 +368,11 @@ p {
 /* Progress Layout */
 .progress-layout {
     display: grid;
-    grid-template-columns: 220px 1fr 400px;
+    grid-template-columns: 280px 1fr 280px;
     gap: 2rem;
     align-items: stretch;
+    max-width: 1400px;
+    margin: 0 auto;
 }
 
 .category-header {
