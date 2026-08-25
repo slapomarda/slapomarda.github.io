@@ -660,3 +660,109 @@ pre {
         font-size: 0.8rem;
     }
 }
+
+/* ===== TIMER TOGGLE ===== */
+.timer-toggle-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.timer-toggle-label {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+    user-select: none;
+}
+
+.timer-toggle {
+    position: relative;
+    width: 48px;
+    height: 26px;
+    border-radius: 999px;
+    border: none;
+    background: var(--glass-border);
+    cursor: pointer;
+    transition: background 0.25s ease;
+    padding: 0;
+    flex-shrink: 0;
+}
+
+.timer-toggle.active {
+    background: var(--accent-color);
+}
+
+.timer-toggle-thumb {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: white;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+    transition: transform 0.25s ease;
+    pointer-events: none;
+}
+
+.timer-toggle.active .timer-toggle-thumb {
+    transform: translateX(22px);
+}
+
+/* ===== QUIZ TIMER DISPLAY ===== */
+.quiz-timer {
+    font-family: 'Courier New', monospace;
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--text-secondary);
+    background: rgba(255,255,255,0.07);
+    border: 1px solid var(--glass-border);
+    border-radius: 8px;
+    padding: 3px 10px;
+    margin-right: 8px;
+    letter-spacing: 0.05em;
+    transition: color 0.3s, border-color 0.3s, background 0.3s;
+}
+
+.quiz-timer.timer-warning {
+    color: #f59e0b;
+    border-color: rgba(245, 158, 11, 0.4);
+    background: rgba(245, 158, 11, 0.08);
+}
+
+.quiz-timer.timer-danger {
+    color: #ef4444;
+    border-color: rgba(239, 68, 68, 0.5);
+    background: rgba(239, 68, 68, 0.1);
+    animation: timer-pulse 0.8s ease-in-out infinite;
+}
+
+@keyframes timer-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.6; }
+}
+
+/* ===== TIMER TOAST ===== */
+.timer-toast {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #ef4444;
+    color: white;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 0.85rem 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(239, 68, 68, 0.4);
+    z-index: 9999;
+    animation: toast-in 0.3s ease;
+    white-space: nowrap;
+}
+
+@keyframes toast-in {
+    from { opacity: 0; transform: translateX(-50%) translateY(20px); }
+    to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+}

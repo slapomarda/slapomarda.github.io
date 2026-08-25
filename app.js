@@ -2409,6 +2409,52 @@ let currentQuestionIndex = 0;
 let userAnswers = []; // Array of selected option keys
 let isQuizFinished = false;
 
+// Timer state
+let timerEnabled = false;
+let timerSeconds = 30 * 60; // 30 minutes
+let timerInterval = null;
+
+function stopTimer() {
+    if (timerInterval) {
+        clearInterval(timerInterval);
+        timerInterval = null;
+    }
+}
+
+function startTimer() {
+    stopTimer();
+    timerSeconds = 30 * 60;
+    timerInterval = setInterval(() => {
+        timerSeconds--;
+        updateTimerDisplay();
+        if (timerSeconds <= 0) {
+            stopTimer();
+            showTimerExpiredToast();
+            finishQuiz();
+        }
+    }, 1000);
+}
+
+function updateTimerDisplay() {
+    const el = document.getElementById('quiz-timer');
+    if (!el) return;
+    const m = Math.floor(timerSeconds / 60);
+    const s = timerSeconds % 60;
+    const text = `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+    el.textContent = '⏱ ' + text;
+    el.className = 'quiz-timer';
+    if (timerSeconds <= 60) el.classList.add('timer-danger');
+    else if (timerSeconds <= 300) el.classList.add('timer-warning');
+}
+
+function showTimerExpiredToast() {
+    const toast = document.createElement('div');
+    toast.className = 'timer-toast';
+    toast.textContent = '⏰ Tempo scaduto! Il quiz è stato terminato automaticamente.';
+    document.body.appendChild(toast);
+    setTimeout(() => toast.remove(), 4000);
+}
+
 // DOM Elements
 const appDiv = document.getElementById('app');
 
@@ -2482,7 +2528,7 @@ function renderHome() {
                 Proponi Domanda
             </a>
         <div class="view-container glass-panel" style="max-width: 800px; margin: 0 auto; position: relative;">
-                        <h1>Basi di Dati Quiz</h1>
+            <h1>Basi di Dati Quiz</h1>
             <p>Testa le tue conoscenze con un quiz di 20 domande selezionate casualmente. Le domande che non hai ancora visto avranno la priorità.</p>
             
             <div class="stats-grid" style="margin-bottom: 2rem;">
@@ -2490,6 +2536,19 @@ function renderHome() {
                     <div class="stat-value">${seenCount} / ${totalCount}</div>
                     <div class="stat-label">Domande Viste</div>
                 </div>
+            </div>
+
+            <div class="timer-toggle-row">
+                <span class="timer-toggle-label">⏱ Timer 30 min</span>
+                <button
+                    id="timer-toggle-btn"
+                    class="timer-toggle ${timerEnabled ? 'active' : ''}"
+                    onclick="toggleTimer()"
+                    aria-pressed="${timerEnabled}"
+                    title="Attiva/disattiva il timer da 30 minuti"
+                >
+                    <span class="timer-toggle-thumb"></span>
+                </button>
             </div>
 
             <div class="btn-group">
@@ -2505,6 +2564,15 @@ function renderHome() {
         </div>
     `;
     appDiv.innerHTML = html;
+}
+
+window.toggleTimer = function() {
+    timerEnabled = !timerEnabled;
+    const btn = document.getElementById('timer-toggle-btn');
+    if (btn) {
+        btn.classList.toggle('active', timerEnabled);
+        btn.setAttribute('aria-pressed', timerEnabled);
+    }
 }
 
 function startQuiz() {
@@ -2533,6 +2601,9 @@ function startQuiz() {
     currentQuestionIndex = 0;
     userAnswers = new Array(20).fill(null);
     isQuizFinished = false;
+
+    if (timerEnabled) startTimer();
+    else stopTimer();
     
     renderQuizQuestion();
 }
@@ -2568,9 +2639,10 @@ function renderQuizQuestion() {
             <div class="quiz-header">
                 <span class="quiz-header-left">Domanda ${currentQuestionIndex + 1} di 20</span>
                 <div class="quiz-header-right">
+                    ${timerEnabled ? '<span id="quiz-timer" class="quiz-timer">⏱ 30:00</span>' : ''}
                     <span style="background:var(--accent-color); padding:4px 10px; border-radius:20px; font-size:0.78rem; color:white; font-weight:600; margin-right: 6px;">${q.category || 'Generale'}</span>
                     ${q.isAI ? '<span title="Generata da IA" style="display:inline-flex; align-items:center; justify-content:center; background:#8b5cf6; color:white; font-size:0.7rem; font-weight:bold; padding:4px 8px; border-radius:4px; vertical-align:middle; line-height:1;">🤖 IA</span>' : ''}
-                    <button class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem; border-color: var(--error-color); color: var(--error-color);" onclick="if(confirm('Vuoi davvero uscire dal quiz in corso? I progressi andranno persi.')) navigate('home')">Esci</button>
+                    <button class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem; border-color: var(--error-color); color: var(--error-color);" onclick="if(confirm('Vuoi davvero uscire dal quiz in corso? I progressi andranno persi.')) { stopTimer(); navigate('home'); }">Esci</button>
                 </div>
             </div>
 
@@ -2624,6 +2696,7 @@ window.prevQuestion = function() {
 
 function finishQuiz() {
     isQuizFinished = true;
+    stopTimer();
     const ids = currentQuizQuestions.map(q => q.id);
     addSeenQuestions(ids);
     navigate('results');
