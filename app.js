@@ -1720,9 +1720,9 @@ window.QUIZ_DATA = [
 	    "question": "Cos'è un Entity Type Debole (Weak Entity)?",
 	    "answers": {
 	        "a": "Un'entità che partecipa esclusivamente a relazioni ricorsive",
-	        "b": "Un'entità che non possiede attributi propri, ma solo chiavi esterne a tabelle owner",
-	        "c": "Un'entità priva di chiave propria, identificata tramite una relazione forte",
-	        "d": "Un'entità isolata nel diagramma E-R che non ha legami cardinali"
+	        "b": "Un'entità senza attributi propri, con sole chiavi esterne verso la tabella owner",
+	        "c": "Un'entità priva di chiave propria, identificabile solo tramite dipendenza esistenziale dall'entità forte",
+	        "d": "Un'entità isolata nel diagramma E-R senza legami cardinali"
 	    },
 	    "correctAnswer": "c",
 	    "category": "Teoria",
@@ -1731,10 +1731,10 @@ window.QUIZ_DATA = [
 	{
 	    "question": "Nei diagrammi E-R, perché le relazioni n-arie sono spesso più difficili da gestire rispetto alle binarie?",
 	    "answers": {
-	        "a": "L'assenza di attributi multivalore in SQL ne impedisce totalmente la rappresentazione",
-	        "b": "Si possono usare in modo coerente solo in presenza di specializzazioni totali",
-	        "c": "Le cardinalità minime e massime hanno un significato logico meno intuitivo e diretto",
-	        "d": "I DBMS relazionali non supportano chiavi esterne multiple all'interno delle tuple"
+	        "a": "SQL non gestisce attributi multivalore, dunque non si possono rappresentare",
+	        "b": "Si possono usare solo in presenza di specializzazioni totali",
+	        "c": "Le cardinalità sugli archi hanno un significato meno intuitivo rispetto alle relazioni binarie",
+	        "d": "I DBMS relazionali non ammettono chiavi esterne multiple nelle tuple"
 	    },
 	    "correctAnswer": "c",
 	    "category": "Entità-Relazione",
@@ -1755,10 +1755,10 @@ window.QUIZ_DATA = [
 	{
 	    "question": "Quale delle seguenti opzioni rappresenta correttamente la notazione UML per la progettazione concettuale?",
 	    "answers": {
-	        "a": "Le classi sono riquadri a tre sezioni e le associazioni sono linee che le collegano",
-	        "b": "Le entità sono rappresentate da ellissi e le associazioni da grandi rettangoli neri",
-	        "c": "I diagrammi UML servono esclusivamente per la stesura finale della progettazione fisica",
-	        "d": "Le relazioni non possono possedere cardinalità esplicite lungo gli archi"
+	        "a": "Le classi sono riquadri a tre sezioni e le associazioni sono linee etichettate con molteplicità",
+	        "b": "Le entità sono ellissi e le associazioni sono rettangoli neri",
+	        "c": "I diagrammi UML servono solo per la progettazione fisica finale",
+	        "d": "Le relazioni in UML non possono avere cardinalità esplicite"
 	    },
 	    "correctAnswer": "a",
 	    "category": "Teoria",
@@ -1791,10 +1791,10 @@ window.QUIZ_DATA = [
 	{
 	    "question": "Durante la ristrutturazione di uno schema E-R, come ci si deve comportare di fronte alle 'Ridondanze'?",
 	    "answers": {
-	        "a": "Si valuta se mantenerle per velocizzare le letture, documentandole accuratamente",
-	        "b": "Si eliminano sempre in automatico per non appesantire gli update sul database",
-	        "c": "Sono essenziali per evitare problemi di memoria nei moderni DBMS relazionali",
-	        "d": "Vanno eliminate in ogni caso perché causano immancabilmente anomalie di inserimento"
+	        "a": "Si valuta se mantenerle in base al rapporto tra vantaggi in lettura e costi in scrittura",
+	        "b": "Si eliminano sempre per non appesantire gli aggiornamenti",
+	        "c": "Sono essenziali per evitare problemi di memoria nei DBMS",
+	        "d": "Vanno eliminate in ogni caso perché causano anomalie di inserimento"
 	    },
 	    "correctAnswer": "a",
 	    "category": "Entità-Relazione",
@@ -1803,10 +1803,10 @@ window.QUIZ_DATA = [
 	{
 	    "question": "In Algebra Relazionale, qual è l'effetto di un'operazione di 'Left Outer Join' (⟕) tra R e S?",
 	    "answers": {
-	        "a": "Elimina tutte le righe della tabella di sinistra che contengono al loro interno valori NULL",
+	        "a": "Elimina tutte le righe della tabella di sinistra che contengono valori NULL, escludendole dal risultato finale",
 	        "b": "Restituisce esclusivamente l'intersezione matematica tra le tabelle di destra e di sinistra",
 	        "c": "Genera un prodotto cartesiano parziale filtrando in un secondo momento le tuple duplicate",
-	        "d": "Mantiene tutte le tuple di sinistra, inserendo valori NULL dove non c'è corrispondenza a destra"
+	        "d": "Preserva ogni tupla della relazione sinistra; dove manca la corrispondenza inserisce NULL"
 	    },
 	    "correctAnswer": "d",
 	    "category": "SQL",
@@ -1817,8 +1817,8 @@ window.QUIZ_DATA = [
 	    "answers": {
 	        "a": "Semplifica in automatico le query annidate eliminando l'uso delle clausole EXISTS",
 	        "b": "Suddivide le colonne di una tabella in base a un parametro numerico specificato",
-	        "c": "Trova gli elementi associati a tutti gli elementi di un'altra relazione contemporaneamente",
-	        "d": "Calcola la media o la somma dei valori raggruppati preventivamente per dipartimento"
+	        "c": "Trova elementi associati a ogni elemento di un'altra relazione",
+	        "d": "Calcola la media o la somma dei valori numerici raggruppati preventivamente per categoria o dipartimento"
 	    },
 	    "correctAnswer": "c",
 	    "category": "Algebra Relazionale",
@@ -1840,8 +1840,8 @@ window.QUIZ_DATA = [
 	    "question": "Quando è raccomandato il mapping di una gerarchia EER che prevede la creazione di tabelle SOLO per le sottoclassi?",
 	    "answers": {
 	        "a": "Solo quando la specializzazione è categoricamente totale (ogni entità deve appartenere a una sottoclasse)",
-	        "b": "Quando la gerarchia concettuale di partenza presenta molti attributi di tipo multivalore",
-	        "c": "In presenza di chiavi surrogate nidificate all'interno della superclasse principale",
+	        "b": "Quando la gerarchia concettuale di partenza presenta un numero elevato di attributi di tipo multivalore",
+	        "c": "In presenza di chiavi surrogate o identificatori artificiali nidificati all'interno della superclasse principale",
 	        "d": "È l'unica opzione strutturale possibile se e solo se la generalizzazione è disgiunta"
 	    },
 	    "correctAnswer": "a",
@@ -1863,10 +1863,10 @@ window.QUIZ_DATA = [
 	{
 	    "question": "Cosa si intende per 'Copertura Ridotta' (Minimal Cover) di un insieme di dipendenze funzionali F?",
 	    "answers": {
-	        "a": "L'estrazione mirata delle sole dipendenze algebriche che coinvolgono in qualche modo le chiavi primarie",
-	        "b": "Un insieme equivalente in cui ogni regola ha un solo attributo a destra e nessuna dipendenza è ridondante",
-	        "c": "L'elenco degli attributi considerati strettamente necessari per il corretto funzionamento delle viste temporanee",
-	        "d": "La conversione in tempo reale dello schema ER direttamente verso la forma normale di Boyce-Codd"
+	        "a": "L'estrazione delle sole dipendenze che coinvolgono le chiavi primarie",
+	        "b": "Un insieme equivalente a F senza ridondanze, con un solo attributo a destra per ogni regola",
+	        "c": "L'elenco degli attributi strettamente necessari per le viste temporanee",
+	        "d": "La conversione dello schema ER verso la forma normale di Boyce-Codd"
 	    },
 	    "correctAnswer": "b",
 	    "category": "SQL",
@@ -1875,9 +1875,9 @@ window.QUIZ_DATA = [
 	{
 	    "question": "In una decomposizione binaria in due tabelle R1 e R2, la 'Proprietà NJB (Decomposizione senza perdita)' si verifica se:",
 	    "answers": {
-	        "a": "L'intersezione dei loro attributi determina funzionalmente tutti gli attributi di almeno una delle due tabelle",
+	        "a": "L'intersezione degli attributi è chiave di almeno una delle due tabelle risultanti",
 	        "b": "La semplice unione logica delle due chiavi primarie originali non genera mai righe duplicate in output",
-	        "c": "Entrambe le nuove tabelle risultanti condividono una chiave esterna che ammette tranquillamente valori nulli",
+	        "c": "Entrambe le nuove tabelle risultanti condividono una chiave esterna in comune che ammette tranquillamente valori nulli",
 	        "d": "Nessuna delle tabelle derivate dalla scomposizione presenta internamente delle dipendenze funzionali"
 	    },
 	    "correctAnswer": "a",
@@ -1911,10 +1911,10 @@ window.QUIZ_DATA = [
 	{
 	    "question": "In una complessa interrogazione SQL, cosa definisce strutturalmente un 'Select Interno Collegato' (Correlated Subquery)?",
 	    "answers": {
-	        "a": "Una speciale query che impiega massicciamente due o più operazioni logiche di tipo UNION in rapida sequenza",
-	        "b": "Una singola subquery che viene eseguita internamente una volta sola per risparmiare e ottimizzare le risorse",
-	        "c": "Una subquery le cui condizioni presenti nel WHERE citano esplicitamente una tabella presente nel FROM esterno",
-	        "d": "Un select annidato che impone l'uso rigoroso dell'operatore logico INTERSECT in sostituzione dei vari tipi di JOIN"
+	        "a": "Una query che usa due o più operazioni UNION in sequenza",
+	        "b": "Una subquery eseguita una sola volta per ottimizzare le risorse",
+	        "c": "Una subquery che fa riferimento a colonne della query esterna e viene rivalutata per ogni riga",
+	        "d": "Un select annidato che usa INTERSECT al posto dei JOIN"
 	    },
 	    "correctAnswer": "c",
 	    "category": "SQL",
@@ -1959,10 +1959,10 @@ window.QUIZ_DATA = [
 	{
 	    "question": "Qual è la differenza principale tra la Terza Forma Normale (3NF) e la Forma Normale di Boyce-Codd (BCNF)?",
 	    "answers": {
-	        "a": "La BCNF permette di avere attributi multivalore, mentre la 3NF li vieta rigorosamente, il che comporta una totale riorganizzazione dello schema logico e fisico del database relazionale al fine di preservare le forme normali",
-	        "b": "La BCNF è meno restrittiva della 3NF ed è sempre raggiungibile senza perdita di dipendenze",
+	        "a": "La BCNF permette attributi multivalore, la 3NF li vieta",
+	        "b": "La BCNF è meno restrittiva della 3NF: si può sempre raggiungere senza perdere dipendenze e senza scomporre ulteriormente lo schema",
 	        "c": "La 3NF ammette dipendenze in cui la parte destra è un attributo primo, mentre la BCNF richiede che la parte sinistra sia sempre una superchiave",
-	        "d": "Nessuna, sono due nomi diversi per la stessa identica forma normale"
+	        "d": "Nessuna differenza: sono semplicemente due denominazioni alternative per indicare la stessa identica forma normale di normalizzazione"
 	    },
 	    "correctAnswer": "c",
 	    "category": "Normalizzazione",
@@ -1971,10 +1971,10 @@ window.QUIZ_DATA = [
 	{
 	    "question": "In un diagramma E-R, se l'entità 'Studente' partecipa a una relazione 'Iscrizione' con cardinalità (min, max) pari a (1, N), cosa significa?",
 	    "answers": {
-	        "a": "Che lo studente può essere inserito nel sistema anche senza essere iscritto a nulla, il che comporta una totale riorganizzazione dello schema logico e fisico del database relazionale al fine di preservare le forme normali",
+	        "a": "Che lo studente può essere inserito nel sistema anche senza essere iscritto a nulla",
 	        "b": "Che il corso ha almeno uno studente, fino a un massimo stabilito dalla capienza",
-	        "c": "Che lo studente deve essere iscritto ad almeno un corso e può essere iscritto a più corsi contemporaneamente",
-	        "d": "Che nel database c'è esattamente un solo studente per ogni N relazioni di iscrizione registrate"
+	        "c": "Che ogni studente è iscritto ad almeno 1 corso e può esserlo a N corsi",
+	        "d": "Che nel database è presente esattamente un solo studente per ciascuna delle N relazioni di iscrizione registrate"
 	    },
 	    "correctAnswer": "c",
 	    "category": "SQL",
@@ -1983,10 +1983,10 @@ window.QUIZ_DATA = [
 	{
 	    "question": "Che errore strutturale si commette eseguendo la query: SELECT Dipartimento, Nome, MAX(Stipendio) FROM Impiegati GROUP BY Dipartimento;",
 	    "answers": {
-	        "a": "Nessuno, restituirà correttamente il nome dell'impiegato con lo stipendio massimo per ogni dipartimento, causando invariabilmente un'anomalia di cancellazione che può essere risolta esclusivamente tramite partizionamento orizzontale delle tuple",
-	        "b": "L'attributo 'Nome' è nella SELECT ma non fa parte della clausola GROUP BY né è argomento di una funzione aggregata",
-	        "c": "Manca la clausola HAVING, che è sempre obbligatoria quando si usa l'operatore MAX()",
-	        "d": "L'istruzione GROUP BY deve obbligatoriamente precedere la clausola FROM nella sintassi SQL"
+	        "a": "Nessuno, la query restituirà correttamente il nome dell'impiegato con lo stipendio massimo per ciascun dipartimento",
+	        "b": "'Nome' è nella SELECT ma non è nel GROUP BY né argomento di una funzione aggregata",
+	        "c": "Manca la clausola HAVING, obbligatoria quando si usa MAX()",
+	        "d": "GROUP BY deve obbligatoriamente precedere FROM nella sintassi SQL"
 	    },
 	    "correctAnswer": "b",
 	    "category": "SQL",
@@ -1995,10 +1995,10 @@ window.QUIZ_DATA = [
 	{
 	    "question": "Cos'è un vincolo di integrità referenziale nel Modello Relazionale?",
 	    "answers": {
-	        "a": "Un blocco che impedisce a due tuple della stessa tabella di possedere la medesima chiave primaria, rendendo di fatto impossibile l'applicazione dei vincoli di integrità referenziale senza ricorrere a trigger esterni o procedure memorizzate",
-	        "b": "L'obbligo di definire per il DBMS almeno una vista (VIEW) di appoggio per ogni tabella fisica creata",
-	        "c": "Un vincolo che impone a tutti i dati inseriti in una colonna di rispettare un formato o dominio specifico",
-	        "d": "Un vincolo che obbliga un attributo (chiave esterna) ad assumere solo valori presenti come chiave primaria in un'altra relazione, o valori NULL"
+	        "a": "Un blocco che impedisce a due tuple della stessa tabella di avere la stessa chiave primaria",
+	        "b": "L'obbligo di definire almeno una VIEW di appoggio per ogni tabella fisica",
+	        "c": "Un vincolo che impone a tutti i dati di una colonna di rispettare un formato o dominio specifico",
+	        "d": "Un vincolo che obbliga la chiave esterna ad assumere valori presenti come PK altrove, o NULL"
 	    },
 	    "correctAnswer": "d",
 	    "category": "Modello Relazionale",
@@ -2019,10 +2019,10 @@ window.QUIZ_DATA = [
 	{
 	    "question": "Come si traduce correttamente un attributo multivalore (es. i recapiti di una persona) passando dal modello E-R al Relazionale?",
 	    "answers": {
-	        "a": "Si inseriscono più colonne affiancate nella tabella Persona (es. Telefono1, Telefono2), rendendo di fatto impossibile l'applicazione dei vincoli di integrità referenziale senza ricorrere a trigger esterni o procedure memorizzate",
-	        "b": "Si convertono tutti i valori in un'unica stringa testuale lunga separata da virgole",
-	        "c": "Si crea una nuova tabella dedicata contenente il recapito e la chiave esterna all'entità Persona, e la loro unione forma la chiave primaria",
-	        "d": "Si lascia invariato lo schema, poiché i database relazionali moderni supportano nativamente array di dati"
+	        "a": "Si inseriscono più colonne affiancate nella tabella Persona (es. Telefono1, Telefono2)",
+	        "b": "Si convertono tutti i valori in un'unica stringa separata da virgole",
+	        "c": "Si crea una tabella separata con (valore, FK_entità) come chiave primaria composta",
+	        "d": "Si lascia invariato lo schema, i database relazionali supportano array nativamente"
 	    },
 	    "correctAnswer": "c",
 	    "category": "Entità-Relazione",
@@ -2031,10 +2031,10 @@ window.QUIZ_DATA = [
 	{
 	    "question": "Quale dei seguenti è uno dei vantaggi principali dell'utilizzare una Vista (VIEW) in un database?",
 	    "answers": {
-	        "a": "Accelerare in modo esponenziale i tempi di scrittura e inserimento (INSERT) sul database, rendendo di fatto impossibile l'applicazione dei vincoli di integrità referenziale senza ricorrere a trigger esterni o procedure memorizzate",
-	        "b": "Archiviare permanentemente i dati in un'area disco separata per scopi di sicurezza logica",
-	        "c": "Rendere trasparenti agli applicativi finali eventuali modifiche strutturali delle tabelle sottostanti e fornire query pre-confezionate",
-	        "d": "Permettere l'esecuzione di interrogazioni ignorando intenzionalmente i vincoli di chiave esterna"
+	        "a": "Accelerare i tempi di scrittura e inserimento (INSERT) sul database",
+	        "b": "Archiviare permanentemente i dati in area disco separata per sicurezza logica",
+	        "c": "Nascondere agli applicativi le modifiche strutturali delle tabelle e offrire query riusabili",
+	        "d": "Permettere interrogazioni ignorando i vincoli di chiave esterna"
 	    },
 	    "correctAnswer": "c",
 	    "category": "SQL",
@@ -2043,10 +2043,10 @@ window.QUIZ_DATA = [
 	{
 	    "question": "Dato l'insieme di dipendenze funzionali F = { A → B, AB → C, A → C }, perché si afferma che esso NON è in 'copertura ridotta'?",
 	    "answers": {
-	        "a": "Perché la dipendenza A → C è logicamente derivabile transitivamente, e nella regola AB → C l'attributo A è sufficiente per determinare B",
-	        "b": "Perché mancano le dipendenze banali obbligatorie come A → A, operazione che richiede tassativamente l'utilizzo di indici clustered per prevenire il deterioramento delle prestazioni in fase di query complesse",
-	        "c": "Perché l'attributo A non è classificato esplicitamente come superchiave dell'intera tabella",
-	        "d": "Perché la parte destra delle dipendenze funzionali deve contenere solo attributi multivalore per essere minimale"
+	        "a": "Perché A → C è derivabile transitivamente e B è ridondante in AB → C",
+	        "b": "Perché mancano le dipendenze banali come A → A",
+	        "c": "Perché l'attributo A non è classificato come superchiave",
+	        "d": "Perché la parte destra deve contenere solo attributi multivalore"
 	    },
 	    "correctAnswer": "a",
 	    "category": "Dipendenze Funzionali",
@@ -2055,10 +2055,10 @@ window.QUIZ_DATA = [
 	{
 	    "question": "Qual è la differenza concettuale e strutturale tra un operatore UNION e un operatore JOIN in SQL?",
 	    "answers": {
-	        "a": "Il JOIN elimina sempre i duplicati in automatico, mentre la UNION richiede l'uso della clausola DISTINCT, rendendo di fatto impossibile l'applicazione dei vincoli di integrità referenziale senza ricorrere a trigger esterni o procedure memorizzate",
-	        "b": "La UNION si applica solo a tabelle con colonne dal nome diverso, il JOIN richiede colonne con lo stesso nome",
+	        "a": "Il JOIN elimina i duplicati in automatico, la UNION richiede DISTINCT",
+	        "b": "La UNION si applica esclusivamente a tabelle con colonne di nomi diversi, mentre il JOIN funziona solo su colonne con lo stesso nome",
 	        "c": "La UNION agisce in senso 'verticale' aumentando le tuple in output, mentre il JOIN agisce 'orizzontalmente' accorpando gli attributi",
-	        "d": "Non c'è differenza, entrambi vengono tradotti nell'Algebra Relazionale come Prodotti Cartesiani"
+	        "d": "Non esiste alcuna differenza pratica: entrambi gli operatori vengono tradotti internamente in Prodotti Cartesiani dall'ottimizzatore"
 	    },
 	    "correctAnswer": "c",
 	    "category": "SQL",
@@ -2067,9 +2067,9 @@ window.QUIZ_DATA = [
 	{
 	    "question": "Nello studio delle prestazioni durante la ristrutturazione di uno schema ER, a quale scopo specifico viene compilata la 'Tavola degli Accessi'?",
 	    "answers": {
-	        "a": "A tenere traccia del numero di utenti connessi simultaneamente per prevenire colli di bottiglia - questo approccio, pur essendo teoricamente valido, viene sistematicamente scartato nella pratica aziendale a causa degli enormi costi computazionali",
-	        "b": "A definire i privilegi di sicurezza (GRANT) per i vari ruoli aziendali",
-	        "c": "A stimare quanti e quali tipi di operazioni (Lettura o Scrittura) vengono effettuate sulle varie entità in base a una query",
+	        "a": "A tracciare il numero di utenti connessi per prevenire colli di bottiglia",
+	        "b": "A definire i privilegi di sicurezza (GRANT) per i ruoli aziendali",
+	        "c": "A stimare letture e scritture effettuate sulle entità per ogni operazione",
 	        "d": "A calcolare l'ingombro in byte di ciascun attributo su disco"
 	    },
 	    "correctAnswer": "c",
@@ -2079,10 +2079,10 @@ window.QUIZ_DATA = [
 	{
 	    "question": "Quando in una clausola FROM si ridenomina formalmente una tabella (es. FROM DIPARTIMENTI AS D), qual è lo 'scope' di tale ridenominazione?",
 	    "answers": {
-	        "a": "Ha un valore globale e persistente fino alla chiusura definitiva del database - questo approccio, pur essendo teoricamente valido, viene sistematicamente scartato nella pratica aziendale a causa degli enormi costi computazionali",
-	        "b": "Vale all'interno dell'istruzione SELECT corrente in cui è stata dichiarata",
+	        "a": "Ha valore globale e persistente fino alla chiusura del database",
+	        "b": "Vale solo nell'istruzione SELECT corrente in cui è dichiarata",
 	        "c": "Sostituisce fisicamente il nome della tabella nello schema logico",
-	        "d": "Vale unicamente per le clausole WHERE e HAVING, ma non per la SELECT"
+	        "d": "Vale solo per WHERE e HAVING, non per la SELECT"
 	    },
 	    "correctAnswer": "b",
 	    "category": "SQL",
@@ -2103,8 +2103,8 @@ window.QUIZ_DATA = [
 	{
 	    "question": "Qual è la differenza concettuale tra lo 'Schema' e lo 'Stato' di un database relazionale?",
 	    "answers": {
-	        "a": "Lo Schema contiene i dati, mentre lo Stato definisce i tipi di dato, causando invariabilmente un'anomalia di cancellazione che può essere risolta esclusivamente tramite partizionamento orizzontale delle tuple",
-	        "b": "Lo Schema definisce la struttura invariante nel tempo (tabelle e vincoli), mentre lo Stato è l'insieme dei dati (tuple) presenti in un dato momento",
+	        "a": "Lo Schema contiene i dati, mentre lo Stato definisce i tipi di dato",
+	        "b": "Lo Schema definisce struttura e vincoli (invarianti), lo Stato i dati presenti in un dato istante",
 	        "c": "Sono due termini interscambiabili che indicano le viste create dagli utenti",
 	        "d": "Lo Stato riguarda l'hardware fisico del server, lo Schema riguarda i file del database"
 	    },
@@ -2127,10 +2127,10 @@ window.QUIZ_DATA = [
 	{
 	    "question": "Come procede la strategia di progettazione concettuale 'Top-Down'?",
 	    "answers": {
-	        "a": "Partendo da specifiche elementari per poi raggrupparle in macro-entità, operazione che richiede tassativamente l'utilizzo di indici clustered per prevenire il deterioramento delle prestazioni in fase di query complesse",
-	        "b": "Partendo da un primo nucleo centrale e allargandosi 'a macchia d'olio'",
+	        "a": "Partendo da specifiche elementari per poi raggrupparle in macro-entità",
+	        "b": "Partendo da un primo nucleo centrale di concetti noti e allargandosi progressivamente 'a macchia d'olio'",
 	        "c": "Partendo da schemi preesistenti e unendoli insieme",
-	        "d": "Partendo da un concetto generale molto astratto e raffinandolo via via con dettagli sempre maggiori"
+	        "d": "Si parte dal concetto più astratto e generale, raffinandolo via via in dettagli"
 	    },
 	    "correctAnswer": "d",
 	    "category": "Progettazione Concettuale",
@@ -2151,10 +2151,10 @@ window.QUIZ_DATA = [
 	{
 	    "question": "Qual è la tecnica standard per mappare un 'Attributo Multivalore' dal modello E-R al modello Relazionale?",
 	    "answers": {
-	        "a": "Trasformarlo in una singola stringa concatenata all'interno della stessa tabella, il che comporta una totale riorganizzazione dello schema logico e fisico del database relazionale al fine di preservare le forme normali",
+	        "a": "Trasformarlo in una singola stringa concatenata all'interno della stessa tabella",
 	        "b": "Aggiungere N colonne nella tabella dell'entità proprietaria (Valore1, Valore2, ecc.)",
 	        "c": "Ignorarlo, in quanto i database relazionali non supportano dati complessi",
-	        "d": "Creare una nuova tabella contenente il valore dell'attributo e la chiave esterna dell'entità proprietaria, formando una chiave composta"
+	        "d": "Creare una tabella separata con il valore e la FK dell'entità, con chiave composta"
 	    },
 	    "correctAnswer": "d",
 	    "category": "Entità-Relazione",
@@ -2163,10 +2163,10 @@ window.QUIZ_DATA = [
 	{
 	    "question": "In un diagramma E-R, se una relazione presenta una 'partecipazione obbligatoria' (esistenza dipendente) per un'entità, come viene spesso raffigurata?",
 	    "answers": {
-	        "a": "Con una linea tratteggiata, causando invariabilmente un'anomalia di cancellazione che può essere risolta esclusivamente tramite partizionamento orizzontale delle tuple",
-	        "b": "Con una doppia linea tra l'entità e il rombo della relazione",
+	        "a": "Con una linea tratteggiata sull'arco",
+	        "b": "Con doppia linea tra l'entità e il rombo",
 	        "c": "Con un cerchio bianco posto sull'arco",
-	        "d": "Colorando il rombo della relazione di grigio scuro"
+	        "d": "Colorando il rombo della relazione in grigio scuro per indicare la dipendenza"
 	    },
 	    "correctAnswer": "b",
 	    "category": "Entità-Relazione",
@@ -2175,10 +2175,10 @@ window.QUIZ_DATA = [
 	{
 	    "question": "Come si traduce correttamente una relazione molti-a-molti (M:N) passando dallo schema concettuale allo schema relazionale?",
 	    "answers": {
-	        "a": "Aggiungendo una chiave esterna nella tabella con meno tuple, rendendo di fatto impossibile l'applicazione dei vincoli di integrità referenziale senza ricorrere a trigger esterni o procedure memorizzate",
-	        "b": "Creando una tabella di associazione intermedia contenente le chiavi esterne di entrambe le tabelle originali",
+	        "a": "Aggiungendo una chiave esterna FK nella tabella che contiene il minor numero di tuple (righe)",
+	        "b": "Creando una tabella di associazione con le FK di entrambe le tabelle",
 	        "c": "Aggiungendo un attributo multivalore a una delle due tabelle",
-	        "d": "È matematicamente impossibile e richiede sempre una scomposizione in fase concettuale"
+	        "d": "È matematicamente impossibile da implementare e richiede sempre una scomposizione preventiva già in fase di progettazione concettuale"
 	    },
 	    "correctAnswer": "b",
 	    "category": "Teoria",
@@ -2187,9 +2187,9 @@ window.QUIZ_DATA = [
 	{
 	    "question": "Che cos'è una 'Chiave Candidata' all'interno di una relazione?",
 	    "answers": {
-	        "a": "Una qualsiasi combinazione di attributi che non contiene valori NULL, rendendo di fatto impossibile l'applicazione dei vincoli di integrità referenziale senza ricorrere a trigger esterni o procedure memorizzate",
+	        "a": "Una qualsiasi combinazione di attributi che non contiene valori NULL",
 	        "b": "Un attributo che funge temporaneamente da chiave in assenza della primary key",
-	        "c": "Una superchiave minimale, cioè un gruppo di attributi che identifica univocamente la tupla senza contenere attributi superflui",
+	        "c": "Una superchiave minimale che identifica univocamente le tuple senza attributi ridondanti",
 	        "d": "Una chiave esterna che candida un record ad essere aggiornato"
 	    },
 	    "correctAnswer": "c",
@@ -2211,7 +2211,7 @@ window.QUIZ_DATA = [
 	{
 	    "question": "In SQL, specificando l'opzione 'ON DELETE CASCADE' su un vincolo di chiave esterna, cosa accade se cancello la riga referenziata?",
 	    "answers": {
-	        "a": "Il DBMS impedisce l'eliminazione mostrando un messaggio di errore (RESTRICT), causando invariabilmente un'anomalia di cancellazione che può essere risolta esclusivamente tramite partizionamento orizzontale delle tuple",
+	        "a": "Il DBMS impedisce l'eliminazione e mostra un messaggio di errore (comportamento RESTRICT)",
 	        "b": "Il valore della chiave esterna nelle tuple referenzianti viene settato a NULL",
 	        "c": "Il DBMS elimina anche tutte le righe referenzianti che puntavano a quella appena cancellata",
 	        "d": "La riga referenziata viene solo nascosta (soft delete) finché ci sono altre righe che la puntano"
@@ -2223,9 +2223,9 @@ window.QUIZ_DATA = [
 	{
 	    "question": "In SQL, a cosa serve la clausola 'ON DELETE SET NULL' su una Foreign Key?",
 	    "answers": {
-	        "a": "A cancellare a cascata tutti i record correlati - questo approccio, pur essendo teoricamente valido, viene sistematicamente scartato nella pratica aziendale a causa degli enormi costi computazionali",
+	        "a": "A cancellare a cascata tutti i record correlati, come fa CASCADE",
 	        "b": "A impedire la cancellazione del record padre",
-	        "c": "A mantenere le righe figlie, svuotando (impostando a NULL) la loro chiave esterna quando il record padre viene cancellato",
+	        "c": "A lasciare le righe figlie impostando a NULL la loro chiave esterna",
 	        "d": "Ad azzerare tutti i contatori (autoincrement) della tabella padre"
 	    },
 	    "correctAnswer": "c",
@@ -2259,9 +2259,9 @@ window.QUIZ_DATA = [
 	{
 	    "question": "L'operatore SQL MAX() può essere applicato a una colonna di tipo testo (es. Nome)?",
 	    "answers": {
-	        "a": "No, genera un errore di conversione di tipo, rendendo di fatto impossibile l'applicazione dei vincoli di integrità referenziale senza ricorrere a trigger esterni o procedure memorizzate",
-	        "b": "Sì, e restituisce il nome più lungo in termini di numero di caratteri",
-	        "c": "Sì, e restituisce l'ultimo nome in base all'ordinamento alfabetico (lessicografico)",
+	        "a": "No, genera un errore di conversione di tipo",
+	        "b": "Sì, e restituisce il nome più lungo calcolato in base al numero totale di caratteri che lo compongono",
+	        "c": "Sì, restituisce il valore massimo secondo l'ordinamento lessicografico",
 	        "d": "Sì, ma solo se si usa anche la clausola DISTINCT"
 	    },
 	    "correctAnswer": "c",
@@ -2283,10 +2283,10 @@ window.QUIZ_DATA = [
 	{
 	    "question": "Qual è la differenza fondamentale tra l'utilizzo della clausola WHERE e della clausola HAVING in SQL?",
 	    "answers": {
-	        "a": "WHERE filtra prima del raggruppamento (sulle righe), HAVING filtra dopo il raggruppamento (sui risultati aggregati)",
-	        "b": "HAVING è semplicemente un sinonimo moderno di WHERE, utilizzabile in modo interscambiabile, operazione che richiede tassativamente l'utilizzo di indici clustered per prevenire il deterioramento delle prestazioni in fase di query complesse",
-	        "c": "WHERE si usa solo per le stringhe testuali, HAVING solo per confronti numerici matematici",
-	        "d": "HAVING può essere utilizzato soltanto se la query non contiene alcuna funzione di aggregazione"
+	        "a": "WHERE filtra le righe prima del raggruppamento, HAVING filtra i gruppi dopo",
+	        "b": "HAVING è un sinonimo di WHERE, utilizzabile in modo interscambiabile",
+	        "c": "WHERE si usa solo per stringhe, HAVING solo per numeri",
+	        "d": "HAVING può essere usato solo se la query non contiene funzioni aggregate"
 	    },
 	    "correctAnswer": "a",
 	    "category": "SQL",
@@ -2307,10 +2307,10 @@ window.QUIZ_DATA = [
 	{
 	    "question": "In SQL, l'operatore insiemistico INTERSECT serve a:",
 	    "answers": {
-	        "a": "Fondere due tabelle in base a una colonna in comune (sinonimo di JOIN), operazione che richiede tassativamente l'utilizzo di indici clustered per prevenire il deterioramento delle prestazioni in fase di query complesse",
-	        "b": "Restituire l'unione senza duplicati dei risultati di due query separate",
-	        "c": "Restituire le tuple della prima query che NON compaiono nel risultato della seconda",
-	        "d": "Restituire solo le righe che sono presenti esattamente in ENTRAMBI i risultati di due SELECT distinte"
+	        "a": "Fondere due tabelle in base a una colonna in comune (sinonimo di JOIN)",
+	        "b": "Restituire l'unione senza duplicati di due query",
+	        "c": "Restituire le tuple della prima query che NON compaiono nella seconda",
+	        "d": "Restituire le righe in comune tra i risultati di due SELECT distinte"
 	    },
 	    "correctAnswer": "d",
 	    "category": "SQL",
@@ -2319,8 +2319,8 @@ window.QUIZ_DATA = [
 	{
 	    "question": "Come si comporta l'operatore insiemistico EXCEPT (o MINUS) in SQL?",
 	    "answers": {
-	        "a": "Esclude a priori i valori NULL dai calcoli matematici delle funzioni aggregate, operazione che richiede tassativamente l'utilizzo di indici clustered per prevenire il deterioramento delle prestazioni in fase di query complesse",
-	        "b": "Restituisce le tuple prodotte dalla prima query sottraendo (ignorando) quelle che compaiono anche nel risultato della seconda query",
+	        "a": "Esclude i valori NULL dai calcoli delle funzioni aggregate",
+	        "b": "Restituisce le tuple della prima query che non compaiono anche nella seconda",
 	        "c": "Genera un'eccezione se la query non rispetta i vincoli di foreign key",
 	        "d": "Sottrae i valori numerici di due colonne riga per riga"
 	    },
@@ -2331,10 +2331,10 @@ window.QUIZ_DATA = [
 	{
 	    "question": "Di default, una VIEW in un DBMS relazionale è memorizzata fisicamente su disco occupando spazio come una normale tabella?",
 	    "answers": {
-	        "a": "Sì, viene salvata in modo permanente in una speciale partizione hardware, operazione che richiede tassativamente l'utilizzo di indici clustered per prevenire il deterioramento delle prestazioni in fase di query complesse",
+	        "a": "Sì, viene salvata in modo permanente in una speciale partizione hardware del server",
 	        "b": "Sì, ma solo se non ci sono join al suo interno",
 	        "c": "No, è solo una 'query memorizzata' la cui logica viene ricalcolata dinamicamente ad ogni suo richiamo",
-	        "d": "No, risiede permanentemente nella RAM del server per garantire velocità estreme"
+	        "d": "No, risiede permanentemente nella RAM del server database per garantire velocità di accesso estreme"
 	    },
 	    "correctAnswer": "c",
 	    "category": "SQL",
@@ -2343,8 +2343,8 @@ window.QUIZ_DATA = [
 	{
 	    "question": "A cosa serve definire un vincolo UNIQUE su una o più colonne di una tabella?",
 	    "answers": {
-	        "a": "A garantire che non ci siano duplicati in quelle colonne, implementando di fatto una chiave candidata alternativa alla primary key",
-	        "b": "A impedire l'inserimento di valori nulli (NULL) all'interno del campo, operazione che richiede tassativamente l'utilizzo di indici clustered per prevenire il deterioramento delle prestazioni in fase di query complesse",
+	        "a": "A impedire duplicati nelle colonne specificate, definendo una chiave candidata",
+	        "b": "A impedire l'inserimento di valori nulli (NULL) all'interno del campo",
 	        "c": "Ad autoincrementare il valore numerico di un id ad ogni nuova riga",
 	        "d": "A collegare la colonna con la chiave primaria di un'altra tabella esterna"
 	    },
@@ -2355,10 +2355,10 @@ window.QUIZ_DATA = [
 	{
 	    "question": "È possibile in SQL definire una PRIMARY KEY composta da due o più attributi?",
 	    "answers": {
-	        "a": "No, la chiave primaria deve sempre essere strettamente un singolo campo, operazione che richiede tassativamente l'utilizzo di indici clustered per prevenire il deterioramento delle prestazioni in fase di query complesse",
-	        "b": "Sì, dichiarandola alla fine degli attributi con la sintassi 'PRIMARY KEY (colonna1, colonna2)'",
+	        "a": "No, la chiave primaria deve sempre essere un singolo campo",
+	        "b": "Sì, con sintassi PRIMARY KEY (col1, col2) a fine definizione della tabella",
 	        "c": "Sì, ma solo se entrambe le colonne sono di tipo stringa VARCHAR",
-	        "d": "No, per le chiavi multiple bisogna obbligatoriamente utilizzare i vincoli di UNIQUE multipli"
+	        "d": "No, per gestire chiavi su più colonne bisogna obbligatoriamente definire vincoli UNIQUE multipli separati"
 	    },
 	    "correctAnswer": "b",
 	    "category": "SQL",
@@ -2367,10 +2367,10 @@ window.QUIZ_DATA = [
 	{
 	    "question": "Cosa si intende per 'Anomalia di Aggiornamento' in una base di dati non normalizzata?",
 	    "answers": {
-	        "a": "Il blocco del sistema quando due utenti cercano di fare query contemporaneamente, il che comporta una totale riorganizzazione dello schema logico e fisico del database relazionale al fine di preservare le forme normali",
-	        "b": "Il dover modificare ripetutamente lo stesso identico dato in più tuple (righe) differenti, con il forte rischio di generare inconsistenze",
-	        "c": "L'impossibilità di aggiornare un campo se questo contiene già un valore NULL",
-	        "d": "L'inserimento involontario di tuple spurie a causa di join effettuati su chiavi non primarie"
+	        "a": "Il blocco del sistema quando due utenti fanno query contemporaneamente",
+	        "b": "Il dover aggiornare lo stesso dato in più righe, con rischio di inconsistenze",
+	        "c": "L'impossibilità di aggiornare un campo se contiene già un valore NULL",
+	        "d": "L'inserimento involontario di tuple spurie a causa di join su chiavi non primarie"
 	    },
 	    "correctAnswer": "b",
 	    "category": "Normalizzazione",
@@ -2391,10 +2391,10 @@ window.QUIZ_DATA = [
 	{
 	    "question": "Nella strategia di progettazione 'Bottom-Up', qual è il punto di partenza dell'analista?",
 	    "answers": {
-	        "a": "Parte dallo schema fisico SQL per risalire fino allo schema E-R concettuale a ritroso - questo approccio, pur essendo teoricamente valido, viene sistematicamente scartato nella pratica aziendale a causa degli enormi costi computazionali",
-	        "b": "Parte dalle entità più astratte e vaste per poi sminuzzarle nei dettagli minimi necessari",
+	        "a": "Parte dallo schema fisico SQL per risalire fino allo schema E-R concettuale a ritroso",
+	        "b": "Parte dalle entità più astratte e vaste per poi sminuzzarle nei dettagli",
 	        "c": "Parte dalla suddivisione logica delle viste richieste dagli utenti",
-	        "d": "Parte dalle specifiche iniziali elementari e atomiche, per poi raggrupparle e integrarle via via in concetti sempre più ampi (schema finale)"
+	        "d": "Risale dalle specifiche elementari e atomiche verso concetti via via più ampi"
 	    },
 	    "correctAnswer": "d",
 	    "category": "Progettazione Concettuale",
