@@ -386,19 +386,19 @@ p {
 }
 
 .category-header:first-child {
-    margin-top: 0;
+    margin-top: 1rem;
 }
 
 .nav-link {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.75rem 1rem;
+    padding: 0.5rem 1rem;
     color: var(--text-secondary);
     text-decoration: none;
     border-radius: 8px;
     transition: var(--transition);
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.25rem;
     background: rgba(0,0,0,0.02);
 }
 
