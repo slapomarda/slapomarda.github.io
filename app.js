@@ -2411,6 +2411,7 @@ let isQuizFinished = false;
 
 // Timer state
 let timerEnabled = false;
+let includeAI = false;
 let timerSeconds = 30 * 60; // 30 minutes
 let timerInterval = null;
 
@@ -2519,8 +2520,10 @@ function clearProgress() {
 
 // Views
 function renderHome() {
-    const seenCount = getSeenQuestions().length;
-    const totalCount = allQuestions.length;
+    const pool = includeAI ? allQuestions : allQuestions.filter(q => !q.isAI);
+    const seenIds = new Set(getSeenQuestions());
+    const seenCount = pool.filter(q => seenIds.has(q.id)).length;
+    const totalCount = pool.length;
     
     const html = `
         <a href="https://github.com/slapomarda/slapomarda.github.io/issues/new?title=%5BNuova+Domanda%5D+...&body=%23%23%23%20%F0%9F%93%9D%20Testo%20della%20Domanda%0A%5BScrivi%20qui%20la%20domanda%5D%0A%0A%23%23%23%20%F0%9F%85%B0%EF%B8%8F%20Opzione%20A%0A%5BScrivi%20qui%20l%27opzione%20A%5D%0A%0A%23%23%23%20%F0%9F%85%B1%EF%B8%8F%20Opzione%20B%0A%5BScrivi%20qui%20l%27opzione%20B%5D%0A%0A%23%23%23%20%F0%9F%85%BE%EF%B8%8F%20Opzione%20C%0A%5BScrivi%20qui%20l%27opzione%20C%5D%0A%0A%23%23%23%20%F0%9F%85%B3%20Opzione%20D%0A%5BScrivi%20qui%20l%27opzione%20D%5D%0A%0A%23%23%23%20%E2%9C%85%20Risposta%20Corretta%0A%5BIndica%20la%20lettera%3A%20A%2C%20B%2C%20C%20oppure%20D%5D%0A%0A%23%23%23%20%F0%9F%8F%B7%EF%B8%8F%20Categoria%0A%5BSQL%2C%20Teoria%2C%20Entit%C3%A0-Relazione%2C%20ecc...%5D" target="_blank" rel="noopener noreferrer" class="proponi-link">
@@ -2550,20 +2553,42 @@ function renderHome() {
                     <span class="timer-toggle-thumb"></span>
                 </button>
             </div>
+            <div class="timer-toggle-row" style="margin-top: 1rem;">
+                <span class="timer-toggle-label">🤖 Includi domande IA (Allenamento Extra)</span>
+                <button
+                    class="timer-toggle ${includeAI ? 'active' : ''}"
+                    onclick="toggleAI('home')"
+                    aria-pressed="${includeAI}"
+                >
+                    <span class="timer-toggle-thumb"></span>
+                </button>
+            </div>
+
 
             <div class="btn-group">
                 <button class="btn" onclick="navigate('quiz')">Avvia Quiz (20 Domande)</button>
                 <button class="btn btn-secondary" onclick="navigate('progress')">I Miei Progressi</button>
             </div>
             
+            
+            ${includeAI ? `
             <div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--glass-border); text-align: center;">
                 <p style="font-size: 0.85rem; color: var(--text-secondary); max-width: 600px; margin: 0 auto; line-height: 1.5;">
                     Le domande contrassegnate con <span title="Generata da IA" style="display:inline-flex; align-items:center; justify-content:center; background:#8b5cf6; color:white; font-size:0.7rem; font-weight:bold; padding:2px 6px; border-radius:4px; margin:0 4px; vertical-align:middle; line-height:1;">🤖 IA</span> sono state generate automaticamente da un'Intelligenza Artificiale per arricchire e completare il quiz originale.
                 </p>
             </div>
+            ` : ''}
+    
         </div>
     `;
     appDiv.innerHTML = html;
+}
+
+
+window.toggleAI = function(view) {
+    includeAI = !includeAI;
+    if (view === 'home') renderHome();
+    else if (view === 'progress') renderProgress();
 }
 
 window.toggleTimer = function() {
@@ -2579,8 +2604,9 @@ function startQuiz() {
     const seenIds = new Set(getSeenQuestions());
     
     // Prioritize unseen questions
-    const unseen = allQuestions.filter(q => !seenIds.has(q.id));
-    const seen = allQuestions.filter(q => seenIds.has(q.id));
+    const pool = includeAI ? allQuestions : allQuestions.filter(q => !q.isAI);
+    const unseen = pool.filter(q => !seenIds.has(q.id));
+    const seen = pool.filter(q => seenIds.has(q.id));
     
     // Shuffle arrays
     unseen.sort(() => Math.random() - 0.5);
@@ -2783,13 +2809,14 @@ function renderResults() {
 
 function renderProgress() {
     const seenIds = new Set(getSeenQuestions());
-    const seenCount = seenIds.size;
-    const totalCount = allQuestions.length;
+    const pool = includeAI ? allQuestions : allQuestions.filter(q => !q.isAI);
+    const seenCount = pool.filter(q => seenIds.has(q.id)).length;
+    const totalCount = pool.length;
     const progressPercent = Math.round((seenCount / totalCount) * 100) || 0;
     
     // Group questions by category
     const categories = {};
-    allQuestions.forEach(q => {
+    pool.forEach(q => {
         const cat = q.category || 'Generale';
         if (!categories[cat]) {
             categories[cat] = {
@@ -2862,6 +2889,14 @@ function renderProgress() {
         <!-- DESKTOP VIEW -->
         <div class="view-container desktop-progress-view">
             <h1 style="margin-bottom: 2rem;">I Miei Progressi</h1>
+
+                <div class="glass-panel" style="margin-bottom: 2rem; display: flex; justify-content: space-between; align-items: center; padding: 1rem 1.5rem;">
+                    <span style="font-weight: 500; color: var(--text-primary);">🤖 Includi domande IA</span>
+                    <button class="timer-toggle ${includeAI ? 'active' : ''}" onclick="toggleAI('progress')" aria-pressed="${includeAI}">
+                        <span class="timer-toggle-thumb"></span>
+                    </button>
+                </div>
+
             <div class="progress-layout">
                 <!-- Sidebar (Fixed) -->
                 <div class="progress-sidebar">
