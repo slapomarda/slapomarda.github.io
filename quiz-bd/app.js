@@ -3008,3 +3008,35 @@ window.addEventListener('scroll', () => {
 
 // Start
 init();
+
+// Theme Toggle
+(function initTheme() {
+    const btn = document.getElementById('theme-toggle');
+    const iconSun = document.getElementById('theme-icon-sun');
+    const iconMoon = document.getElementById('theme-icon-moon');
+    
+    // Default is light. Check local storage
+    const saved = localStorage.getItem('quiz_theme');
+    if (saved === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        iconSun.style.display = '';
+        iconMoon.style.display = 'none';
+    }
+    
+    if(btn) {
+        btn.addEventListener('click', () => {
+            const current = document.documentElement.getAttribute('data-theme');
+            const next = current === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', next);
+            localStorage.setItem('quiz_theme', next);
+            
+            if (next === 'dark') {
+                iconSun.style.display = '';
+                iconMoon.style.display = 'none';
+            } else {
+                iconSun.style.display = 'none';
+                iconMoon.style.display = '';
+            }
+        });
+    }
+})();

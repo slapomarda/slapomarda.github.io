@@ -1,0 +1,379 @@
+/* ============================================================
+   Hub CSS — slapomarda landing page
+   ============================================================ */
+
+:root {
+    --bg-primary: #0f0f16;
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --text-muted: #475569;
+    --accent-blue: #f59e0b;
+    --accent-green: #eab308;
+    --accent-red: #d97706;
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --card-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    --card-shadow-hover: 0 12px 48px rgba(0, 0, 0, 0.5);
+    --transition: all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Outfit', sans-serif;
+}
+
+html, body {
+    min-height: 100vh;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+/* ── Background orbs ─────────────────────────────────────── */
+.bg-orbs {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.35;
+}
+
+.orb-1 {
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(245, 158, 11, 0.3), transparent 70%);
+    top: -200px;
+    left: -150px;
+    animation: orbFloat 20s ease-in-out infinite alternate;
+}
+
+.orb-2 {
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(234, 179, 8, 0.25), transparent 70%);
+    bottom: -100px;
+    right: -100px;
+    animation: orbFloat 15s ease-in-out infinite alternate-reverse;
+}
+
+.orb-3 {
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(251, 191, 36, 0.2), transparent 70%);
+    top: 40%;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: orbFloat 18s ease-in-out infinite alternate;
+}
+
+@keyframes orbFloat {
+    0%   { transform: translate(0, 0); }
+    100% { transform: translate(30px, 20px); }
+}
+
+/* ── Layout ──────────────────────────────────────────────── */
+.hub-container {
+    position: relative;
+    z-index: 1;
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 4rem 1.5rem 2rem;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* ── Header ──────────────────────────────────────────────── */
+.hub-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.hub-avatar {
+    width: 144px;
+    height: 144px;
+    margin: 0 auto 1.25rem;
+    border-radius: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 32px rgba(245, 158, 11, 0.3);
+    object-fit: cover;
+    background: transparent;
+}
+
+.hub-title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 800;
+    background: linear-gradient(135deg, #fcd34d, #d97706);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.6rem;
+    letter-spacing: -0.02em;
+}
+
+.hub-tagline {
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+    font-weight: 400;
+}
+
+/* ── Grid ────────────────────────────────────────────────── */
+.hub-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+}
+
+@media (min-width: 580px) {
+    .hub-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+    /* Third card spans full width on 2-col */
+    .hub-card:last-child {
+        grid-column: 1 / -1;
+    }
+}
+
+@media (min-width: 800px) {
+    .hub-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .hub-card:last-child {
+        grid-column: auto;
+    }
+}
+
+/* ── Cards ───────────────────────────────────────────────── */
+.hub-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding: 1.75rem;
+    background: var(--glass-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    box-shadow: var(--card-shadow);
+    text-decoration: none;
+    color: var(--text-primary);
+    overflow: hidden;
+    transition: var(--transition);
+    cursor: pointer;
+    group: true;
+}
+
+.hub-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 20px;
+    opacity: 0;
+    background: linear-gradient(135deg, rgba(251, 191, 36, 0.06), rgba(245, 158, 11, 0.06));
+    transition: opacity 0.28s ease;
+    pointer-events: none;
+}
+
+.hub-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--card-shadow-hover);
+    border-color: rgba(251, 191, 36, 0.3);
+}
+
+.hub-card:hover::before {
+    opacity: 1;
+}
+
+.hub-card--muted {
+    opacity: 0.7;
+    cursor: default;
+    pointer-events: auto;
+}
+
+.hub-card--muted:hover {
+    transform: none;
+    box-shadow: var(--card-shadow);
+    border-color: var(--glass-border);
+}
+
+.hub-card--muted:hover::before {
+    opacity: 0;
+}
+
+/* ── Card Icon ───────────────────────────────────────────── */
+.card-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, rgba(251, 191, 36, 0.12), rgba(245, 158, 11, 0.12));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #f59e0b;
+    margin-bottom: 1.1rem;
+    flex-shrink: 0;
+    transition: var(--transition);
+}
+
+.card-icon svg {
+    width: 24px;
+    height: 24px;
+}
+
+.hub-card:hover .card-icon {
+    background: linear-gradient(135deg, rgba(251, 191, 36, 0.22), rgba(245, 158, 11, 0.22));
+    transform: scale(1.08);
+}
+
+.hub-card--muted .card-icon {
+    color: var(--text-muted);
+    background: rgba(0,0,0,0.04);
+}
+
+.hub-card--muted:hover .card-icon {
+    transform: none;
+}
+
+/* ── Card Content ────────────────────────────────────────── */
+.card-content {
+    flex: 1;
+}
+
+.card-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+    color: var(--text-primary);
+}
+
+.card-desc {
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+/* ── Badge ───────────────────────────────────────────────── */
+.card-badge {
+    display: inline-block;
+    padding: 0.2rem 0.7rem;
+    border-radius: 999px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    background: rgba(245, 158, 11, 0.15);
+    color: #f59e0b;
+}
+
+.card-badge--soon {
+    background: rgba(234, 179, 8, 0.15);
+    color: #d97706;
+}
+
+/* ── Card Arrow ──────────────────────────────────────────── */
+.card-arrow {
+    position: absolute;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 28px;
+    height: 28px;
+    color: var(--text-muted);
+    transition: var(--transition);
+}
+
+.card-arrow svg {
+    width: 18px;
+    height: 18px;
+}
+
+.hub-card:hover .card-arrow {
+    color: #f59e0b;
+    transform: translate(3px, -3px);
+}
+
+.hub-card--muted .card-arrow {
+    display: none;
+}
+
+/* ── Footer ──────────────────────────────────────────────── */
+.hub-footer {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 2rem 1rem 2rem;
+    border-top: 1px solid var(--glass-border);
+    margin-top: 3rem;
+}
+
+.footer-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.footer-link:hover {
+    color: var(--text-secondary);
+}
+
+/* ── Mobile Compact Cards ────────────────────────────────── */
+@media (max-width: 580px) {
+    .hub-card {
+        flex-direction: row;
+        align-items: center;
+        padding: 1rem 1.25rem;
+        gap: 1rem;
+        border-radius: 16px;
+    }
+    .card-icon {
+        width: 40px;
+        height: 40px;
+        margin-bottom: 0;
+    }
+    .card-icon svg {
+        width: 20px;
+        height: 20px;
+    }
+    .card-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .card-title {
+        font-size: 1.05rem;
+        margin-bottom: 0.2rem;
+    }
+    .card-desc {
+        display: none; /* Hide description on mobile for maximum compactness */
+    }
+    .card-badge {
+        align-self: flex-start;
+        font-size: 0.65rem;
+        padding: 0.15rem 0.5rem;
+    }
+    .card-arrow {
+        position: static;
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+        width: auto;
+        height: auto;
+    }
+}

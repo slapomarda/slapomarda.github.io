@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pomodoro Timer — Slapomarda</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ══════════════════════════════════════════════════════
+         SCREEN 1: SETUP
+    ══════════════════════════════════════════════════════════ -->
+    <div id="screen-setup" class="screen screen--active">
+        <a href="../" class="back-link">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+            Hub
+        </a>
+
+        <button class="setup-settings-btn topbar-btn" id="btn-settings-setup" title="Impostazioni" aria-label="Impostazioni">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        </button>
+
+        <div class="setup-card">
+            <div class="setup-logo">🍅</div>
+            <h1 class="setup-title">Pomodoro Timer</h1>
+            <p class="setup-subtitle">Pianifica la tua sessione di focus</p>
+
+            <!-- Modalità -->
+            <div class="form-group">
+                <div class="form-label-row">
+                    <label class="form-label">Modalità</label>
+                    <button class="info-btn" id="info-btn" type="button" aria-label="Come funziona">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M11 7h2v2h-2zm0 4h2v6h-2zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
+                    </button>
+                </div>
+                <div class="mode-selector">
+                    <label class="mode-option mode-option--active" id="mode-classic-label">
+                        <input type="radio" name="mode" value="classic" id="mode-classic" checked>
+                        <div class="mode-option-body">
+                            <span class="mode-name">Classica</span>
+                            <span class="mode-detail">25 / 5 / 15 min</span>
+                        </div>
+                    </label>
+                    <label class="mode-option" id="mode-long-label">
+                        <input type="radio" name="mode" value="long" id="mode-long">
+                        <div class="mode-option-body">
+                            <span class="mode-name">Lunga</span>
+                            <span class="mode-detail">50 / 10 / 30 min</span>
+                        </div>
+                    </label>
+                    <label class="mode-option mode-option--prova" id="mode-prova-label">
+                        <input type="radio" name="mode" value="prova" id="mode-prova">
+                        <div class="mode-option-body">
+                            <span class="mode-name">🧪 Prova</span>
+                            <span class="mode-detail">10 / 5 / 10 sec</span>
+                        </div>
+                    </label>
+                </div>
+                <!-- Info tooltip -->
+                <div class="info-tooltip" id="info-tooltip" hidden>
+                    <p class="tooltip-title">Come funziona il Pomodoro?</p>
+                    <p class="tooltip-line">Ogni ciclo: <strong>Focus → Pausa corta</strong>. Dopo un certo numero di cicli scatta una <strong>pausa lunga</strong>.</p>
+                    <div class="tooltip-table">
+                        <div class="tooltip-row">
+                            <span>🍅 Classica</span>
+                            <span>25' focus · 5' pausa · ogni <strong>4</strong> cicli → 🌿 15' pausa lunga</span>
+                        </div>
+                        <div class="tooltip-row">
+                            <span>🍅 Lunga</span>
+                            <span>50' focus · 10' pausa · ogni <strong>3</strong> cicli → 🌿 30' pausa lunga</span>
+                        </div>
+                    </div>
+                    <p class="tooltip-eye">👁️ <strong>20-20-20 (Riposo occhi da schermo)</strong>: ogni 20 min di focus, guarda lontano per 20 sec.</p>
+                </div>
+            </div>
+
+            <!-- Numero cicli -->
+            <div class="form-group">
+                <label class="form-label" for="cycles-input">Numero di Pomodori</label>
+                <div class="cycles-control">
+                    <button class="cycles-btn" id="cycles-minus" aria-label="Diminuisci">−</button>
+                    <input type="number" id="cycles-input" class="cycles-input" value="4" min="1" max="20">
+                    <button class="cycles-btn" id="cycles-plus" aria-label="Aumenta">+</button>
+                </div>
+            </div>
+
+            <!-- Riepilogo sessione -->
+            <div class="session-summary" id="session-summary">
+                <div class="summary-row">
+                    <span class="summary-label">Durata totale</span>
+                    <span class="summary-value" id="total-duration">—</span>
+                </div>
+                <div class="summary-row">
+                    <span class="summary-label">Fine stimata</span>
+                    <span class="summary-value" id="end-time">—</span>
+                </div>
+            </div>
+
+            <button class="start-btn" id="start-btn">
+                Inizia la sessione
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════
+         SCREEN 2: TIMER
+    ══════════════════════════════════════════════════════════ -->
+    <div id="screen-timer" class="screen">
+
+        <!-- Top bar -->
+        <div class="timer-topbar">
+            <button class="topbar-btn" id="btn-back-setup" title="Torna al setup">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+            </button>
+            <div class="topbar-info">
+                <span class="phase-label" id="phase-label">Focus</span>
+                <span class="cycle-info" id="cycle-info">Pomodoro 1 / 4</span>
+            </div>
+            <div class="topbar-right">
+                <button class="topbar-btn" id="btn-settings" title="Impostazioni">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                </button>
+                <button class="topbar-btn" id="btn-fullscreen" title="Fullscreen">
+                    <svg id="icon-fullscreen-enter" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+                    <svg id="icon-fullscreen-exit" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3"/></svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Timer ring -->
+        <div class="timer-center">
+            <div class="ring-wrapper">
+                <svg class="ring-svg" viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Track -->
+                    <circle class="ring-track" cx="160" cy="160" r="140"/>
+                    <!-- Progress -->
+                    <circle class="ring-progress" id="ring-progress" cx="160" cy="160" r="140"/>
+                </svg>
+                <div class="timer-face">
+                    <div class="timer-digits" id="timer-digits">25:00</div>
+                    <div class="timer-phase-mini" id="timer-phase-mini">Focus</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Controls -->
+        <div class="timer-controls">
+            <button class="ctrl-btn ctrl-btn--secondary" id="btn-skip" title="Salta fase">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M6 18L14.5 12 6 6v12zM16 6v12h2V6h-2z"/></svg>
+            </button>
+            <button class="ctrl-btn ctrl-btn--primary" id="btn-play-pause">
+                <svg id="icon-play" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                <svg id="icon-pause" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor" style="display:none"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+            </button>
+            <button class="ctrl-btn ctrl-btn--secondary" id="btn-reset" title="Riavvia fase">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+            </button>
+        </div>
+
+        <!-- Session end time -->
+        <div class="timer-footer">
+            <span id="session-end-display"></span>
+        </div>
+
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════
+         OVERLAY: 20-20-20 Eye Rule
+    ══════════════════════════════════════════════════════════ -->
+    <div id="overlay-eye" class="overlay" role="dialog" aria-modal="true" aria-labelledby="eye-title">
+        <div class="overlay-card">
+            <div class="overlay-icon">👁️</div>
+            <h2 class="overlay-title" id="eye-title">Riposa gli occhi</h2>
+            <p class="overlay-text">Guarda a circa <strong>6 metri di distanza</strong> per i prossimi 20 secondi.</p>
+            <div class="eye-countdown" id="eye-countdown">20</div>
+            <div class="eye-ring-wrap">
+                <svg class="eye-ring-svg" viewBox="0 0 80 80">
+                    <circle class="eye-ring-track" cx="40" cy="40" r="34"/>
+                    <circle class="eye-ring-progress" id="eye-ring-progress" cx="40" cy="40" r="34"/>
+                </svg>
+            </div>
+            <button class="overlay-dismiss" id="btn-eye-dismiss">Capito, grazie</button>
+        </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════
+         OVERLAY: Session Complete
+    ══════════════════════════════════════════════════════════ -->
+    <div id="overlay-complete" class="overlay" role="dialog" aria-modal="true" aria-labelledby="complete-title">
+        <div class="overlay-card overlay-card--complete">
+            <div class="overlay-icon">🎉</div>
+            <h2 class="overlay-title" id="complete-title">Sessione completata!</h2>
+            <p class="overlay-text" id="complete-text">Hai completato tutti i pomodori.</p>
+            <button class="start-btn" id="btn-new-session">Nuova sessione</button>
+        </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════
+         SETTINGS PANEL
+    ══════════════════════════════════════════════════════════ -->
+    <div id="settings-backdrop" class="settings-backdrop" hidden></div>
+    <div id="settings-panel" class="settings-panel" hidden>
+        <div class="settings-header">
+            <h2 class="settings-title">Impostazioni</h2>
+            <button id="btn-settings-close" class="topbar-btn" aria-label="Chiudi">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+            </button>
+        </div>
+
+        <div class="settings-body">
+
+            <!-- Comportamento -->
+            <p class="settings-section-label">Comportamento</p>
+
+            <div class="setting-row">
+                <div class="setting-info">
+                    <span class="setting-label">Auto-avanzamento</span>
+                    <span class="setting-desc">La fase successiva parte in automatico</span>
+                </div>
+                <label class="toggle">
+                    <input type="checkbox" id="setting-auto-advance" checked>
+                    <span class="toggle-slider"></span>
+                </label>
+            </div>
+
+            <div class="setting-row">
+                <div class="setting-info">
+                    <span class="setting-label">Regola 20-20-20 👁️</span>
+                    <span class="setting-desc">Avviso ogni 20 min per riposare gli occhi</span>
+                </div>
+                <label class="toggle">
+                    <input type="checkbox" id="setting-eye-breaks" checked>
+                    <span class="toggle-slider"></span>
+                </label>
+            </div>
+
+            <!-- Colori -->
+            <p class="settings-section-label">Colori fasi</p>
+
+            <div class="setting-row">
+                <div class="setting-info">
+                    <span class="setting-label">🍅 Focus</span>
+                </div>
+                <input type="color" id="setting-focus-color" class="color-input" value="#f97316">
+            </div>
+
+            <div class="setting-row">
+                <div class="setting-info">
+                    <span class="setting-label">☕ Pausa corta</span>
+                </div>
+                <input type="color" id="setting-break-color" class="color-input" value="#22d3ee">
+            </div>
+
+            <div class="setting-row">
+                <div class="setting-info">
+                    <span class="setting-label">🌿 Pausa lunga</span>
+                </div>
+                <input type="color" id="setting-long-break-color" class="color-input" value="#a78bfa">
+            </div>
+
+            <button id="btn-settings-reset" class="settings-reset-btn">
+                Ripristina predefiniti
+            </button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+    <script data-goatcounter="https://simolapo.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
