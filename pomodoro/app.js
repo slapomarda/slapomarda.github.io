@@ -21,18 +21,18 @@ const MODES = {
         longBreak:  30 * 60,   // 1800 s
         cyclesBeforeLong: 3,
     },
-    prova: {
-        label:      'Prova',
-        focus:      10,        //  10 s
-        shortBreak: 5,         //   5 s
-        longBreak:  10,        //  10 s
-        cyclesBeforeLong: 2,
+    custom: {
+        label:      'Personalizzata',
+        focus:      15 * 60,
+        shortBreak: 5  * 60,
+        longBreak:  15 * 60,
+        cyclesBeforeLong: 4,
     },
 };
 
 const PHASES = { FOCUS: 'focus', SHORT_BREAK: 'break', LONG_BREAK: 'long-break' };
 
-const EYE_INTERVAL   = 20 * 60; // trigger every 20 min during focus
+const EYE_INTERVAL   = 10; // 10 sec for testing
 const EYE_DURATION   = 20;       // 20-second break
 
 const RING_CIRC      = 2 * Math.PI * 140;  // ≈ 879.65
@@ -49,6 +49,12 @@ const DEFAULT_SETTINGS = {
     focusColor:     '#f97316',
     breakColor:     '#22d3ee',
     longBreakColor: '#a78bfa',
+    customMode: {
+        focus: 15,
+        shortBreak: 5,
+        longBreak: 15,
+        cyclesBeforeLong: 4
+    }
 };
 
 // ─── State ───────────────────────────────────────────────────────────────────
@@ -93,10 +99,16 @@ const el = {
     // Setup
     modeClassicLabel: $('mode-classic-label'),
     modeLongLabel:    $('mode-long-label'),
-    modeProvaLabel:   $('mode-prova-label'),
+    modeCustomLabel:  $('mode-custom-label'),
     modeClassicRadio: $('mode-classic'),
     modeLongRadio:    $('mode-long'),
-    modeProvaRadio:   $('mode-prova'),
+    modeCustomRadio:  $('mode-custom'),
+    customSettingsWrapper: $('custom-settings-wrapper'),
+    customModeDetail: $('custom-mode-detail'),
+    customFocus:      $('custom-focus'),
+    customShort:      $('custom-short'),
+    customLong:       $('custom-long'),
+    customCycles:     $('custom-cycles'),
     cyclesInput:      $('cycles-input'),
     cyclesMinus:      $('cycles-minus'),
     cyclesPlus:       $('cycles-plus'),
@@ -129,6 +141,10 @@ const el = {
     // Complete overlay
     completeText:     $('complete-text'),
     btnNewSession:    $('btn-new-session'),
+
+    // Info overlay
+    overlayInfo:      $('overlay-info'),
+    btnInfoDismiss:   $('btn-info-dismiss'),
 
     // Settings
     btnSettings:          $('btn-settings'),
@@ -571,8 +587,21 @@ function saveSettings() {
 function loadSettings() {
     try {
         const raw = localStorage.getItem(SETTINGS_KEY);
-        if (raw) Object.assign(settings, JSON.parse(raw));
+        if (raw) {
+            const parsed = JSON.parse(raw);
+            // Ensure deep merge for customMode
+            if (parsed.customMode) {
+                settings.customMode = { ...settings.customMode, ...parsed.customMode };
+            }
+            Object.assign(settings, parsed);
+        }
     } catch(_) {}
+    
+    MODES.custom.focus = settings.customMode.focus * 60;
+    MODES.custom.shortBreak = settings.customMode.shortBreak * 60;
+    MODES.custom.longBreak = settings.customMode.longBreak * 60;
+    MODES.custom.cyclesBeforeLong = settings.customMode.cyclesBeforeLong;
+    
     applySettings();
     // Sync checkboxes and color pickers with loaded values
     el.settingAutoAdvance.checked     = settings.autoAdvance;
@@ -580,6 +609,9 @@ function loadSettings() {
     el.settingFocusColor.value        = settings.focusColor;
     el.settingBreakColor.value        = settings.breakColor;
     el.settingLongBreakColor.value    = settings.longBreakColor;
+    
+    // Sync custom settings label and inputs immediately
+    syncCustomInputs();
 }
 
 function openSettings() {
@@ -624,7 +656,15 @@ function clearState() {
 function syncModeUI() {
     el.modeClassicLabel.classList.toggle('mode-option--active', state.mode === 'classic');
     el.modeLongLabel.classList.toggle('mode-option--active', state.mode === 'long');
-    el.modeProvaLabel.classList.toggle('mode-option--active', state.mode === 'prova');
+    el.modeCustomLabel.classList.toggle('mode-option--active', state.mode === 'custom');
+    
+    if (state.mode === 'custom') {
+        el.customSettingsWrapper.classList.add('open');
+        syncCustomInputs(); // ensure inputs reflect settings
+    } else {
+        el.customSettingsWrapper.classList.remove('open');
+    }
+    
     updateSummary();
 }
 
@@ -632,6 +672,31 @@ function setCycles(n) {
     n = Math.max(1, Math.min(20, Math.round(n)));
     state.totalCycles = n;
     el.cyclesInput.value = n;
+    updateSummary();
+}
+
+function syncCustomInputs() {
+    el.customFocus.value = settings.customMode.focus;
+    el.customShort.value = settings.customMode.shortBreak;
+    el.customLong.value = settings.customMode.longBreak;
+    el.customCycles.value = settings.customMode.cyclesBeforeLong;
+    el.customModeDetail.textContent = `${settings.customMode.focus} / ${settings.customMode.shortBreak} / ${settings.customMode.longBreak} min`;
+}
+
+function updateCustomSettingsFromInputs() {
+    settings.customMode.focus = Math.max(1, parseInt(el.customFocus.value) || 25);
+    settings.customMode.shortBreak = Math.max(1, parseInt(el.customShort.value) || 5);
+    settings.customMode.longBreak = Math.max(1, parseInt(el.customLong.value) || 15);
+    settings.customMode.cyclesBeforeLong = Math.max(1, parseInt(el.customCycles.value) || 4);
+    
+    // Update the MODES object dynamically
+    MODES.custom.focus = settings.customMode.focus * 60;
+    MODES.custom.shortBreak = settings.customMode.shortBreak * 60;
+    MODES.custom.longBreak = settings.customMode.longBreak * 60;
+    MODES.custom.cyclesBeforeLong = settings.customMode.cyclesBeforeLong;
+    
+    saveSettings();
+    syncCustomInputs();
     updateSummary();
 }
 
@@ -656,24 +721,28 @@ el.modeLongLabel.addEventListener('click', () => {
     el.modeLongRadio.checked = true;
     syncModeUI();
 });
-el.modeProvaLabel.addEventListener('click', () => {
-    state.mode = 'prova';
-    el.modeProvaRadio.checked = true;
+el.modeCustomLabel.addEventListener('click', () => {
+    state.mode = 'custom';
+    el.modeCustomRadio.checked = true;
     syncModeUI();
 });
 
-// Info button toggle
-const infoBtn     = $('info-btn');
-const infoTooltip = $('info-tooltip');
-infoBtn.addEventListener('click', () => {
-    infoTooltip.hidden = !infoTooltip.hidden;
-    infoBtn.classList.toggle('active', !infoTooltip.hidden);
+// Custom mode input listeners
+[el.customFocus, el.customShort, el.customLong, el.customCycles].forEach(input => {
+    input.addEventListener('change', updateCustomSettingsFromInputs);
 });
-// Close tooltip when clicking outside
-document.addEventListener('click', e => {
-    if (!infoBtn.contains(e.target) && !infoTooltip.contains(e.target)) {
-        infoTooltip.hidden = true;
-        infoBtn.classList.remove('active');
+
+// Info button toggle
+const infoBtn = $('info-btn');
+infoBtn.addEventListener('click', () => {
+    el.overlayInfo.classList.add('overlay--active');
+});
+el.btnInfoDismiss.addEventListener('click', () => {
+    el.overlayInfo.classList.remove('overlay--active');
+});
+el.overlayInfo.addEventListener('click', (e) => {
+    if (e.target === el.overlayInfo) {
+        el.overlayInfo.classList.remove('overlay--active');
     }
 });
 
@@ -763,9 +832,10 @@ document.addEventListener('keydown', e => {
         if (state.eyeActive) return; // don't toggle during eye break
         if (state.running) pauseTimer(); else startTimer();
     }
-    // Escape → dismiss eye overlay or close settings
+    // Escape → dismiss eye overlay, close info overlay, or close settings
     if (e.code === 'Escape') {
         if (state.eyeActive) dismissEyeBreak(!state.running);
+        else if (el.overlayInfo.classList.contains('overlay--active')) el.overlayInfo.classList.remove('overlay--active');
         else if (!el.settingsPanel.hidden) closeSettings();
     }
 });

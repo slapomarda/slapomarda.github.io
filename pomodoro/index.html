@@ -52,29 +52,37 @@
                             <span class="mode-detail">50 / 10 / 30 min</span>
                         </div>
                     </label>
-                    <label class="mode-option mode-option--prova" id="mode-prova-label">
-                        <input type="radio" name="mode" value="prova" id="mode-prova">
+                    <label class="mode-option" id="mode-custom-label">
+                        <input type="radio" name="mode" value="custom" id="mode-custom">
                         <div class="mode-option-body">
-                            <span class="mode-name">🧪 Prova</span>
-                            <span class="mode-detail">10 / 5 / 10 sec</span>
+                            <span class="mode-name">Personalizzata</span>
+                            <span class="mode-detail" id="custom-mode-detail">...</span>
                         </div>
                     </label>
                 </div>
-                <!-- Info tooltip -->
-                <div class="info-tooltip" id="info-tooltip" hidden>
-                    <p class="tooltip-title">Come funziona il Pomodoro?</p>
-                    <p class="tooltip-line">Ogni ciclo: <strong>Focus → Pausa corta</strong>. Dopo un certo numero di cicli scatta una <strong>pausa lunga</strong>.</p>
-                    <div class="tooltip-table">
-                        <div class="tooltip-row">
-                            <span>🍅 Classica</span>
-                            <span>25' focus · 5' pausa · ogni <strong>4</strong> cicli → 🌿 15' pausa lunga</span>
-                        </div>
-                        <div class="tooltip-row">
-                            <span>🍅 Lunga</span>
-                            <span>50' focus · 10' pausa · ogni <strong>3</strong> cicli → 🌿 30' pausa lunga</span>
+                <!-- Info tooltip removed -->
+
+                <div id="custom-settings-wrapper" class="custom-settings-wrapper">
+                    <div class="custom-settings">
+                        <div class="custom-settings-grid">
+                            <div class="custom-input-group">
+                                <label>Focus (min)</label>
+                                <input type="number" id="custom-focus" min="1" max="120" value="15">
+                            </div>
+                            <div class="custom-input-group">
+                                <label>Pausa corta (min)</label>
+                                <input type="number" id="custom-short" min="1" max="30" value="5">
+                            </div>
+                            <div class="custom-input-group">
+                                <label>Pausa lunga (min)</label>
+                                <input type="number" id="custom-long" min="1" max="60" value="15">
+                            </div>
+                            <div class="custom-input-group">
+                                <label>Cicli prima della lunga</label>
+                                <input type="number" id="custom-cycles" min="1" max="10" value="4">
+                            </div>
                         </div>
                     </div>
-                    <p class="tooltip-eye">👁️ <strong>20-20-20 (Riposo occhi da schermo)</strong>: ogni 20 min di focus, guarda lontano per 20 sec.</p>
                 </div>
             </div>
 
@@ -177,14 +185,14 @@
             <div class="overlay-icon">👁️</div>
             <h2 class="overlay-title" id="eye-title">Riposa gli occhi</h2>
             <p class="overlay-text">Guarda a circa <strong>6 metri di distanza</strong> per i prossimi 20 secondi.</p>
-            <div class="eye-countdown" id="eye-countdown">20</div>
             <div class="eye-ring-wrap">
+                <div class="eye-countdown" id="eye-countdown">20</div>
                 <svg class="eye-ring-svg" viewBox="0 0 80 80">
                     <circle class="eye-ring-track" cx="40" cy="40" r="34"/>
                     <circle class="eye-ring-progress" id="eye-ring-progress" cx="40" cy="40" r="34"/>
                 </svg>
             </div>
-            <button class="overlay-dismiss" id="btn-eye-dismiss">Capito, grazie</button>
+            <button class="overlay-dismiss" id="btn-eye-dismiss">Fatto</button>
         </div>
     </div>
 
@@ -197,6 +205,29 @@
             <h2 class="overlay-title" id="complete-title">Sessione completata!</h2>
             <p class="overlay-text" id="complete-text">Hai completato tutti i pomodori.</p>
             <button class="start-btn" id="btn-new-session">Nuova sessione</button>
+        </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════
+         OVERLAY: Info
+    ══════════════════════════════════════════════════════════ -->
+    <div id="overlay-info" class="overlay" role="dialog" aria-modal="true" aria-labelledby="info-title">
+        <div class="overlay-card" style="text-align: left;">
+            <div class="overlay-icon" style="margin: 0 auto 1rem;">ℹ️</div>
+            <h2 class="overlay-title" id="info-title" style="text-align: center;">Come funziona?</h2>
+            <p class="overlay-text" style="text-align: center; margin-bottom: 1.5rem;">Ogni ciclo: <strong>Focus → Pausa corta</strong>. Dopo un certo numero di cicli scatta una <strong>pausa lunga</strong>.</p>
+            <div class="tooltip-table">
+                <div class="tooltip-row">
+                    <span>🍅 Classica</span>
+                    <span>25' focus · 5' pausa · ogni <strong>4</strong> cicli → 🌿 15' pausa lunga</span>
+                </div>
+                <div class="tooltip-row">
+                    <span>🍅 Lunga</span>
+                    <span>50' focus · 10' pausa · ogni <strong>3</strong> cicli → 🌿 30' pausa lunga</span>
+                </div>
+            </div>
+            <p class="tooltip-eye" style="margin-top: 1rem; font-size: 0.85rem; color: var(--text-muted); text-align: center;">👁️ <strong>20-20-20 (Riposo occhi da schermo)</strong>: ogni 20 min di focus, guarda lontano per 20 sec.</p>
+            <button class="overlay-dismiss" id="btn-info-dismiss" style="margin-top: 1.5rem;">Ho capito</button>
         </div>
     </div>
 
