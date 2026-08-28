@@ -67,19 +67,35 @@
                         <div class="custom-settings-grid">
                             <div class="custom-input-group">
                                 <label>Focus (min)</label>
-                                <input type="number" id="custom-focus" min="1" max="120" value="15">
+                                <div class="custom-stepper">
+                                    <button class="stepper-btn" onclick="stepCustom('focus', -1)">−</button>
+                                    <input type="number" id="custom-focus" min="1" max="120" value="15">
+                                    <button class="stepper-btn" onclick="stepCustom('focus', 1)">+</button>
+                                </div>
                             </div>
                             <div class="custom-input-group">
                                 <label>Pausa corta (min)</label>
-                                <input type="number" id="custom-short" min="1" max="30" value="5">
+                                <div class="custom-stepper">
+                                    <button class="stepper-btn" onclick="stepCustom('short', -1)">−</button>
+                                    <input type="number" id="custom-short" min="1" max="30" value="5">
+                                    <button class="stepper-btn" onclick="stepCustom('short', 1)">+</button>
+                                </div>
                             </div>
                             <div class="custom-input-group">
                                 <label>Pausa lunga (min)</label>
-                                <input type="number" id="custom-long" min="1" max="60" value="15">
+                                <div class="custom-stepper">
+                                    <button class="stepper-btn" onclick="stepCustom('long', -1)">−</button>
+                                    <input type="number" id="custom-long" min="1" max="60" value="15">
+                                    <button class="stepper-btn" onclick="stepCustom('long', 1)">+</button>
+                                </div>
                             </div>
                             <div class="custom-input-group">
                                 <label>Cicli prima della lunga</label>
-                                <input type="number" id="custom-cycles" min="1" max="10" value="4">
+                                <div class="custom-stepper">
+                                    <button class="stepper-btn" onclick="stepCustom('cycles', -1)">−</button>
+                                    <input type="number" id="custom-cycles" min="1" max="10" value="4">
+                                    <button class="stepper-btn" onclick="stepCustom('cycles', 1)">+</button>
+                                </div>
                             </div>
                         </div>
                     </div>

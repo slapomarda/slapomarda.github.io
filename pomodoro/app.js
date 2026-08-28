@@ -32,7 +32,7 @@ const MODES = {
 
 const PHASES = { FOCUS: 'focus', SHORT_BREAK: 'break', LONG_BREAK: 'long-break' };
 
-const EYE_INTERVAL   = 10; // 10 sec for testing
+const EYE_INTERVAL   = 20 * 60; // trigger every 20 min during focus
 const EYE_DURATION   = 20;       // 20-second break
 
 const RING_CIRC      = 2 * Math.PI * 140;  // ≈ 879.65
@@ -681,6 +681,27 @@ function syncCustomInputs() {
     el.customLong.value = settings.customMode.longBreak;
     el.customCycles.value = settings.customMode.cyclesBeforeLong;
     el.customModeDetail.textContent = `${settings.customMode.focus} / ${settings.customMode.shortBreak} / ${settings.customMode.longBreak} min`;
+}
+
+function stepCustom(field, direction) {
+    const inputMap = {
+        'focus': el.customFocus,
+        'short': el.customShort,
+        'long': el.customLong,
+        'cycles': el.customCycles
+    };
+    const input = inputMap[field];
+    if (!input) return;
+    
+    let val = parseInt(input.value) || 0;
+    val += direction;
+    
+    const min = parseInt(input.min) || 1;
+    const max = parseInt(input.max) || 120;
+    val = Math.max(min, Math.min(max, val));
+    
+    input.value = val;
+    updateCustomSettingsFromInputs();
 }
 
 function updateCustomSettingsFromInputs() {

@@ -2,8 +2,8 @@
 :root {
     --bg-primary: #f8fafc;
     --bg-secondary: #ffffff;
-    --text-primary: #1e293b;
-    --text-secondary: #475569;
+    --text-primary: #18181b;
+    --text-secondary: #52525b;
     --accent-color: #0ea5e9;
     --accent-hover: #0284c7;
     --success-color: #10b981;
@@ -14,13 +14,13 @@
 }
 
 [data-theme="dark"] {
-    --bg-primary: #0f172a;
-    --bg-secondary: #1e293b;
+    --bg-primary: #121212;
+    --bg-secondary: #1a1a1a;
     --text-primary: #f8fafc;
-    --text-secondary: #94a3b8;
+    --text-secondary: #a1a1aa;
     --accent-color: #38bdf8;
     --accent-hover: #7dd3fc;
-    --glass-bg: rgba(30, 41, 59, 0.85);
+    --glass-bg: rgba(26, 26, 26, 0.85);
     --glass-border: rgba(255, 255, 255, 0.1);
 }
 
@@ -38,8 +38,8 @@ body {
     display: flex;
     justify-content: center;
     padding: 2rem 0;
-    background-image: radial-gradient(circle at 15% 50%, rgba(14, 165, 233, 0.05), transparent 25%),
-                      radial-gradient(circle at 85% 30%, rgba(16, 185, 129, 0.05), transparent 25%);
+    background-image: radial-gradient(closest-side at 15% 50%, rgba(14, 165, 233, 0.08), rgba(14, 165, 233, 0)),
+                      radial-gradient(closest-side at 85% 30%, rgba(16, 185, 129, 0.08), rgba(16, 185, 129, 0));
     background-attachment: fixed;
 }
 
@@ -61,14 +61,11 @@ body {
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 }
 
-/* Typography */
 h1 {
     font-size: 2.5rem;
     font-weight: 700;
+    color: var(--accent-color);
     margin-bottom: 1rem;
-    background: linear-gradient(135deg, #60a5fa, #a78bfa);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
     text-align: center;
 }
 
