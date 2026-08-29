@@ -34,7 +34,7 @@
 body {
     background-color: var(--bg-primary);
     color: var(--text-primary);
-    min-height: 100vh;
+    min-height: 100dvh;
     display: flex;
     justify-content: center;
     padding: 2rem 0;
