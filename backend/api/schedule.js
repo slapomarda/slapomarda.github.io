@@ -15,8 +15,7 @@ export default async function handler(req, res) {
     }
 
     const QSTASH_TOKEN = process.env.QSTASH_TOKEN;
-    // L'URL pubblico di Vercel dove verrà ricevuta la chiamata ritardata
-    const SEND_URL = `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}/api/send`;
+    const SEND_URL = 'https://slapomarda-github-io.vercel.app/api/send';
 
     try {
         const qstashRes = await fetch(`https://qstash.upstash.io/v2/publish/${SEND_URL}`, {
