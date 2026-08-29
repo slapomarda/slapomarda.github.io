@@ -392,7 +392,9 @@ function nextPhase() {
     if (phase === PHASES.FOCUS) {
         // Focus ended
         playFocusEndSound();
-        sendNotif('Pomodoro completato! 🍅', 'Prenditi una pausa meritata.');
+        if (!window.pushSubscription) {
+            sendNotif('Pomodoro completato! 🍅', 'Prenditi una pausa meritata.');
+        }
 
         if (currentCycle >= totalCycles) {
             // Session complete
@@ -414,7 +416,9 @@ function nextPhase() {
     } else {
         // Break ended → next focus cycle
         playBreakEndSound();
-        sendNotif('Pausa finita!', 'È ora di concentrarsi di nuovo. 💪');
+        if (!window.pushSubscription) {
+            sendNotif('Pausa finita!', 'È ora di concentrarsi di nuovo. 💪');
+        }
 
         state.currentCycle++;
         state.phase        = PHASES.FOCUS;
