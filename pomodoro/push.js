@@ -1,5 +1,5 @@
 const PUBLIC_VAPID_KEY = 'BJNeyXjyAT8hQH6_vkAgHDZsn45jIDFpgEWciGKuT1qHcL2LUcFeWrzZDl9SsI1TDx96yY0KRQjeFN09X7irFWw';
-const BACKEND_URL = 'https://pomodoro-push-backend.vercel.app/api'; // user will replace this later
+const BACKEND_URL = 'https://slapomarda-github-io.vercel.app/api';
 
 let pushSubscription = null;
 let currentMessageId = null;
