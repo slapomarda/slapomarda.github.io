@@ -45,7 +45,7 @@ const STORAGE_KEY = 'pomodoro_state';
 const SETTINGS_KEY = 'pomodoro_settings';
 const DEFAULT_SETTINGS = {
     autoAdvance:    false,
-    eyeBreaks:      true,
+    eyeBreaks:      false,
     focusColor:     '#f97316',
     breakColor:     '#22d3ee',
     longBreakColor: '#a78bfa',
