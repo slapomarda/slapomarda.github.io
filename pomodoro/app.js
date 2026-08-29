@@ -44,7 +44,7 @@ const STORAGE_KEY = 'pomodoro_state';
 // Settings (localStorage)
 const SETTINGS_KEY = 'pomodoro_settings';
 const DEFAULT_SETTINGS = {
-    autoAdvance:    true,
+    autoAdvance:    false,
     eyeBreaks:      true,
     focusColor:     '#f97316',
     breakColor:     '#22d3ee',
@@ -473,13 +473,29 @@ function tick(timestamp) {
     }
 }
 
-function startTimer() {
+async function startTimer() {
     if (state.running) return;
     state.running  = true;
     lastTimestamp  = null;
     setPlayPauseUI(true);
     rafId = requestAnimationFrame(tick);
     saveState();
+
+    if (window.subscribePush) await window.subscribePush();
+    
+    let title = 'Fase terminata!';
+    let body = 'Torna all\'app.';
+    if (state.phase === PHASES.FOCUS) {
+        title = 'Pomodoro completato! 🍅';
+        body = 'Prenditi una pausa meritata.';
+    } else {
+        title = 'Pausa finita!';
+        body = 'È ora di concentrarsi di nuovo. 💪';
+    }
+    
+    if (window.scheduleServerPush && state.secondsLeft > 0) {
+        window.scheduleServerPush(title, body, state.secondsLeft);
+    }
 }
 
 function pauseTimer() {
@@ -488,12 +504,14 @@ function pauseTimer() {
     setPlayPauseUI(false);
     if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
     saveState();
+    if (window.cancelServerPush) window.cancelServerPush();
 }
 
 function stopTimer() {
     state.running = false;
     setPlayPauseUI(false);
     if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
+    if (window.cancelServerPush) window.cancelServerPush();
 }
 
 function setPlayPauseUI(isPlaying) {
@@ -925,6 +943,8 @@ el.btnSettingsReset.addEventListener('click', () => {
     el.ringProgress.style.strokeDashoffset    = 0;
     el.eyeRingProgress.style.strokeDashoffset = 0;
 
+    if (window.initPush) initPush();
+    applyTheme();
     const restored = loadState();
     if (restored && state.sessionEndTime) {
         // Restore to timer screen (paused)
