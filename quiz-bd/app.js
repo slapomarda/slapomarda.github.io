@@ -2480,11 +2480,17 @@ async function init() {
 // Router
 function navigate(view) {
     appDiv.innerHTML = ''; // Clear current
-    
+
     if (view === 'home') renderHome();
     else if (view === 'quiz') startQuiz();
     else if (view === 'results') renderResults();
     else if (view === 'progress') renderProgress();
+
+    // Show back-to-hub only on home view (mobile only, via CSS class)
+    const backBtn = document.querySelector('.back-to-hub');
+    if (backBtn) {
+        backBtn.classList.toggle('hidden-mobile', view !== 'home');
+    }
     
     // Tell MathJax to re-render if loaded
     if (window.MathJax && typeof window.MathJax.typesetPromise === 'function') {

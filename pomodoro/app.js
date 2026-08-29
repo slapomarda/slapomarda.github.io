@@ -170,6 +170,29 @@ function getAudioCtx() {
 }
 
 /**
+ * iOS Safari requires AudioContext to be created AND resumed
+ * within a direct user gesture. We call this on the first tap
+ * anywhere on the page to "unlock" audio for all future sounds.
+ */
+function unlockAudio() {
+    try {
+        const ctx = getAudioCtx();
+        if (ctx.state === 'suspended') ctx.resume();
+        // Play a silent buffer to fully unlock on older iOS
+        const buf = ctx.createBuffer(1, 1, 22050);
+        const src = ctx.createBufferSource();
+        src.buffer = buf;
+        src.connect(ctx.destination);
+        src.start(0);
+    } catch (_) {}
+    document.removeEventListener('touchstart', unlockAudio);
+    document.removeEventListener('click', unlockAudio);
+}
+
+document.addEventListener('touchstart', unlockAudio, { once: true });
+document.addEventListener('click',      unlockAudio, { once: true });
+
+/**
  * Play a simple tone.
  * @param {number}  freq       - Hz
  * @param {number}  duration   - seconds
