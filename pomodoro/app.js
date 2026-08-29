@@ -170,43 +170,33 @@ function getAudioCtx() {
 }
 
 /**
- * iOS Safari requires AudioContext to be created AND resumed
- * within a direct user gesture. We call this on the first tap
- * anywhere on the page to "unlock" audio for all future sounds.
+ * iOS Safari requires AudioContext to be unlocked within a user gesture.
+ * We also call ctx.resume() inside every playTone call as a safety net.
  */
 function unlockAudio() {
     try {
         const ctx = getAudioCtx();
-        if (ctx.state === 'suspended') ctx.resume();
-        // Play a silent buffer to fully unlock on older iOS
-        const buf = ctx.createBuffer(1, 1, 22050);
-        const src = ctx.createBufferSource();
-        src.buffer = buf;
-        src.connect(ctx.destination);
-        src.start(0);
+        ctx.resume();
     } catch (_) {}
-    document.removeEventListener('touchstart', unlockAudio);
-    document.removeEventListener('click', unlockAudio);
 }
 
 document.addEventListener('touchstart', unlockAudio, { once: true });
+document.addEventListener('touchend',   unlockAudio, { once: true });
 document.addEventListener('click',      unlockAudio, { once: true });
 
 /**
  * Play a simple tone.
- * @param {number}  freq       - Hz
- * @param {number}  duration   - seconds
- * @param {'sine'|'triangle'}  type
- * @param {number}  volume     - 0..1
  */
-function playTone(freq, duration, type = 'sine', volume = 0.3) {
+async function playTone(freq, duration, type = 'sine', volume = 0.3) {
     try {
-        const ctx  = getAudioCtx();
+        const ctx = getAudioCtx();
+        // Always resume — safe no-op if already running, crucial on iOS
+        if (ctx.state !== 'running') await ctx.resume();
         const osc  = ctx.createOscillator();
         const gain = ctx.createGain();
         osc.connect(gain);
         gain.connect(ctx.destination);
-        osc.type      = type;
+        osc.type = type;
         osc.frequency.setValueAtTime(freq, ctx.currentTime);
         gain.gain.setValueAtTime(volume, ctx.currentTime);
         gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + duration);
