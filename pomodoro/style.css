@@ -444,6 +444,7 @@ html, body {
     justify-content: center;
     transition: var(--transition);
     flex-shrink: 0;
+    touch-action: manipulation;
 }
 
 .cycles-btn:hover {
