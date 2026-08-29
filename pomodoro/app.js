@@ -499,6 +499,19 @@ async function startTimer() {
     
     if (window.scheduleServerPush && state.secondsLeft > 0) {
         window.scheduleServerPush(title, body, state.secondsLeft);
+        
+        // Sezione occhi: programma notifiche ogni 20 min (se attiva)
+        if (settings.eyeBreaks && state.phase === PHASES.FOCUS) {
+            let nextEyeBreak = EYE_INTERVAL - state.eyeSecondsElapsed;
+            while (nextEyeBreak < state.secondsLeft) {
+                window.scheduleServerPush(
+                    'Regola 20-20-20 👁️', 
+                    'Guarda un oggetto a 6 metri per 20 secondi.', 
+                    nextEyeBreak
+                );
+                nextEyeBreak += EYE_INTERVAL;
+            }
+        }
     }
 }
 
@@ -534,7 +547,9 @@ function triggerEyeBreak() {
     state.eyeCountdown = EYE_DURATION;
 
     playEyeSound();
-    sendNotif('Regola 20-20-20 👁️', 'Guarda a 6 metri per 20 secondi.');
+    if (!window.pushSubscription) {
+        sendNotif('Regola 20-20-20 👁️', 'Guarda a 6 metri per 20 secondi.');
+    }
 
     updateEyeDisplay(EYE_DURATION);
     showOverlay('eye');

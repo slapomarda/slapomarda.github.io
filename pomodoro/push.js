@@ -1,8 +1,8 @@
 const PUBLIC_VAPID_KEY = 'BJNeyXjyAT8hQH6_vkAgHDZsn45jIDFpgEWciGKuT1qHcL2LUcFeWrzZDl9SsI1TDx96yY0KRQjeFN09X7irFWw';
 const BACKEND_URL = 'https://slapomarda-github-io.vercel.app/api';
 
-let pushSubscription = null;
-let currentMessageId = null;
+window.pushSubscription = null;
+let currentMessageIds = [];
 
 async function initPush() {
     if (!('serviceWorker' in navigator) || !('PushManager' in window)) return;
@@ -24,7 +24,7 @@ async function subscribePush() {
             applicationServerKey: urlBase64ToUint8Array(PUBLIC_VAPID_KEY)
         });
     }
-    pushSubscription = sub;
+    window.pushSubscription = sub;
     return sub;
 }
 
@@ -40,36 +40,41 @@ function urlBase64ToUint8Array(base64String) {
 }
 
 async function scheduleServerPush(title, body, delaySeconds) {
-    if (!pushSubscription) await subscribePush();
-    if (!pushSubscription) return;
+    if (!window.pushSubscription) await subscribePush();
+    if (!window.pushSubscription) return;
     
     try {
         const res = await fetch(`${BACKEND_URL}/schedule`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-                subscription: pushSubscription,
+                subscription: window.pushSubscription,
                 delaySeconds: delaySeconds,
                 title: title,
                 body: body
             })
         });
         const data = await res.json();
-        currentMessageId = data.messageId;
+        if (data.messageId) {
+            currentMessageIds.push(data.messageId);
+        }
     } catch (e) {
         console.error('Failed to schedule push', e);
     }
 }
 
 async function cancelServerPush() {
-    if (!currentMessageId) return;
+    if (currentMessageIds.length === 0) return;
     try {
-        await fetch(`${BACKEND_URL}/cancel`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ messageId: currentMessageId })
-        });
-        currentMessageId = null;
+        const ids = [...currentMessageIds];
+        currentMessageIds = []; // clear immediately
+        for (const id of ids) {
+            await fetch(`${BACKEND_URL}/cancel`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ messageId: id })
+            });
+        }
     } catch (e) {}
 }
 
