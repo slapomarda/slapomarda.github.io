@@ -979,7 +979,6 @@ el.btnSettingsReset.addEventListener('click', () => {
     el.eyeRingProgress.style.strokeDashoffset = 0;
 
     if (window.initPush) initPush();
-    applyTheme();
     const restored = loadState();
     if (restored && state.sessionEndTime) {
         // Restore to timer screen (paused)
