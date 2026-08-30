@@ -136,6 +136,7 @@ const el = {
     // Eye overlay
     eyeCountdown:     $('eye-countdown'),
     eyeRingProgress:  $('eye-ring-progress'),
+    btnEyeStart:      $('btn-eye-start'),
     btnEyeDismiss:    $('btn-eye-dismiss'),
 
     // Complete overlay
@@ -554,10 +555,25 @@ function triggerEyeBreak() {
     updateEyeDisplay(EYE_DURATION);
     showOverlay('eye');
 
-    // Pause the main timer while the eye break is active (optional UX choice)
+    // Pause the main timer while the eye break is active
     const wasRunning = state.running;
     if (wasRunning) pauseTimer();
 
+    if (!settings.autoAdvance) {
+        // Manual start
+        el.btnEyeStart.style.display = 'block';
+        el.btnEyeStart.onclick = () => {
+            el.btnEyeStart.style.display = 'none';
+            startEyeCountdown(wasRunning);
+        };
+    } else {
+        // Auto start
+        el.btnEyeStart.style.display = 'none';
+        startEyeCountdown(wasRunning);
+    }
+}
+
+function startEyeCountdown(wasRunning) {
     let remaining = EYE_DURATION;
     eyeTimerInterval = setInterval(() => {
         remaining--;
