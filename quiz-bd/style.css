@@ -98,10 +98,12 @@ p {
     text-align: center;
 }
 
-.btn:hover {
-    background-color: var(--accent-hover);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+@media (hover: hover) and (pointer: fine) {
+    .btn:hover {
+        background-color: var(--accent-hover);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+    }
 }
 
 .btn-secondary {
@@ -110,8 +112,10 @@ p {
     color: var(--accent-color);
 }
 
-.btn-secondary:hover {
-    background-color: rgba(59, 130, 246, 0.1);
+@media (hover: hover) and (pointer: fine) {
+    .btn-secondary:hover {
+        background-color: rgba(59, 130, 246, 0.1);
+    }
 }
 
 .btn-group {
@@ -191,6 +195,12 @@ p {
     line-height: 1.7;
 }
 
+.question-text ol,
+.question-text ul {
+    padding-left: 1.5rem;
+    margin: 0.5rem 0;
+}
+
 .question-text img, .progress-main img, .quiz-scroll img {
     max-width: 100% !important;
     max-height: 220px !important;
@@ -257,7 +267,9 @@ p {
     font-size: 0.85em;
 }
 
-.option-item:hover { background-color: rgba(0, 0, 0, 0.05); }
+@media (hover: hover) and (pointer: fine) {
+    .option-item:hover { background-color: rgba(0, 0, 0, 0.05); }
+}
 .option-item.selected {
     border-color: var(--accent-color);
     background-color: rgba(59, 130, 246, 0.1);
@@ -416,9 +428,11 @@ p {
     background: rgba(0,0,0,0.02);
 }
 
-.nav-link:hover {
-    background: rgba(14, 165, 233, 0.1);
-    color: var(--accent-color);
+@media (hover: hover) and (pointer: fine) {
+    .nav-link:hover {
+        background-color: rgba(14, 165, 233, 0.1);
+        color: var(--accent-color);
+    }
 }
 
 .nav-link.active {
@@ -459,6 +473,12 @@ p {
     color: var(--text-primary);
     font-size: 1.1rem;
     text-align: left;
+}
+
+.progress-q-text ol,
+.progress-q-text ul {
+    padding-left: 1.5rem;
+    margin: 0.5rem 0;
 }
 .progress-q-options {
     list-style: none;
@@ -665,8 +685,10 @@ pre {
     z-index: 10;
     height: 40px; /* match theme-toggle height to center visually */
 }
-.proponi-link:hover {
-    opacity: 1;
+@media (hover: hover) and (pointer: fine) {
+    .proponi-link:hover {
+        opacity: 1;
+    }
 }
 
 @media screen and (max-width: 768px) {
