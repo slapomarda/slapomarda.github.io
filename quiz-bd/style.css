@@ -202,6 +202,12 @@ p {
     border-radius: 8px;
 }
 
+[data-theme="dark"] .question-text img,
+[data-theme="dark"] .progress-main img,
+[data-theme="dark"] .quiz-scroll img {
+    filter: invert(0.88) hue-rotate(180deg) brightness(1.1) contrast(1.1);
+}
+
 /* Lista opzioni */
 .options-list {
     list-style: none;
