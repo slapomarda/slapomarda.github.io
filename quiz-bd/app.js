@@ -2862,9 +2862,9 @@ function renderProgress() {
             // Generate options for ALL questions (seen and unseen)
             Object.entries(q.answers).forEach(([key, value]) => {
                 const isCorrect = key === q.correctAnswer;
-                // For unseen questions, we can still highlight the correct answer so they can study the options
-                const color = isCorrect ? 'var(--success-color)' : 'var(--text-secondary)';
-                const fw = isCorrect ? 'bold' : 'normal';
+                // Only highlight if the question has been seen
+                const color = (isCorrect && isSeen) ? 'var(--success-color)' : 'var(--text-secondary)';
+                const fw = (isCorrect && isSeen) ? 'bold' : 'normal';
                 optionsHtml += `<li style="color:${color}; font-weight:${fw}; margin-bottom: 0.25rem;">
                     <span style="font-weight:bold;">${key.toUpperCase()}.</span> ${value}
                 </li>`;
