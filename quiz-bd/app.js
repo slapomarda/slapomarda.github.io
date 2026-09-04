@@ -2858,25 +2858,34 @@ function renderProgress() {
         catData.questions.forEach((q) => {
             const isSeen = seenIds.has(q.id);
             let optionsHtml = '';
-            if (isSeen) {
-                Object.entries(q.answers).forEach(([key, value]) => {
-                    const isCorrect = key === q.correctAnswer;
-                    const color = isCorrect ? 'var(--success-color)' : 'var(--text-secondary)';
-                    const fw = isCorrect ? 'bold' : 'normal';
-                    optionsHtml += `<li style="color:${color}; font-weight:${fw}; margin-bottom: 0.25rem;">
-                        <span style="font-weight:bold;">${key.toUpperCase()}.</span> ${value}
-                    </li>`;
-                });
-            }
+            
+            // Generate options for ALL questions (seen and unseen)
+            Object.entries(q.answers).forEach(([key, value]) => {
+                const isCorrect = key === q.correctAnswer;
+                // For unseen questions, we can still highlight the correct answer so they can study the options
+                const color = isCorrect ? 'var(--success-color)' : 'var(--text-secondary)';
+                const fw = isCorrect ? 'bold' : 'normal';
+                optionsHtml += `<li style="color:${color}; font-weight:${fw}; margin-bottom: 0.25rem;">
+                    <span style="font-weight:bold;">${key.toUpperCase()}.</span> ${value}
+                </li>`;
+            });
+
+            // Hide question text if not seen
+            const displayQuestion = isSeen 
+                ? q.question 
+                : `<span style="font-style:italic; opacity:0.6;">Testo della domanda nascosto (sbloccalo facendolo apparire in un quiz)</span>`;
 
             const qHtml = `
-                <div class="progress-q-item" style="background: ${isSeen ? 'transparent' : 'rgba(0,0,0,0.01)'};">
+                <div class="progress-q-item" style="background: ${isSeen ? 'transparent' : 'var(--glass-bg)'}; opacity: ${isSeen ? '1' : '0.85'};">
                     <div class="progress-q-icon" style="background:${isSeen ? 'var(--success-color)' : 'transparent'}; border-color:${isSeen ? 'var(--success-color)' : 'var(--text-secondary)'};">
                         ${isSeen ? '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>' : ''}
                     </div>
                     <div style="flex:1; text-align: left; min-width: 0;">
-                        <p class="progress-q-text" style="font-weight: ${isSeen ? '600' : '400'};">${q.isAI ? '<span title="Generata da IA" style="display:inline-flex; align-items:center; justify-content:center; background:#8b5cf6; color:white; font-size:0.7rem; font-weight:bold; padding:4px 8px; border-radius:4px; margin-right:6px; vertical-align:middle; line-height:1;">🤖 IA</span>' : ''}${q.question}</p>
-                        ${isSeen ? `<ul class="progress-q-options">${optionsHtml}</ul>` : '<p class="progress-q-unseen">Non hai ancora incontrato questa domanda.</p>'}
+                        <p class="progress-q-text" style="font-weight: ${isSeen ? '600' : '400'};">
+                            ${q.isAI ? '<span title="Generata da IA" style="display:inline-flex; align-items:center; justify-content:center; background:#8b5cf6; color:white; font-size:0.7rem; font-weight:bold; padding:4px 8px; border-radius:4px; margin-right:6px; vertical-align:middle; line-height:1;">🤖 IA</span>' : ''}
+                            ${displayQuestion}
+                        </p>
+                        <ul class="progress-q-options">${optionsHtml}</ul>
                     </div>
                 </div>
             `;
