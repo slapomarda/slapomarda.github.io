@@ -2870,10 +2870,7 @@ function renderProgress() {
                 </li>`;
             });
 
-            // Hide question text if not seen
-            const displayQuestion = isSeen 
-                ? q.question 
-                : `<span style="font-style:italic; opacity:0.6;">Testo della domanda nascosto (sbloccalo facendolo apparire in un quiz)</span>`;
+            const displayQuestion = q.question;
 
             const qHtml = `
                 <div class="progress-q-item" style="background: ${isSeen ? 'transparent' : 'var(--glass-bg)'}; opacity: ${isSeen ? '1' : '0.85'};">
