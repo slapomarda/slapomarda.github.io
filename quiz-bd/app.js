@@ -2949,7 +2949,7 @@ function renderProgress() {
         <div class="mobile-progress-view glass-panel" style="padding: 0; border: none; animation: fadeIn 0.4s ease-out forwards;">
                 
                 <!-- Header fisso in alto con le statistiche -->
-                <div class="quiz-header" style="justify-content: space-around; padding: 0.75rem 0.5rem; margin-bottom: 0; background: rgba(255,255,255,0.8); backdrop-filter: blur(10px);">
+                <div class="quiz-header" style="justify-content: space-around; padding: 0.75rem 0.5rem; margin-bottom: 0; background: var(--glass-bg); backdrop-filter: blur(10px);">
                     <div style="text-align:center;">
                         <div style="font-size:1.2rem; font-weight:700; color:var(--text-primary)">${seenCount}</div>
                         <div style="font-size:0.7rem; color:var(--text-secondary); text-transform:uppercase;">Viste</div>
