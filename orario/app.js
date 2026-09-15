@@ -1,4 +1,4 @@
-﻿/**
+/**
  * app.js — Orario Lezioni
  * slapomarda.github.io/orario
  * Vanilla JS, no dependencies
@@ -48,6 +48,8 @@ document.body.appendChild(tooltip);
 
   mediaQuery.addEventListener('change', () => renderView());
 
+  // Carica l'indice delle settimane (per la navigazione locale, no CORS)
+  await loadIndex();
   await loadData();
 })();
 
@@ -394,78 +396,80 @@ function renderTimeline(lessons) {
 }
 
 /* ════════════════════════════════════════════
-   WEEK NAVIGATION
+   WEEK NAVIGATION — usa file locali pre-generati
+   (nessuna chiamata CORS al portale UniPD)
 ═══════════════════════════════════════════ */
+let weekIndex    = null;   // dati da index.json
+let currentWeekI = 0;      // indice corrente in weekIndex.weeks[]
+
+async function loadIndex() {
+  try {
+    const res = await fetch('./index.json', { cache: 'no-store' });
+    if (!res.ok) throw new Error(`index.json HTTP ${res.status}`);
+    weekIndex = await res.json();
+    // Trova la settimana corrente
+    const todayKey = todayISO();
+    currentWeekI = 0;
+    if (weekIndex.weeks && weekIndex.weeks.length > 0) {
+      // Trova la settimana che contiene oggi (o la più vicina futura)
+      const idx = weekIndex.weeks.findIndex(w => w.key >= todayKey);
+      currentWeekI = idx >= 0 ? idx : 0;
+    }
+    return true;
+  } catch (e) {
+    console.warn('[orario] index.json non trovato, navigazione disabilitata:', e);
+    weekIndex = null;
+    return false;
+  }
+}
+
 async function navigateWeek(delta) {
-  if (!currentData) return;
-  if (corsBlocked) return;
+  if (!weekIndex || !weekIndex.weeks) return;
 
-  const currentStart = parseDate(currentData.week_start);
-  if (!currentStart) return;
+  const newI = currentWeekI + delta;
+  if (newI < 0 || newI >= weekIndex.weeks.length) return;
 
-  const newStart = new Date(currentStart);
-  newStart.setDate(newStart.getDate() + delta * 7);
-  const newEnd = new Date(newStart);
-  newEnd.setDate(newEnd.getDate() + 6);
-
-  const startStr = keyToDateParam(newStart); // DD-MM-YYYY
+  currentWeekI = newI;
+  const entry = weekIndex.weeks[currentWeekI];
 
   elBtnPrev.disabled = true;
   elBtnNext.disabled = true;
   showState('loading');
 
   try {
-    const data = await fetchWeek(startStr, currentData);
+    const res = await fetch(`./${entry.file}`, { cache: 'no-store' });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const data = await res.json();
     currentData = data;
     renderAll(data);
   } catch (err) {
-    console.warn('[orario] fetchWeek failed, restoring previous state:', err);
-    // Restore previous view
-    renderAll(currentData);
-    if (corsBlocked) {
-      elCorsNotice.hidden = false;
-    }
-  }
-}
-
-async function fetchWeek(weekStartStr, referenceData) {
-  // Build POST body matching grid_call.php expectations
-  const corso = referenceData.corso || '';
-  const aa    = referenceData.anno_accademico || '';
-  const anni  = Array.isArray(referenceData.anni_corso) ? referenceData.anni_corso : [];
-
-  const body = new FormData();
-  body.append('corso', corso);
-  body.append('aa', aa);
-  body.append('anni', anni.join(','));
-  body.append('week_start', weekStartStr);
-
-  // Try direct fetch (may be blocked by CORS)
-  try {
-    const res = await fetch('grid_call.php', {
-      method: 'POST',
-      body,
-      mode: 'cors',
-    });
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    return await res.json();
-  } catch (corsErr) {
-    console.warn('[orario] grid_call.php CORS error:', corsErr);
-    corsBlocked = true;
-    throw corsErr;
+    console.error('[orario] navigateWeek error:', err);
+    showState('error');
+    elErrorMsg.textContent = `Impossibile caricare la settimana: ${err.message}`;
   }
 }
 
 function updateNavButtons() {
-  if (corsBlocked) {
+  if (!weekIndex || !weekIndex.weeks || weekIndex.weeks.length === 0) {
+    // index.json non disponibile — disabilita navigazione
     elBtnPrev.disabled = true;
     elBtnNext.disabled = true;
     elCorsNotice.hidden = false;
-  } else {
-    elBtnPrev.disabled = false;
-    elBtnNext.disabled = false;
+    return;
   }
+  elCorsNotice.hidden = true;
+  elBtnPrev.disabled = currentWeekI <= 0;
+  elBtnNext.disabled = currentWeekI >= weekIndex.weeks.length - 1;
 }
+
+function todayISO() {
+  const d = new Date();
+  // Torna il lunedì della settimana corrente in formato YYYY-MM-DD
+  const monday = new Date(d);
+  monday.setDate(d.getDate() - d.getDay() + (d.getDay() === 0 ? -6 : 1));
+  return monday.toISOString().split('T')[0];
+}
+
 
 /* ════════════════════════════════════════════
    TOOLTIP

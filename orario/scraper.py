@@ -201,6 +201,15 @@ def current_monday() -> str:
     return monday.strftime("%d-%m-%Y")
 
 
+WEEKS_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "weeks")
+
+
+def monday_of(date_str: str) -> datetime:
+    """Restituisce il lunedì della settimana contenente date_str (DD-MM-YYYY)."""
+    dt = datetime.strptime(date_str, "%d-%m-%Y")
+    return dt - timedelta(days=dt.weekday())
+
+
 def main():
     # Force UTF-8 output (needed on Windows)
     if hasattr(sys.stdout, "reconfigure"):
@@ -208,23 +217,23 @@ def main():
 
     ctx = make_ssl_ctx()
 
-    aa_id = os.environ.get("UNIPD_AA", "")
-    corso_id = os.environ.get("UNIPD_CORSO", "")
+    aa_id     = os.environ.get("UNIPD_AA", "")
+    corso_id  = os.environ.get("UNIPD_CORSO", "")
     anno2_env = os.environ.get("UNIPD_ANNO2", "1")
-    date_str = os.environ.get("UNIPD_DATA", current_monday())
+    date_str  = os.environ.get("UNIPD_DATA", current_monday())
+    # Quante settimane scaricare (dalla corrente in poi)
+    n_weeks   = int(os.environ.get("UNIPD_WEEKS", "12"))
 
     if not aa_id or not corso_id:
         print("[ERR] Variabili UNIPD_AA e UNIPD_CORSO sono obbligatorie.")
-        print("      Esempio: UNIPD_AA=2025 UNIPD_CORSO=SC2987 UNIPD_ANNO2=1,2")
+        print("      Esempio: UNIPD_AA=2026 UNIPD_CORSO=SC2987 UNIPD_ANNO2=001PD_C2|3")
         sys.exit(1)
 
     # UNIPD_ANNO2 può contenere valori compositi tipo "001PD_C2|3"
-    # Il separatore tra più valori è il punto e virgola ";"
-    # Esempio: "001PD_C2|3" oppure "001PD_C2|1;001PD_C2|2;001PD_C2|3"
+    # Separatore tra più valori: ";" (o "," per retrocompatibilità)
     anni2 = [a.strip() for a in anno2_env.replace(",", ";").split(";") if a.strip()]
 
-    print(f"[INFO] Scaricando orario: AA={aa_id}, Corso={corso_id}, Anno={anni2}, Data={date_str}")
-
+    # --- Metadata labels ---
     try:
         anni_aa = get_anni_accademici(ctx)
         aa_label = next((a["label"] for a in anni_aa if a["valore"] == aa_id), aa_id)
@@ -235,33 +244,77 @@ def main():
     try:
         corsi = get_corsi(aa_id, ctx)
         corso_obj = next((c for c in corsi if c["valore"] == corso_id), None)
-        if corso_obj:
-            corso_label = f"{corso_obj['label']} ({corso_obj['tipo']})"
-        else:
-            corso_label = corso_id
+        corso_label = f"{corso_obj['label']} ({corso_obj['tipo']})" if corso_obj else corso_id
     except Exception as e:
         print(f"[WARN] Impossibile recuperare lista corsi: {e}")
         corso_label = corso_id
 
-    # Estrae il numero dell'anno dal valore composito: "001PD_C2|3" → "Anno 3"
     def _anno_label(v: str) -> str:
-        if "|" in v:
-            return f"Anno {v.split('|')[-1]}"
-        return f"Anno {v}"
+        return f"Anno {v.split('|')[-1]}" if "|" in v else f"Anno {v}"
 
     anni2_labels = [_anno_label(a) for a in anni2]
 
+    # --- Crea la cartella weeks/ ---
+    os.makedirs(WEEKS_DIR, exist_ok=True)
 
-    print("[INFO] Chiamata a grid_call.php ...")
-    raw = get_schedule(aa_id, corso_id, anni2, date_str, ctx)
+    # --- Scarica N settimane a partire dal lunedì corrente ---
+    start_monday = monday_of(date_str)
+    index_entries = []
 
-    normalized = normalize_schedule(raw, aa_label, corso_label, anni2_labels)
+    for i in range(n_weeks):
+        week_monday = start_monday + timedelta(weeks=i)
+        week_date_str = week_monday.strftime("%d-%m-%Y")
+        week_key = week_monday.strftime("%Y-%m-%d")  # usato come chiave file
+        filename = f"{week_key}.json"
+        filepath = os.path.join(WEEKS_DIR, filename)
 
-    with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
-        json.dump(normalized, f, ensure_ascii=False, indent=2)
+        print(f"[{i+1:2d}/{n_weeks}] Settimana {week_date_str} ...", end=" ", flush=True)
 
-    n = len(normalized["lessons"])
-    print(f"[OK]   Salvato {OUTPUT_FILE} -- {n} lezioni trovate per la settimana del {normalized['week_start']}")
+        try:
+            raw = get_schedule(aa_id, corso_id, anni2, week_date_str, ctx)
+            normalized = normalize_schedule(raw, aa_label, corso_label, anni2_labels)
+
+            with open(filepath, "w", encoding="utf-8") as f:
+                json.dump(normalized, f, ensure_ascii=False, indent=2)
+
+            n_lessons = len(normalized["lessons"])
+            print(f"{n_lessons} lezioni")
+
+            index_entries.append({
+                "key": week_key,
+                "file": f"weeks/{filename}",
+                "week_start": normalized["week_start"],
+                "week_end": normalized["week_end"],
+                "n_lessons": n_lessons,
+            })
+
+        except Exception as e:
+            print(f"ERRORE: {e}")
+
+    # --- Salva anche l'orario.json corrente (settimana 0) per retrocompatibilità ---
+    if index_entries:
+        first = index_entries[0]
+        first_path = os.path.join(WEEKS_DIR, f"{first['key']}.json")
+        if os.path.exists(first_path):
+            import shutil
+            shutil.copy(first_path, OUTPUT_FILE)
+
+    # --- Salva index.json ---
+    index_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "index.json")
+    index_data = {
+        "generated_at": datetime.utcnow().isoformat() + "Z",
+        "anno_accademico": aa_label,
+        "corso": corso_label,
+        "anni_corso": anni2_labels,
+        "current_week": index_entries[0]["key"] if index_entries else None,
+        "weeks": index_entries,
+    }
+    with open(index_path, "w", encoding="utf-8") as f:
+        json.dump(index_data, f, ensure_ascii=False, indent=2)
+
+    total = sum(e["n_lessons"] for e in index_entries)
+    print(f"\n[OK]   {len(index_entries)} settimane scaricate, {total} lezioni totali.")
+    print(f"[OK]   Index salvato in {index_path}")
 
 
 if __name__ == "__main__":
