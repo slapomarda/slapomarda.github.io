@@ -98,7 +98,7 @@ function renderAll(data) {
   
   // 1. Popola la select dei canali (mantenendo 'Tutti')
   const channelSelect = document.getElementById('channel-select');
-  const allChannels = [...new Set(lessons.map(l => l.canale))].filter(Boolean).sort();
+  const allChannels = [...new Set(lessons.flatMap(l => l.canali || []))].filter(Boolean).sort();
   
   // Aggiorna le opzioni solo se mancano
   if (channelSelect && channelSelect.options.length <= 1 && allChannels.length > 0) {
@@ -113,7 +113,7 @@ function renderAll(data) {
 
   // 2. Filtra prima di tutto per canale
   if (selectedChannel !== 'Tutti') {
-    lessons = lessons.filter(l => l.canale === selectedChannel);
+    lessons = lessons.filter(l => l.canali && l.canali.includes(selectedChannel));
   }
   
   // 3. Costruisce il pannello filtri solo con le materie del canale scelto
@@ -143,7 +143,7 @@ function buildFilterPanel(lessons) {
   
   lessons.forEach(l => {
     if (!l.subject) return;
-    const c = selectedChannel === 'Tutti' ? (l.canale || 'Materie Comuni / Altri Corsi') : 'Materie Selezionate';
+    const c = selectedChannel === 'Tutti' ? ((l.canali ? l.canali.join(", ") : "") || 'Materie Comuni / Altri Corsi') : 'Materie Selezionate';
     if (!subjectsMap[c]) subjectsMap[c] = {};
     subjectsMap[c][l.subject] = l.color;
   });
