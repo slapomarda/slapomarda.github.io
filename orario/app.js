@@ -248,6 +248,7 @@ function renderCalendarGrid(lessons, data) {
     if (isToday(dayKey)) header.classList.add('is-today');
 
     const nameSpan = el('span');
+    nameSpan.style.marginBottom = '4px';
     nameSpan.textContent = dayInfo.label.split(' ')[0]; // "LunedÃ¬"
     const dateSpan = el('span', 'day-date');
     dateSpan.textContent = dayInfo.label.split(' ')[1] || ''; // "14/09"
@@ -341,7 +342,7 @@ function buildTimelineCard(lesson) {
   card.style.setProperty('--lesson-color', lesson.color || 'var(--accent)');
 
   const timeCol = el('div', 'tl-time');
-  timeCol.innerHTML = `<div>${lesson.start}</div><div style="opacity:0.6">${lesson.end}</div>`;
+  timeCol.innerHTML = `<div>${lesson.start}</div><div style="opacity:0.6">&rarr; ${lesson.end}</div>`;
 
   const infoCol = el('div', 'tl-info');
 
@@ -349,19 +350,22 @@ function buildTimelineCard(lesson) {
   title.textContent = lesson.subject || lesson.subject_short || '';
   infoCol.appendChild(title);
 
+  if (lesson.room) {
+    const cleanRoom = lesson.room.split('[')[0].trim();
+    const r = el('div', 'tl-room');
+    r.innerHTML = `<strong>Aula: ${cleanRoom}</strong>`;
+    r.style.fontSize = '0.95rem';
+    r.style.marginBottom = '2px';
+    r.style.color = 'var(--text-secondary)';
+    infoCol.appendChild(r);
+  }
+
   if (lesson.teacher) {
     const teacherRow = el('div', 'tl-teacher');
     teacherRow.textContent = `Prof: ${lesson.teacher}`;
-    teacherRow.style.fontSize = '0.85rem';
+    teacherRow.style.fontSize = '0.75rem';
     teacherRow.style.color = 'var(--text-secondary)';
-    teacherRow.style.marginBottom = '2px';
     infoCol.appendChild(teacherRow);
-  }
-
-  if (lesson.room) {
-    const r = el('span', 'tl-room');
-    r.textContent = `Aula: ${lesson.room}`;
-    infoCol.appendChild(r);
   }
 
   card.appendChild(timeCol);
@@ -385,7 +389,8 @@ function buildCalLessonCard(lesson) {
   const detailsContainer = el('div', 'lesson-details-inline');
   
   const room = el('span', 'lesson-room');
-  room.textContent = lesson.room ? `Aula: ${lesson.room}` : '';
+  const cleanRoom = lesson.room ? lesson.room.split('[')[0].trim() : '';
+  room.textContent = lesson.room ? `Aula: ${cleanRoom}` : '';
   
   const teacher = el('span', 'lesson-teacher');
   teacher.textContent = lesson.teacher ? `Prof: ${lesson.teacher}` : '';
@@ -639,7 +644,7 @@ function showTooltip(e, lesson) {
   if (lesson.room) {
     tooltip.appendChild(tooltipRow(iconPin(), lesson.room));
   }
-  tooltip.appendChild(tooltipRow(iconClock(), `${lesson.start} â€“ ${lesson.end}`));
+  tooltip.appendChild(tooltipRow(iconClock(), `${lesson.start} &rarr; ${lesson.end}`));
   if (lesson.note) {
     tooltip.appendChild(tooltipRow(iconNote(), lesson.note));
   }

@@ -262,7 +262,7 @@ body {
   max-height: 70vh;
   overflow-y: auto;
   z-index: 1000;
-  background: rgba(15, 23, 42, 0.95);
+  background: rgba(30, 30, 30, 0.97);
   backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: var(--radius);
@@ -837,6 +837,5 @@ body {
 .lesson-room, .lesson-teacher {
   display: block;
   font-size: 0.8rem !important;
-  color: #ffffff !important;
-  opacity: 0.9;
+  color: var(--text-secondary) !important;
 }
