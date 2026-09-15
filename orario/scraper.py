@@ -24,7 +24,7 @@ import sys
 import ssl
 import urllib.request
 import urllib.parse
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 
 BASE_URL = "https://agendastudentiunipd.easystaff.it"
 OUTPUT_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "orario.json")
@@ -87,7 +87,7 @@ def get_corsi(aa_id: str, ctx) -> list:
 
 def get_schedule(aa_id: str, corso_id: str, anni2: list, date_str: str, ctx) -> dict:
     """
-    Chiama grid_call.php e ritorna il JSON grezzo dell'orario.
+    Chiama grid_call.php in POST e ritorna il JSON grezzo dell'orario.
     date_str: DD-MM-YYYY
     """
     params = [
@@ -97,14 +97,30 @@ def get_schedule(aa_id: str, corso_id: str, anni2: list, date_str: str, ctx) -> 
         ("anno", aa_id),
         ("corso", corso_id),
         ("visualizzazione_orario", "cal"),
-        ("data", date_str),
+        ("date", date_str),
+        ("all_events", "1")
     ]
     for a in anni2:
         params.append(("anno2[]", a))
 
-    query = urllib.parse.urlencode(params)
-    url = f"{BASE_URL}/grid_call.php?{query}"
-    body = fetch(url, ctx)
+    data = urllib.parse.urlencode(params).encode('ascii')
+    url = f"{BASE_URL}/grid_call.php"
+    
+    req = urllib.request.Request(
+        url, 
+        data=data, 
+        headers={
+            "User-Agent": HEADERS["User-Agent"],
+            "Accept": HEADERS["Accept"],
+            "Referer": HEADERS["Referer"],
+            "X-Requested-With": "XMLHttpRequest",
+            "Content-Type": "application/x-www-form-urlencoded"
+        }
+    )
+    
+    with urllib.request.urlopen(req, context=ctx, timeout=30) as r:
+        body = r.read().decode("utf-8", errors="replace")
+        
     return json.loads(body)
 
 
@@ -129,8 +145,19 @@ def normalize_schedule(raw: dict, aa_label: str, corso_label: str, anni2_labels:
         fascia_fine = cell.get("ora_fine")
 
         day_date = giorni_map.get(int(giorno_val)) if giorno_val is not None else None
-        time_start = fasce_map.get(int(fascia_inizio)) if fascia_inizio is not None else None
-        time_end = fasce_map.get(int(fascia_fine)) if fascia_fine is not None else None
+        
+        def _parse_time(val):
+            if not val: return None
+            val_str = str(val)
+            if ":" in val_str:
+                return val_str[:5]  # already a time string, es '08:30' o '08:30:00'
+            try:
+                return fasce_map.get(int(val))
+            except ValueError:
+                return val_str
+
+        time_start = _parse_time(fascia_inizio)
+        time_end = _parse_time(fascia_fine)
 
         docenti = cell.get("docenti", [])
         if isinstance(docenti, list):
@@ -174,7 +201,7 @@ def normalize_schedule(raw: dict, aa_label: str, corso_label: str, anni2_labels:
     lessons.sort(key=sort_key)
 
     return {
-        "generated_at": datetime.utcnow().isoformat() + "Z",
+        "generated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "anno_accademico": aa_label,
         "corso": corso_label,
         "anni_corso": anni2_labels,
@@ -220,7 +247,11 @@ def main():
     aa_id     = os.environ.get("UNIPD_AA", "")
     corso_id  = os.environ.get("UNIPD_CORSO", "")
     anno2_env = os.environ.get("UNIPD_ANNO2", "1")
-    date_str  = os.environ.get("UNIPD_DATA", current_monday())
+    
+    date_str = os.environ.get("UNIPD_DATA", "").strip()
+    if not date_str:
+        date_str = current_monday()
+        
     # Quante settimane scaricare (dalla corrente in poi)
     n_weeks   = int(os.environ.get("UNIPD_WEEKS", "12"))
 
@@ -302,7 +333,7 @@ def main():
     # --- Salva index.json ---
     index_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "index.json")
     index_data = {
-        "generated_at": datetime.utcnow().isoformat() + "Z",
+        "generated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "anno_accademico": aa_label,
         "corso": corso_label,
         "anni_corso": anni2_labels,
