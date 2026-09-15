@@ -351,7 +351,7 @@ function buildTimelineCard(lesson) {
 
   if (lesson.teacher) {
     const teacherRow = el('div', 'tl-teacher');
-    teacherRow.textContent = lesson.teacher ? Prof:  : '';
+    teacherRow.textContent = `Prof: ${lesson.teacher}`;
     teacherRow.style.fontSize = '0.85rem';
     teacherRow.style.color = 'var(--text-secondary)';
     teacherRow.style.marginBottom = '2px';
@@ -360,7 +360,7 @@ function buildTimelineCard(lesson) {
 
   if (lesson.room) {
     const r = el('span', 'tl-room');
-    r.textContent = lesson.room ? Aula:  : '';
+    r.textContent = `Aula: ${lesson.room}`;
     infoCol.appendChild(r);
   }
 
@@ -385,10 +385,10 @@ function buildCalLessonCard(lesson) {
   const detailsContainer = el('div', 'lesson-details-inline');
   
   const room = el('span', 'lesson-room');
-  room.textContent = lesson.room ? Aula:  : '';
+  room.textContent = lesson.room ? `Aula: ${lesson.room}` : '';
   
   const teacher = el('span', 'lesson-teacher');
-  teacher.textContent = lesson.teacher ? Prof:  : '';
+  teacher.textContent = lesson.teacher ? `Prof: ${lesson.teacher}` : '';
   teacher.style.fontSize = '0.75rem';
   teacher.style.color = 'var(--text-secondary)';
 
