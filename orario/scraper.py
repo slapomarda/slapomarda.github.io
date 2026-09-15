@@ -178,23 +178,9 @@ def normalize_schedule(raw: dict, aa_label: str, corso_label: str, anni2_labels:
         if subject not in color_map:
             color_map[subject] = PALETTE[len(color_map) % len(PALETTE)]
 
-        docenti = cell.get("docenti", [])
-        if isinstance(docenti, list):
-            teacher = ", ".join(
-                d.get("nome_completo", "") for d in docenti if d.get("nome_completo")
-            )
-        else:
-            teacher = str(docenti)
-
-        aule = cell.get("aule", [])
-        if isinstance(aule, list):
-            room = ", ".join(
-                (a.get("aula_label") or a.get("des_aula") or a.get("aula") or "")
-                for a in aule
-                if a
-            )
-        else:
-            room = str(aule)
+        # Prof e aule arrivano come stringhe dirette in questa vista
+        teacher = str(cell.get("docente") or "").strip()
+        room = str(cell.get("aula") or "").strip()
 
         # Estrai il canale (es. canale 1, canale 2) dal percorso didattico
         percorso = cell.get("percorso_didattico") or ""

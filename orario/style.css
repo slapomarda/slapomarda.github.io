@@ -157,8 +157,8 @@ body {
   position: relative;
   z-index: 5;
   flex: 1;
-  max-width: 100%;
-  width: 100%;
+  max-width: 95%;
+  width: 95%;
   margin: 0 auto;
   padding: 1.5rem 1.5rem 2rem;
   display: flex;
@@ -178,7 +178,72 @@ body {
   border: 1px solid var(--glass-border);
 }
 
+.week-display {
+  flex: 1;
+  text-align: left;
+  padding: 0 1rem;
+}
+
+.week-label {
+  font-weight: 500;
+  font-size: 1rem;
+  color: var(--text-primary);
+}
+
+.week-controls {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.channel-select {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--glass-border);
+  color: var(--text-primary);
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 0.85rem;
+  cursor: pointer;
+  outline: none;
+  backdrop-filter: blur(8px);
+  transition: var(--transition);
+}
+.channel-select:hover, .channel-select:focus {
+  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.1);
+}
+.channel-select option {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+.btn-icon, .week-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  border: 1px solid var(--glass-border);
+  background: var(--glass-bg);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.btn-icon:hover:not(:disabled), .week-btn:hover:not(:disabled) {
+  background: rgba(255,255,255,0.1);
+  border-color: rgba(255,255,255,0.2);
+}
+
+.btn-icon:disabled, .week-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
 /* ── Filter Panel ── */
+.filter-panel {
   background: var(--glass-bg);
   backdrop-filter: blur(12px);
   border: 1px solid var(--glass-border);
@@ -189,6 +254,7 @@ body {
   animation: fade-in 0.2s ease-out;
 }
 
+.filter-panel h3 { margin-bottom: 0.5rem; font-size: 1.2rem; }
 .filter-subtitle { font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1rem; }
 
 .filter-section-title {
@@ -249,24 +315,6 @@ body {
 }
 .btn-primary:hover { background: #6d28d9; }
 
-.week-display {
-  flex: 1;
-  text-align: left;
-  padding: 0 1rem;
-}
-
-.week-label {
-  font-weight: 500;
-  font-size: 1rem;
-}
-
-.week-controls {
-  display: flex;
-  gap: 0.5rem;
-}
-
-.btn-icon, .week-btn {
-  display: flex;
   align-items: center;
   justify-content: center;
   width: 40px;

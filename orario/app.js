@@ -1,26 +1,26 @@
-/**
- * app.js — Orario Lezioni
+﻿/**
+ * app.js â€” Orario Lezioni
  * slapomarda.github.io/orario
  * Vanilla JS, no dependencies
  */
 
-/* ── Constants ── */
+/* â”€â”€ Constants â”€â”€ */
 const GRID_START_HOUR   = 7;
 const GRID_START_MIN    = 30;  // 7:30
 const GRID_SLOT_MIN     = 30;  // each row = 30 min
-const GRID_TOTAL_SLOTS  = 25;  // 7:30 → 20:00
+const GRID_TOTAL_SLOTS  = 25;  // 7:30 â†’ 20:00
 const GRID_START_TOTAL  = GRID_START_HOUR * 60 + GRID_START_MIN; // 450 min
 
-const DAY_NAMES = ['Domenica','Lunedì','Martedì','Mercoledì','Giovedì','Venerdì','Sabato'];
+const DAY_NAMES = ['Domenica','LunedÃ¬','MartedÃ¬','MercoledÃ¬','GiovedÃ¬','VenerdÃ¬','Sabato'];
 const DAY_NAMES_SHORT = ['Dom','Lun','Mar','Mer','Gio','Ven','Sab'];
 
-/* ── State ── */
+/* â”€â”€ State â”€â”€ */
 let currentData   = null;
 let mediaQuery    = window.matchMedia('(max-width: 767px)');
 let timeIndicatorInterval = null;
 let corsBlocked   = false;
 
-/* ── DOM refs ── */
+/* â”€â”€ DOM refs â”€â”€ */
 const elLoading       = document.getElementById('state-loading');
 const elError         = document.getElementById('state-error');
 const elErrorMsg      = document.getElementById('error-message');
@@ -34,14 +34,14 @@ const elBtnPrev       = document.getElementById('btn-prev');
 const elBtnNext       = document.getElementById('btn-next');
 const elCorsNotice    = document.getElementById('cors-notice');
 
-/* ── Tooltip ── */
+/* â”€â”€ Tooltip â”€â”€ */
 const tooltip = document.createElement('div');
 tooltip.className = 'lesson-tooltip';
 document.body.appendChild(tooltip);
 
-/* ════════════════════════════════════════════
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    INIT
-═══════════════════════════════════════════ */
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 (async function init() {
   elBtnPrev.addEventListener('click', () => navigateWeek(-1));
   elBtnNext.addEventListener('click', () => navigateWeek(+1));
@@ -50,6 +50,8 @@ document.body.appendChild(tooltip);
   const filterPanel = document.getElementById('filter-panel');
   const filterClose = document.getElementById('btn-close-filter');
   
+  const channelSelect = document.getElementById('channel-select');
+  if (channelSelect) channelSelect.addEventListener('change', (e) => { selectedChannel = e.target.value; localStorage.setItem('unipd_selected_channel', selectedChannel); if(currentData) renderAll(currentData); });
   if (filterBtn) filterBtn.addEventListener('click', () => { filterPanel.hidden = !filterPanel.hidden; });
   if (filterClose) filterClose.addEventListener('click', () => { 
     filterPanel.hidden = true;
@@ -63,9 +65,9 @@ document.body.appendChild(tooltip);
   await loadData();
 })();
 
-/* ════════════════════════════════════════════
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    DATA LOADING
-═══════════════════════════════════════════ */
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 async function loadData(url = './orario.json') {
   showState('loading');
   try {
@@ -81,10 +83,11 @@ async function loadData(url = './orario.json') {
   }
 }
 
-/* ════════════════════════════════════════════
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    RENDER ALL
-═══════════════════════════════════════════ */
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 let hiddenSubjects = JSON.parse(localStorage.getItem('unipd_hidden_subjects') || '[]');
+let selectedChannel = localStorage.getItem('unipd_selected_channel') || 'Tutti';
 
 function renderAll(data) {
   renderHeader(data);
@@ -93,10 +96,30 @@ function renderAll(data) {
 
   let lessons = Array.isArray(data.lessons) ? data.lessons : [];
   
-  // Costruisce il pannello filtri con TUTTE le materie disponibili in questa settimana
+  // 1. Popola la select dei canali (mantenendo 'Tutti')
+  const channelSelect = document.getElementById('channel-select');
+  const allChannels = [...new Set(lessons.map(l => l.canale))].filter(Boolean).sort();
+  
+  // Aggiorna le opzioni solo se mancano
+  if (channelSelect && channelSelect.options.length <= 1 && allChannels.length > 0) {
+    allChannels.forEach(c => {
+      const opt = document.createElement('option');
+      opt.value = c;
+      opt.textContent = c;
+      channelSelect.appendChild(opt);
+    });
+    channelSelect.value = selectedChannel;
+  }
+
+  // 2. Filtra prima di tutto per canale
+  if (selectedChannel !== 'Tutti') {
+    lessons = lessons.filter(l => l.canale === selectedChannel);
+  }
+  
+  // 3. Costruisce il pannello filtri solo con le materie del canale scelto
   buildFilterPanel(lessons);
 
-  // Applica il filtro delle materie nascoste
+  // 4. Applica il filtro delle materie nascoste (rimosse dall'utente)
   lessons = lessons.filter(l => !hiddenSubjects.includes(l.subject));
 
   if (lessons.length === 0) {
@@ -115,12 +138,12 @@ function buildFilterPanel(lessons) {
   const list = document.getElementById('filter-list');
   list.innerHTML = '';
   
-  // Raggruppa le materie per canale
-  const subjectsMap = {}; // { 'Canale 1': { 'Matematica': '#ff0000', ... } }
+  // Raggruppa le materie (se "Tutti" Ã¨ selezionato raggruppa per canale, altrimenti lista piatta o singolo gruppo)
+  const subjectsMap = {}; 
   
   lessons.forEach(l => {
     if (!l.subject) return;
-    const c = l.canale || 'Materie Comuni / Altri Corsi';
+    const c = selectedChannel === 'Tutti' ? (l.canale || 'Materie Comuni / Altri Corsi') : 'Materie Selezionate';
     if (!subjectsMap[c]) subjectsMap[c] = {};
     subjectsMap[c][l.subject] = l.color;
   });
@@ -128,11 +151,12 @@ function buildFilterPanel(lessons) {
   const channels = Object.keys(subjectsMap).sort();
   
   channels.forEach(channel => {
-    // Intestazione sezione
-    const title = el('div', 'filter-section-title');
-    title.textContent = channel;
-    title.style.gridColumn = '1 / -1';
-    list.appendChild(title);
+    if (selectedChannel === 'Tutti') {
+      const title = el('div', 'filter-section-title');
+      title.textContent = channel;
+      title.style.gridColumn = '1 / -1';
+      list.appendChild(title);
+    }
     
     const subjects = Object.keys(subjectsMap[channel]).sort();
     subjects.forEach(subject => {
@@ -151,7 +175,6 @@ function buildFilterPanel(lessons) {
         }
         localStorage.setItem('unipd_hidden_subjects', JSON.stringify(hiddenSubjects));
         
-        // Aggiornamento in tempo reale
         if (currentData) renderAll(currentData);
       });
       
@@ -169,14 +192,14 @@ function buildFilterPanel(lessons) {
   });
 }
 
-/* ════════════════════════════════════════════
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    HEADER & LABELS
-═══════════════════════════════════════════ */
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 function renderHeader(data) {
   const aa   = data.anno_accademico || '';
   const corso = data.corso || '';
   const anni  = Array.isArray(data.anni_corso) ? data.anni_corso.join(', ') : '';
-  elSubtitle.textContent = [corso, anni, aa ? `A.A. ${aa}` : ''].filter(Boolean).join(' · ');
+  elSubtitle.textContent = [corso, anni, aa ? `A.A. ${aa}` : ''].filter(Boolean).join(' Â· ');
 }
 
 function renderWeekLabel(data) {
@@ -191,9 +214,9 @@ function renderWeekLabel(data) {
   }
 }
 
-/* ════════════════════════════════════════════
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    CALENDAR GRID (desktop)
-═══════════════════════════════════════════ */
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 function renderCalendarGrid(lessons, data) {
   elCalGrid.innerHTML = '';
   if (timeIndicatorInterval) clearInterval(timeIndicatorInterval);
@@ -210,13 +233,13 @@ function renderCalendarGrid(lessons, data) {
   elCalGrid.style.gridTemplateRows =
     `var(--header-h) repeat(${GRID_TOTAL_SLOTS}, var(--slot-height))`;
 
-  // ── Corner cell (time/header intersection)
+  // â”€â”€ Corner cell (time/header intersection)
   const corner = el('div', 'cal-time-header');
   corner.style.gridColumn = '1';
   corner.style.gridRow    = '1';
   elCalGrid.appendChild(corner);
 
-  // ── Day headers
+  // â”€â”€ Day headers
   dayKeys.forEach((dayKey, colIdx) => {
     const dayInfo = dayMap[dayKey];
     const header  = el('div', 'cal-day-header');
@@ -225,7 +248,7 @@ function renderCalendarGrid(lessons, data) {
     if (isToday(dayKey)) header.classList.add('is-today');
 
     const nameSpan = el('span');
-    nameSpan.textContent = dayInfo.label.split(' ')[0]; // "Lunedì"
+    nameSpan.textContent = dayInfo.label.split(' ')[0]; // "LunedÃ¬"
     const dateSpan = el('span', 'day-date');
     dateSpan.textContent = dayInfo.label.split(' ')[1] || ''; // "14/09"
 
@@ -234,7 +257,7 @@ function renderCalendarGrid(lessons, data) {
     elCalGrid.appendChild(header);
   });
 
-  // ── Time labels + row backgrounds
+  // â”€â”€ Time labels + row backgrounds
   for (let slot = 0; slot < GRID_TOTAL_SLOTS; slot++) {
     const totalMin  = GRID_START_TOTAL + slot * GRID_SLOT_MIN;
     const h         = Math.floor(totalMin / 60);
@@ -260,7 +283,7 @@ function renderCalendarGrid(lessons, data) {
     });
   }
 
-  // ── Lesson cards
+  // â”€â”€ Lesson cards
   // Build collision-aware column offsets per day
   const lessonsByDay = {};
   dayKeys.forEach(k => { lessonsByDay[k] = []; });
@@ -309,7 +332,7 @@ function renderCalendarGrid(lessons, data) {
     });
   });
 
-  // ── Current time indicator
+  // â”€â”€ Current time indicator
   setupTimeIndicator(dayKeys);
 }
 
@@ -328,7 +351,7 @@ function buildTimelineCard(lesson) {
 
   if (lesson.teacher) {
     const teacherRow = el('div', 'tl-teacher');
-    teacherRow.textContent = `🧑‍🏫 ${lesson.teacher}`;
+    teacherRow.textContent = `ðŸ§‘â€ðŸ« ${lesson.teacher}`;
     teacherRow.style.fontSize = '0.85rem';
     teacherRow.style.color = 'var(--text-secondary)';
     teacherRow.style.marginBottom = '2px';
@@ -337,7 +360,7 @@ function buildTimelineCard(lesson) {
 
   if (lesson.room) {
     const r = el('span', 'tl-room');
-    r.textContent = `📍 ${lesson.room}`;
+    r.textContent = `ðŸ“ ${lesson.room}`;
     infoCol.appendChild(r);
   }
 
@@ -362,10 +385,10 @@ function buildCalLessonCard(lesson) {
   const detailsContainer = el('div', 'lesson-details-inline');
   
   const room = el('span', 'lesson-room');
-  room.textContent = lesson.room ? `📍 ${lesson.room}` : '';
+  room.textContent = lesson.room ? `ðŸ“ ${lesson.room}` : '';
   
   const teacher = el('span', 'lesson-teacher');
-  teacher.textContent = lesson.teacher ? `🧑‍🏫 ${lesson.teacher}` : '';
+  teacher.textContent = lesson.teacher ? `ðŸ§‘â€ðŸ« ${lesson.teacher}` : '';
   teacher.style.fontSize = '0.75rem';
   teacher.style.color = 'var(--text-secondary)';
 
@@ -456,9 +479,9 @@ function setupTimeIndicator(dayKeys) {
   timeIndicatorInterval = setInterval(updateIndicator, 60000);
 }
 
-/* ════════════════════════════════════════════
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    TIMELINE VIEW (mobile)
-═══════════════════════════════════════════ */
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 function renderTimeline(lessons) {
   elTimeline.innerHTML = '';
 
@@ -490,7 +513,7 @@ function renderTimeline(lessons) {
       const startEl = el('div', 'tl-time-start');
       startEl.textContent = lesson.start;
       const endEl = el('div', 'tl-time-end');
-      endEl.textContent = `→ ${lesson.end}`;
+      endEl.textContent = `â†’ ${lesson.end}`;
       timeDiv.appendChild(startEl);
       timeDiv.appendChild(endEl);
 
@@ -523,10 +546,10 @@ function renderTimeline(lessons) {
   });
 }
 
-/* ════════════════════════════════════════════
-   WEEK NAVIGATION — usa file locali pre-generati
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   WEEK NAVIGATION â€” usa file locali pre-generati
    (nessuna chiamata CORS al portale UniPD)
-═══════════════════════════════════════════ */
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 let weekIndex    = null;   // dati da index.json
 let currentWeekI = 0;      // indice corrente in weekIndex.weeks[]
 
@@ -539,7 +562,7 @@ async function loadIndex() {
     const todayKey = todayISO();
     currentWeekI = 0;
     if (weekIndex.weeks && weekIndex.weeks.length > 0) {
-      // Trova la settimana che contiene oggi (o la più vicina futura)
+      // Trova la settimana che contiene oggi (o la piÃ¹ vicina futura)
       const idx = weekIndex.weeks.findIndex(w => w.key >= todayKey);
       currentWeekI = idx >= 0 ? idx : 0;
     }
@@ -579,7 +602,7 @@ async function navigateWeek(delta) {
 
 function updateNavButtons() {
   if (!weekIndex || !weekIndex.weeks || weekIndex.weeks.length === 0) {
-    // index.json non disponibile — disabilita navigazione
+    // index.json non disponibile â€” disabilita navigazione
     elBtnPrev.disabled = true;
     elBtnNext.disabled = true;
     elCorsNotice.hidden = false;
@@ -592,16 +615,16 @@ function updateNavButtons() {
 
 function todayISO() {
   const d = new Date();
-  // Torna il lunedì della settimana corrente in formato YYYY-MM-DD
+  // Torna il lunedÃ¬ della settimana corrente in formato YYYY-MM-DD
   const monday = new Date(d);
   monday.setDate(d.getDate() - d.getDay() + (d.getDay() === 0 ? -6 : 1));
   return monday.toISOString().split('T')[0];
 }
 
 
-/* ════════════════════════════════════════════
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    TOOLTIP
-═══════════════════════════════════════════ */
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 function showTooltip(e, lesson) {
   tooltip.innerHTML = '';
   tooltip.style.setProperty('--tt-color', lesson.color || 'var(--accent)');
@@ -616,7 +639,7 @@ function showTooltip(e, lesson) {
   if (lesson.room) {
     tooltip.appendChild(tooltipRow(iconPin(), lesson.room));
   }
-  tooltip.appendChild(tooltipRow(iconClock(), `${lesson.start} – ${lesson.end}`));
+  tooltip.appendChild(tooltipRow(iconClock(), `${lesson.start} â€“ ${lesson.end}`));
   if (lesson.note) {
     tooltip.appendChild(tooltipRow(iconNote(), lesson.note));
   }
@@ -653,9 +676,9 @@ function tooltipRow(iconSvg, text) {
   return row;
 }
 
-/* ════════════════════════════════════════════
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    STATE DISPLAY
-═══════════════════════════════════════════ */
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 function showState(state) {
   elLoading.hidden    = state !== 'loading';
   elError.hidden      = state !== 'error';
@@ -673,9 +696,9 @@ function renderView() {
   setupIntersectionObserver();
 }
 
-/* ════════════════════════════════════════════
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    INTERSECTION OBSERVER (animate-in)
-═══════════════════════════════════════════ */
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 function setupIntersectionObserver() {
   const targets = [
     ...elTimeline.querySelectorAll('.tl-day, .tl-lesson-card'),
@@ -695,9 +718,9 @@ function setupIntersectionObserver() {
   targets.forEach(t => obs.observe(t));
 }
 
-/* ════════════════════════════════════════════
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    HELPERS
-═══════════════════════════════════════════ */
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 function el(tag, className) {
   const e = document.createElement(tag || 'div');
   if (className) e.className = className;
@@ -754,7 +777,7 @@ function keyToDateParam(date) {
 }
 
 function formatDateLabel(str) {
-  // DD-MM-YYYY → DD/MM
+  // DD-MM-YYYY â†’ DD/MM
   const [d, m, y] = str.split('-');
   if (!d || !m) return str;
   return `${d}/${m}${y ? `/${y}` : ''}`;
@@ -764,7 +787,7 @@ function isToday(dayKey) {
   return dayKey === dateToKey(new Date());
 }
 
-/* ── Inline SVG icons ── */
+/* â”€â”€ Inline SVG icons â”€â”€ */
 function iconPerson() {
   return svgIcon('<circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>');
 }
