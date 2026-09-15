@@ -137,20 +137,27 @@ html, body {
     .hub-grid {
         grid-template-columns: 1fr 1fr;
     }
-    /* Third card spans full width on 2-col */
+    /* With 4 cards: 2+2 layout — no need for spanning */
     .hub-card:last-child {
-        grid-column: 1 / -1;
+        grid-column: auto;
     }
 }
 
 @media (min-width: 800px) {
     .hub-grid {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr);
     }
     .hub-card:last-child {
         grid-column: auto;
     }
 }
+
+@media (min-width: 1024px) {
+    .hub-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
 
 /* ── Cards ───────────────────────────────────────────────── */
 .hub-card {

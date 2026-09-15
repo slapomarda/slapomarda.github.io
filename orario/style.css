@@ -1,0 +1,663 @@
+﻿/* ================================================
+   ORARIO LEZIONI — style.css
+   slapomarda.github.io/orario
+   ================================================ */
+
+/* ── Google Fonts ── */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+
+/* ── CSS Variables ── */
+:root {
+  --bg-primary:      #121212;
+  --text-primary:    #f8fafc;
+  --text-secondary:  #94a3b8;
+  --text-muted:      #475569;
+  --accent:          #f59e0b;
+  --accent-dim:      rgba(245, 158, 11, 0.15);
+  --glass-bg:        rgba(255, 255, 255, 0.03);
+  --glass-border:    rgba(255, 255, 255, 0.08);
+  --card-shadow:     0 8px 32px rgba(0, 0, 0, 0.3);
+  --transition:      all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+  --radius:          12px;
+  --radius-sm:       8px;
+  /* Orario-specific */
+  --time-col-width:  60px;
+  --day-min-width:   140px;
+  --slot-height:     28px;
+  --header-h:        48px;
+  --grid-gap:        1px;
+}
+
+/* ── Reset & Base ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Outfit', system-ui, -apple-system, sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  line-height: 1.5;
+}
+
+/* ── Background Orbs ── */
+.bg-orbs {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.35;
+  animation: orb-drift 18s ease-in-out infinite alternate;
+}
+
+.orb-1 {
+  width: 480px; height: 480px;
+  background: radial-gradient(circle, #7c3aed 0%, transparent 70%);
+  top: -120px; left: -100px;
+  animation-delay: 0s;
+}
+
+.orb-2 {
+  width: 380px; height: 380px;
+  background: radial-gradient(circle, #f59e0b 0%, transparent 70%);
+  top: 30%; right: -80px;
+  animation-delay: -6s;
+}
+
+.orb-3 {
+  width: 320px; height: 320px;
+  background: radial-gradient(circle, #0ea5e9 0%, transparent 70%);
+  bottom: -80px; left: 35%;
+  animation-delay: -12s;
+}
+
+@keyframes orb-drift {
+  0%   { transform: translate(0, 0) scale(1); }
+  50%  { transform: translate(30px, -20px) scale(1.06); }
+  100% { transform: translate(-20px, 30px) scale(0.95); }
+}
+
+/* ── Site Header ── */
+.site-header {
+  position: relative;
+  z-index: 10;
+  padding: 1.5rem 1.5rem 1rem;
+  border-bottom: 1px solid var(--glass-border);
+  background: rgba(18, 18, 18, 0.8);
+  backdrop-filter: blur(12px);
+}
+
+.header-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+  border: 1px solid var(--glass-border);
+  background: var(--glass-bg);
+  transition: var(--transition);
+  white-space: nowrap;
+  flex-shrink: 0;
+  margin-top: 0.15rem;
+}
+
+.back-link:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: var(--accent-dim);
+}
+
+.header-title-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.page-title {
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.2;
+}
+
+.page-subtitle {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+/* ── Main Content ── */
+.main-content {
+  position: relative;
+  z-index: 5;
+  flex: 1;
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 1.5rem 1rem 2rem;
+}
+
+/* ── Week Navigation ── */
+.week-nav {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.week-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  border: 1px solid var(--glass-border);
+  background: var(--glass-bg);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: var(--transition);
+  flex-shrink: 0;
+}
+
+.week-btn:hover:not(:disabled) {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: var(--accent-dim);
+}
+
+.week-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.week-display {
+  flex: 1;
+  text-align: center;
+  padding: 0.6rem 1.25rem;
+  border-radius: 10px;
+  border: 1px solid var(--glass-border);
+  background: var(--glass-bg);
+  backdrop-filter: blur(8px);
+}
+
+.week-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* ── CORS Notice ── */
+.cors-notice {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  background: rgba(245, 158, 11, 0.08);
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  margin-bottom: 1.25rem;
+}
+
+.cors-notice svg { color: var(--accent); flex-shrink: 0; }
+.cors-notice a { color: var(--accent); text-decoration: none; font-weight: 500; }
+.cors-notice a:hover { text-decoration: underline; }
+
+/* ── Loading State ── */
+.state-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 4rem 2rem;
+  color: var(--text-muted);
+}
+
+.spinner {
+  width: 36px;
+  height: 36px;
+  border: 3px solid var(--glass-border);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── Error State ── */
+.state-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 3rem 2rem;
+  text-align: center;
+  border-radius: var(--radius);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  background: rgba(239, 68, 68, 0.06);
+  color: #fca5a5;
+}
+
+.state-error h3 { font-size: 1.1rem; font-weight: 600; }
+.state-error p  { font-size: 0.9rem; color: var(--text-muted); }
+
+/* ── Empty State ── */
+.state-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 4rem 2rem;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.empty-icon { font-size: 2.5rem; }
+
+/* ── Calendar Grid (Desktop ≥768px) ── */
+.calendar-wrapper {
+  overflow-x: auto;
+  overflow-y: auto;
+  max-height: calc(100dvh - 220px);
+  border-radius: var(--radius);
+  border: 1px solid var(--glass-border);
+  background: var(--glass-bg);
+  backdrop-filter: blur(8px);
+  scrollbar-width: thin;
+  scrollbar-color: var(--glass-border) transparent;
+}
+
+.calendar-wrapper::-webkit-scrollbar { width: 6px; height: 6px; }
+.calendar-wrapper::-webkit-scrollbar-track { background: transparent; }
+.calendar-wrapper::-webkit-scrollbar-thumb { background: var(--glass-border); border-radius: 3px; }
+
+.calendar-grid {
+  display: grid;
+  /* columns: time + days — set by JS via CSS custom property */
+  position: relative;
+  min-width: max-content;
+}
+
+/* Time column cells */
+.cal-time-header {
+  grid-column: 1;
+  grid-row: 1;
+  width: var(--time-col-width);
+  height: var(--header-h);
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 30;
+  background: rgba(18,18,18,0.95);
+  border-right: 1px solid var(--glass-border);
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.cal-day-header {
+  height: var(--header-h);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(18,18,18,0.95);
+  border-bottom: 1px solid var(--glass-border);
+  text-transform: capitalize;
+  padding: 0 0.5rem;
+  white-space: nowrap;
+}
+
+.cal-day-header.is-today {
+  color: var(--accent);
+}
+
+.cal-day-header .day-date {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 400;
+  color: var(--text-muted);
+  margin-top: 0.15rem;
+}
+
+.cal-day-header.is-today .day-date {
+  color: var(--accent);
+  opacity: 0.7;
+}
+
+/* Time label cells */
+.cal-time-label {
+  grid-column: 1;
+  width: var(--time-col-width);
+  height: var(--slot-height);
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding-right: 8px;
+  font-size: 0.68rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  position: sticky;
+  left: 0;
+  z-index: 10;
+  background: rgba(18,18,18,0.9);
+  border-right: 1px solid var(--glass-border);
+  padding-top: 3px;
+}
+
+/* Background row stripes */
+.cal-row-bg {
+  border-top: 1px solid rgba(255,255,255,0.03);
+}
+
+.cal-row-bg.hour-mark {
+  border-top-color: rgba(255,255,255,0.07);
+}
+
+/* Lesson card inside grid */
+.cal-lesson {
+  position: relative;
+  margin: 2px 3px;
+  padding: 6px 8px;
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--lesson-color, var(--accent));
+  background: rgba(255,255,255,0.04);
+  border-top: 1px solid rgba(255,255,255,0.08);
+  border-right: 1px solid rgba(255,255,255,0.08);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  overflow: hidden;
+  cursor: pointer;
+  transition: var(--transition);
+  z-index: 5;
+  min-height: calc(var(--slot-height) - 4px);
+}
+
+.cal-lesson:hover {
+  background: rgba(255,255,255,0.08);
+  transform: translateY(-1px);
+  box-shadow: var(--card-shadow);
+  z-index: 15;
+}
+
+.cal-lesson .lesson-short {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--lesson-color, var(--accent));
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cal-lesson .lesson-time {
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.cal-lesson .lesson-room {
+  font-size: 0.62rem;
+  color: var(--text-muted);
+  margin-top: 1px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Current time indicator */
+.time-indicator {
+  position: absolute;
+  left: var(--time-col-width);
+  right: 0;
+  height: 2px;
+  background: #ef4444;
+  z-index: 25;
+  pointer-events: none;
+}
+
+.time-indicator::before {
+  content: '';
+  position: absolute;
+  left: -5px;
+  top: -4px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ef4444;
+}
+
+/* ── Lesson Tooltip/Overlay ── */
+.lesson-tooltip {
+  position: fixed;
+  z-index: 1000;
+  min-width: 240px;
+  max-width: 320px;
+  padding: 1rem 1.25rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--glass-border);
+  background: rgba(18, 18, 18, 0.95);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.18s ease, transform 0.18s ease;
+}
+
+.lesson-tooltip.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.tooltip-subject {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+  border-left: 3px solid var(--tt-color, var(--accent));
+  padding-left: 0.5rem;
+}
+
+.tooltip-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  margin-top: 0.3rem;
+}
+
+.tooltip-row svg { flex-shrink: 0; color: var(--text-muted); }
+
+/* ── Timeline View (Mobile <768px) ── */
+.timeline-view {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.tl-day {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.tl-day.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.tl-day-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.tl-day-name {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  text-transform: capitalize;
+}
+
+.tl-day-name.is-today { color: var(--accent); }
+
+.tl-day-divider {
+  flex: 1;
+  height: 1px;
+  background: var(--glass-border);
+}
+
+.tl-lesson-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 0.9rem 1rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--glass-border);
+  background: var(--glass-bg);
+  backdrop-filter: blur(8px);
+  margin-bottom: 0.6rem;
+  transition: var(--transition);
+  border-left: 3px solid var(--lesson-color, var(--accent));
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.35s ease, transform 0.35s ease, box-shadow 0.28s ease, background 0.28s ease;
+}
+
+.tl-lesson-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.tl-lesson-card:hover {
+  background: rgba(255,255,255,0.06);
+  box-shadow: var(--card-shadow);
+}
+
+.tl-time {
+  flex-shrink: 0;
+  min-width: 70px;
+}
+
+.tl-time-start {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--accent);
+  line-height: 1;
+}
+
+.tl-time-end {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.tl-details {
+  flex: 1;
+  min-width: 0;
+}
+
+.tl-subject {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.3;
+  margin-bottom: 0.35rem;
+}
+
+.tl-teacher {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.35rem;
+}
+
+.tl-room-badge {
+  display: inline-block;
+  padding: 0.2rem 0.55rem;
+  border-radius: 5px;
+  border: 1px solid var(--glass-border);
+  background: rgba(255,255,255,0.05);
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+.tl-note {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  font-style: italic;
+  margin-top: 0.3rem;
+}
+
+/* ── Footer ── */
+.site-footer {
+  position: relative;
+  z-index: 5;
+  text-align: center;
+  padding: 1.5rem 1rem;
+  border-top: 1px solid var(--glass-border);
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.site-footer a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.site-footer a:hover { text-decoration: underline; }
+
+/* ── Utility ── */
+[hidden] { display: none !important; }
+
+/* ── Responsive ── */
+@media (max-width: 767px) {
+  .site-header { padding: 1rem; }
+  .main-content { padding: 1rem 0.75rem 2rem; }
+
+  .calendar-wrapper { display: none !important; }
+  .timeline-view:not([hidden]) { display: flex !important; }
+
+  .week-nav { gap: 0.5rem; }
+  .week-label { font-size: 0.82rem; }
+}
+
+@media (min-width: 768px) {
+  .timeline-view { display: none !important; }
+  .calendar-wrapper:not([hidden]) { display: block !important; }
+}

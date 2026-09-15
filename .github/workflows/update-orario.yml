@@ -1,0 +1,43 @@
+﻿name: Update Orario UniPD
+
+on:
+  schedule:
+    # Every day at 02:00 UTC (03:00/04:00 Italian time)
+    - cron: '0 2 * * *'
+  workflow_dispatch:
+    inputs:
+      data:
+        description: 'Data (DD-MM-YYYY) — lascia vuoto per la settimana corrente'
+        required: false
+        default: ''
+
+jobs:
+  update-orario:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Run scraper
+        env:
+          UNIPD_AA: ${{ vars.UNIPD_AA }}
+          UNIPD_CORSO: ${{ vars.UNIPD_CORSO }}
+          UNIPD_ANNO2: ${{ vars.UNIPD_ANNO2 }}
+          UNIPD_DATA: ${{ github.event.inputs.data }}
+        run: python orario/scraper.py
+
+      - name: Commit and push orario.json
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add orario/orario.json
+          git diff --staged --quiet || git commit -m "chore: update orario [$(date -u '+%Y-%m-%d %H:%M UTC')]"
+          git push
