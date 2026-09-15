@@ -233,26 +233,74 @@ function renderCalendarGrid(lessons, data) {
   setupTimeIndicator(dayKeys);
 }
 
+function buildTimelineCard(lesson) {
+  const card = el('div', 'tl-card');
+  card.style.setProperty('--lesson-color', lesson.color || 'var(--accent)');
+
+  const timeCol = el('div', 'tl-time');
+  timeCol.innerHTML = `<div>${lesson.start}</div><div style="opacity:0.6">${lesson.end}</div>`;
+
+  const infoCol = el('div', 'tl-info');
+
+  const title = el('h4', 'tl-title');
+  title.textContent = lesson.subject || lesson.subject_short || '';
+  infoCol.appendChild(title);
+
+  if (lesson.teacher) {
+    const teacherRow = el('div', 'tl-teacher');
+    teacherRow.textContent = `🧑‍🏫 ${lesson.teacher}`;
+    teacherRow.style.fontSize = '0.85rem';
+    teacherRow.style.color = 'var(--text-secondary)';
+    teacherRow.style.marginBottom = '2px';
+    infoCol.appendChild(teacherRow);
+  }
+
+  if (lesson.room) {
+    const r = el('span', 'tl-room');
+    r.textContent = `📍 ${lesson.room}`;
+    infoCol.appendChild(r);
+  }
+
+  card.appendChild(timeCol);
+  card.appendChild(infoCol);
+
+  return card;
+}
+
 function buildCalLessonCard(lesson) {
   const card = el('div', 'cal-lesson');
   card.style.setProperty('--lesson-color', lesson.color || 'var(--accent)');
 
-  const short = el('span', 'lesson-short');
-  short.textContent = lesson.subject_short || lesson.subject || '';
-  short.style.color = lesson.color || '';
-
+  // Nome materia esteso invece del codice
+  const subject = el('span', 'lesson-short');
+  subject.textContent = lesson.subject || lesson.subject_short || '';
+  subject.style.color = lesson.color || '';
+  
   const time = el('span', 'lesson-time');
   time.textContent = `${lesson.start}–${lesson.end}`;
 
+  const detailsContainer = el('div', 'lesson-details-inline');
+  
   const room = el('span', 'lesson-room');
-  room.textContent = lesson.room || '';
+  room.textContent = lesson.room ? `📍 ${lesson.room}` : '';
+  
+  const teacher = el('span', 'lesson-teacher');
+  teacher.textContent = lesson.teacher ? `🧑‍🏫 ${lesson.teacher}` : '';
+  teacher.style.fontSize = '0.75rem';
+  teacher.style.color = 'var(--text-secondary)';
 
-  card.appendChild(short);
+  card.appendChild(subject);
   card.appendChild(time);
-  card.appendChild(room);
+  
+  if (lesson.room) detailsContainer.appendChild(room);
+  if (lesson.teacher) detailsContainer.appendChild(teacher);
+  
+  if (detailsContainer.childNodes.length > 0) {
+    card.appendChild(detailsContainer);
+  }
 
-  // Tooltip behaviour
-  card.addEventListener('mouseenter', (e) => showTooltip(e, lesson));
+  // Hover Tooltip
+  card.addEventListener('mouseenter', e => showTooltip(e, lesson));
   card.addEventListener('mousemove',  (e) => positionTooltip(e));
   card.addEventListener('mouseleave', ()  => hideTooltip());
   card.addEventListener('click',      (e) => { e.stopPropagation(); showTooltip(e, lesson); });

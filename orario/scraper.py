@@ -192,11 +192,24 @@ def normalize_schedule(raw: dict, aa_label: str, corso_label: str, anni2_labels:
         }
         lessons.append(lesson)
 
-    def sort_key(lesson):
-        d = lesson.get("day") or "99-99-9999"
+    # Rimuove i duplicati esatti (EasyStaff spesso ritorna copie della stessa lezione)
+    unique_lessons = []
+    seen = set()
+    for l in lessons:
+        # Crea una chiave unica per la lezione
+        k = (l["day"], l["start"], l["end"], l["subject"], l["room"])
+        if k not in seen:
+            seen.add(k)
+            unique_lessons.append(l)
+    
+    lessons = unique_lessons
+
+    # Sort by day then start time
+    def sort_key(l):
+        d = l.get("day") or "99-99-9999"
         parts = d.split("-")
         date_key = f"{parts[2]}-{parts[1]}-{parts[0]}" if len(parts) == 3 else d
-        return (date_key, lesson.get("start") or "")
+        return (date_key, l.get("start") or "")
 
     lessons.sort(key=sort_key)
 
