@@ -1,8 +1,9 @@
 {
-  "generated_at": "2026-09-15T20:36:34Z",
+  "generated_at": "2026-09-15T21:06:51Z",
   "anno_accademico": "2026/2027",
   "corso": "INGEGNERIA INFORMATICA (Laurea)",
   "anni_corso": [
+    "Anno 3",
     "Anno 3"
   ],
   "week_start": "28-09-2026",
@@ -37,6 +38,19 @@
     {
       "day": "28-09-2026",
       "day_label": "Lunedì 28/09",
+      "start": "12:30",
+      "end": "14:30",
+      "subject": "BASI DI DATI (A)",
+      "subject_short": "EC957939",
+      "teacher": "",
+      "room": "",
+      "color": "#14b8a6",
+      "note": "",
+      "curriculum": ""
+    },
+    {
+      "day": "28-09-2026",
+      "day_label": "Lunedì 28/09",
       "start": "14:30",
       "end": "16:30",
       "subject": "CONCURRENT AND REAL TIME PROGRAMMING",
@@ -57,6 +71,32 @@
       "teacher": "",
       "room": "",
       "color": "#3b82f6",
+      "note": "",
+      "curriculum": ""
+    },
+    {
+      "day": "29-09-2026",
+      "day_label": "Martedì 29/09",
+      "start": "08:30",
+      "end": "10:30",
+      "subject": "FONDAMENTI DI TELECOMUNICAZIONI (A)",
+      "subject_short": "EC958146",
+      "teacher": "",
+      "room": "",
+      "color": "#f43f5e",
+      "note": "",
+      "curriculum": ""
+    },
+    {
+      "day": "29-09-2026",
+      "day_label": "Martedì 29/09",
+      "start": "10:30",
+      "end": "12:30",
+      "subject": "FONDAMENTI DI ELETTRONICA (A)",
+      "subject_short": "EC957967",
+      "teacher": "",
+      "room": "",
+      "color": "#6366f1",
       "note": "",
       "curriculum": ""
     },
@@ -87,6 +127,19 @@
       "curriculum": ""
     },
     {
+      "day": "29-09-2026",
+      "day_label": "Martedì 29/09",
+      "start": "16:30",
+      "end": "18:30",
+      "subject": "BASI DI DATI (A)",
+      "subject_short": "EC957939",
+      "teacher": "",
+      "room": "",
+      "color": "#14b8a6",
+      "note": "",
+      "curriculum": ""
+    },
+    {
       "day": "30-09-2026",
       "day_label": "Mercoledì 30/09",
       "start": "08:30",
@@ -109,6 +162,32 @@
       "teacher": "",
       "room": "",
       "color": "#3b82f6",
+      "note": "",
+      "curriculum": ""
+    },
+    {
+      "day": "30-09-2026",
+      "day_label": "Mercoledì 30/09",
+      "start": "14:30",
+      "end": "16:30",
+      "subject": "FONDAMENTI DI TELECOMUNICAZIONI (A)",
+      "subject_short": "EC958146",
+      "teacher": "",
+      "room": "",
+      "color": "#f43f5e",
+      "note": "",
+      "curriculum": ""
+    },
+    {
+      "day": "30-09-2026",
+      "day_label": "Mercoledì 30/09",
+      "start": "16:30",
+      "end": "18:30",
+      "subject": "BASI DI DATI (A)",
+      "subject_short": "EC957939",
+      "teacher": "",
+      "room": "",
+      "color": "#14b8a6",
       "note": "",
       "curriculum": ""
     },
@@ -154,6 +233,19 @@
     {
       "day": "01-10-2026",
       "day_label": "Giovedì 01/10",
+      "start": "14:30",
+      "end": "16:30",
+      "subject": "FONDAMENTI DI ELETTRONICA (A)",
+      "subject_short": "EC957967",
+      "teacher": "",
+      "room": "",
+      "color": "#6366f1",
+      "note": "",
+      "curriculum": ""
+    },
+    {
+      "day": "01-10-2026",
+      "day_label": "Giovedì 01/10",
       "start": "16:30",
       "end": "18:30",
       "subject": "PROJECT MANAGEMENT",
@@ -161,6 +253,32 @@
       "teacher": "",
       "room": "",
       "color": "#ec4899",
+      "note": "",
+      "curriculum": ""
+    },
+    {
+      "day": "02-10-2026",
+      "day_label": "Venerdì 02/10",
+      "start": "08:30",
+      "end": "10:30",
+      "subject": "FONDAMENTI DI TELECOMUNICAZIONI (A)",
+      "subject_short": "EC958146",
+      "teacher": "",
+      "room": "",
+      "color": "#f43f5e",
+      "note": "",
+      "curriculum": ""
+    },
+    {
+      "day": "02-10-2026",
+      "day_label": "Venerdì 02/10",
+      "start": "10:30",
+      "end": "12:30",
+      "subject": "FONDAMENTI DI ELETTRONICA (A)",
+      "subject_short": "EC957967",
+      "teacher": "",
+      "room": "",
+      "color": "#6366f1",
       "note": "",
       "curriculum": ""
     },
