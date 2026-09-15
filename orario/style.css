@@ -1,4 +1,4 @@
-﻿/* ================================================
+/* ================================================
    ORARIO LEZIONI — style.css
    slapomarda.github.io/orario
    ================================================ */
@@ -153,14 +153,16 @@ body {
 }
 
 /* ── Main Content ── */
-.main-content {
+.page-content {
   position: relative;
   z-index: 5;
   flex: 1;
-  max-width: 1400px;
+  max-width: 100%;
   width: 100%;
   margin: 0 auto;
-  padding: 1.5rem 1rem 2rem;
+  padding: 1.5rem 1.5rem 2rem;
+  display: flex;
+  flex-direction: column;
 }
 
 /* ── Week Navigation ── */
@@ -283,28 +285,25 @@ body {
 
 .empty-icon { font-size: 2.5rem; }
 
-/* ── Calendar Grid (Desktop ≥768px) ── */
+/* ── Calendar Grid (Desktop >=768px) ── */
 .calendar-wrapper {
-  overflow-x: auto;
-  overflow-y: auto;
-  max-height: calc(100dvh - 220px);
+  flex: 1; /* riempie lo spazio in altezza disponibile */
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* Niente barre di scorrimento interne */
   border-radius: var(--radius);
   border: 1px solid var(--glass-border);
   background: var(--glass-bg);
   backdrop-filter: blur(8px);
-  scrollbar-width: thin;
-  scrollbar-color: var(--glass-border) transparent;
 }
-
-.calendar-wrapper::-webkit-scrollbar { width: 6px; height: 6px; }
-.calendar-wrapper::-webkit-scrollbar-track { background: transparent; }
-.calendar-wrapper::-webkit-scrollbar-thumb { background: var(--glass-border); border-radius: 3px; }
 
 .calendar-grid {
   display: grid;
-  /* columns: time + days — set by JS via CSS custom property */
-  position: relative;
-  min-width: max-content;
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  /* Righe: header + 25 slot orari espandibili */
+  grid-template-rows: var(--header-h) repeat(25, 1fr);
 }
 
 /* Time column cells */
@@ -312,7 +311,7 @@ body {
   grid-column: 1;
   grid-row: 1;
   width: var(--time-col-width);
-  height: var(--header-h);
+  height: 100%;
   position: sticky;
   top: 0;
   left: 0;
@@ -361,7 +360,6 @@ body {
 .cal-time-label {
   grid-column: 1;
   width: var(--time-col-width);
-  height: var(--slot-height);
   display: flex;
   align-items: flex-start;
   justify-content: flex-end;
