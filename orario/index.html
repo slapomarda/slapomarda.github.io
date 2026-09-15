@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="it">
 <head>
   <meta charset="UTF-8" />
@@ -41,20 +41,31 @@
 
     <!-- Week navigation -->
     <nav class="week-nav" aria-label="Navigazione settimana">
-      <button class="week-btn" id="btn-prev" aria-label="Settimana precedente" disabled>
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <polyline points="15 18 9 12 15 6"/>
-        </svg>
-      </button>
       <div class="week-display">
         <span class="week-label" id="week-label">Caricamento settimana...</span>
       </div>
-      <button class="week-btn" id="btn-next" aria-label="Settimana successiva" disabled>
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <polyline points="9 18 15 12 9 6"/>
-        </svg>
-      </button>
+      <div class="week-controls">
+        <button id="btn-filter" class="btn-icon" aria-label="Filtra materie" title="Filtra materie">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
+          </svg>
+        </button>
+        <button id="btn-prev" class="btn-icon" aria-label="Settimana precedente" disabled>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        </button>
+        <button id="btn-next" class="btn-icon" aria-label="Settimana successiva" disabled>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </button>
+      </div>
     </nav>
+
+    <!-- Pannello Filtri (nascosto di default) -->
+    <div id="filter-panel" class="filter-panel" hidden>
+      <h3>Le tue materie</h3>
+      <p class="filter-subtitle">Togli la spunta ai corsi che non frequenti. Le tue scelte verranno salvate sul dispositivo.</p>
+      <div id="filter-list" class="filter-list"></div>
+      <button id="btn-close-filter" class="btn-primary" style="margin-top: 15px; width: 100%;">Chiudi e Salva</button>
+    </div>
 
     <!-- CORS notice (hidden by default) -->
     <div class="cors-notice" id="cors-notice" hidden>

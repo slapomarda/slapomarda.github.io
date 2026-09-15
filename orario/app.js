@@ -45,6 +45,16 @@ document.body.appendChild(tooltip);
 (async function init() {
   elBtnPrev.addEventListener('click', () => navigateWeek(-1));
   elBtnNext.addEventListener('click', () => navigateWeek(+1));
+  
+  const filterBtn = document.getElementById('btn-filter');
+  const filterPanel = document.getElementById('filter-panel');
+  const filterClose = document.getElementById('btn-close-filter');
+  
+  if (filterBtn) filterBtn.addEventListener('click', () => { filterPanel.hidden = !filterPanel.hidden; });
+  if (filterClose) filterClose.addEventListener('click', () => { 
+    filterPanel.hidden = true;
+    if (currentData) renderAll(currentData); // Re-render per applicare i filtri
+  });
 
   mediaQuery.addEventListener('change', () => renderView());
 
@@ -74,12 +84,20 @@ async function loadData(url = './orario.json') {
 /* ════════════════════════════════════════════
    RENDER ALL
 ═══════════════════════════════════════════ */
+let hiddenSubjects = JSON.parse(localStorage.getItem('unipd_hidden_subjects') || '[]');
+
 function renderAll(data) {
   renderHeader(data);
   renderWeekLabel(data);
   updateNavButtons();
 
-  const lessons = Array.isArray(data.lessons) ? data.lessons : [];
+  let lessons = Array.isArray(data.lessons) ? data.lessons : [];
+  
+  // Costruisce il pannello filtri con TUTTE le materie disponibili in questa settimana
+  buildFilterPanel(lessons);
+
+  // Applica il filtro delle materie nascoste
+  lessons = lessons.filter(l => !hiddenSubjects.includes(l.subject));
 
   if (lessons.length === 0) {
     showState('empty');
@@ -91,6 +109,39 @@ function renderAll(data) {
   renderTimeline(lessons);
   renderView(); // show correct view based on screen size
   setupIntersectionObserver();
+}
+
+function buildFilterPanel(lessons) {
+  const list = document.getElementById('filter-list');
+  list.innerHTML = '';
+  
+  // Estrai tutte le materie uniche
+  const uniqueSubjects = [...new Set(lessons.map(l => l.subject))].filter(Boolean).sort();
+  
+  uniqueSubjects.forEach(subject => {
+    const isHidden = hiddenSubjects.includes(subject);
+    const label = el('label', 'filter-item');
+    
+    const cb = el('input');
+    cb.type = 'checkbox';
+    cb.checked = !isHidden;
+    
+    cb.addEventListener('change', (e) => {
+      if (e.target.checked) {
+        hiddenSubjects = hiddenSubjects.filter(s => s !== subject);
+      } else {
+        if (!hiddenSubjects.includes(subject)) hiddenSubjects.push(subject);
+      }
+      localStorage.setItem('unipd_hidden_subjects', JSON.stringify(hiddenSubjects));
+    });
+    
+    const span = el('span');
+    span.textContent = subject;
+    
+    label.appendChild(cb);
+    label.appendChild(span);
+    list.appendChild(label);
+  });
 }
 
 /* ════════════════════════════════════════════

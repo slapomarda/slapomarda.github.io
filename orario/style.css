@@ -169,11 +169,32 @@ body {
 .week-nav {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  margin-bottom: 1.25rem;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  background: var(--glass-bg);
+  backdrop-filter: blur(8px);
+  padding: 0.5rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--glass-border);
 }
 
-.week-btn {
+.week-display {
+  flex: 1;
+  text-align: left;
+  padding: 0 1rem;
+}
+
+.week-label {
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.week-controls {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.btn-icon, .week-btn {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -182,31 +203,19 @@ body {
   border-radius: 10px;
   border: 1px solid var(--glass-border);
   background: var(--glass-bg);
-  color: var(--text-secondary);
+  color: var(--text-primary);
   cursor: pointer;
   transition: var(--transition);
-  flex-shrink: 0;
 }
 
-.week-btn:hover:not(:disabled) {
-  color: var(--accent);
-  border-color: var(--accent);
-  background: var(--accent-dim);
+.btn-icon:hover:not(:disabled), .week-btn:hover:not(:disabled) {
+  background: rgba(255,255,255,0.1);
+  border-color: rgba(255,255,255,0.2);
 }
 
-.week-btn:disabled {
-  opacity: 0.35;
+.btn-icon:disabled, .week-btn:disabled {
+  opacity: 0.3;
   cursor: not-allowed;
-}
-
-.week-display {
-  flex: 1;
-  text-align: center;
-  padding: 0.6rem 1.25rem;
-  border-radius: 10px;
-  border: 1px solid var(--glass-border);
-  background: var(--glass-bg);
-  backdrop-filter: blur(8px);
 }
 
 .week-label {
@@ -387,19 +396,42 @@ body {
 /* Lesson card inside grid */
 .cal-lesson {
   position: relative;
-  margin: 2px 3px;
-  padding: 6px 8px;
-  border-radius: var(--radius-sm);
-  border-left: 3px solid var(--lesson-color, var(--accent));
+  border-radius: 8px;
   background: rgba(255,255,255,0.04);
-  border-top: 1px solid rgba(255,255,255,0.08);
-  border-right: 1px solid rgba(255,255,255,0.08);
-  border-bottom: 1px solid rgba(255,255,255,0.08);
-  overflow: hidden;
+  border-left: 4px solid var(--lesson-color);
+  padding: 8px 10px;
+  font-size: 0.75rem;
   cursor: pointer;
   transition: var(--transition);
   z-index: 5;
   min-height: calc(var(--slot-height) - 4px);
+  
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.lesson-short {
+  font-weight: 700;
+  line-height: 1.1;
+  display: block;
+}
+
+.lesson-time {
+  opacity: 0.8;
+  font-size: 0.7rem;
+  display: block;
+}
+
+.lesson-details-inline {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-top: auto;
+}
+
+.lesson-room, .lesson-teacher {
+  display: block;
 }
 
 .cal-lesson:hover {
