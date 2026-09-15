@@ -518,7 +518,7 @@ function renderTimeline(lessons) {
       const startEl = el('div', 'tl-time-start');
       startEl.textContent = lesson.start;
       const endEl = el('div', 'tl-time-end');
-      endEl.textContent = `â†’ ${lesson.end}`;
+      endEl.innerHTML = `&rarr; ${lesson.end}`;
       timeDiv.appendChild(startEl);
       timeDiv.appendChild(endEl);
 
@@ -526,15 +526,22 @@ function renderTimeline(lessons) {
       const subjEl  = el('div', 'tl-subject');
       subjEl.textContent = lesson.subject || '';
 
-      const teachEl = el('div', 'tl-teacher');
-      teachEl.textContent = lesson.teacher || '';
+      const roomEl = el('span', 'tl-room');
+      const cleanRoom = lesson.room ? lesson.room.split('[')[0].trim() : '';
+      roomEl.innerHTML = `<strong>Aula: ${cleanRoom}</strong>`;
+      roomEl.style.display = 'block';
+      roomEl.style.fontSize = '0.95rem';
+      roomEl.style.marginBottom = '2px';
+      roomEl.style.color = 'var(--text-secondary)';
 
-      const roomEl = el('span', 'tl-room-badge');
-      roomEl.textContent = lesson.room || '';
+      const teachEl = el('div', 'tl-teacher');
+      teachEl.textContent = lesson.teacher ? `Prof: ${lesson.teacher}` : '';
+      teachEl.style.fontSize = '0.75rem';
+      teachEl.style.color = 'var(--text-secondary)';
 
       details.appendChild(subjEl);
-      if (lesson.teacher) details.appendChild(teachEl);
       if (lesson.room)    details.appendChild(roomEl);
+      if (lesson.teacher) details.appendChild(teachEl);
 
       if (lesson.note) {
         const noteEl = el('div', 'tl-note');
