@@ -60,6 +60,14 @@ document.body.appendChild(tooltip);
 
   mediaQuery.addEventListener('change', () => renderView());
 
+  document.addEventListener('click', (e) => {
+    if (filterPanel && !filterPanel.hidden) {
+      if (!filterPanel.contains(e.target) && !filterBtn.contains(e.target)) {
+        filterPanel.hidden = true;
+      }
+    }
+  });
+
   // Carica l'indice delle settimane (per la navigazione locale, no CORS)
   await loadIndex();
   await loadData();
@@ -401,7 +409,7 @@ function buildCalLessonCard(lesson) {
   card.appendChild(time);
   
   if (lesson.room) detailsContainer.appendChild(room);
-  if (lesson.teacher) detailsContainer.appendChild(teacher);
+  
   
   if (detailsContainer.childNodes.length > 0) {
     card.appendChild(detailsContainer);
