@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-15T21:34:42Z",
+  "generated_at": "2026-09-15T21:41:09Z",
   "anno_accademico": "2026/2027",
   "corso": "INGEGNERIA INFORMATICA (Laurea)",
   "anni_corso": [
@@ -20,7 +20,9 @@
       "room": "Ke [POLO DIDATTICO DI VIA GRADENIGO]",
       "color": "#10b981",
       "note": "",
-      "canale": "Canale 2",
+      "canali": [
+        "Canale 2"
+      ],
       "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 2))<br />INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 2))"
     },
     {
@@ -34,7 +36,9 @@
       "room": "Ke [POLO DIDATTICO DI VIA GRADENIGO]",
       "color": "#ef4444",
       "note": "",
-      "canale": "Canale 2",
+      "canali": [
+        "Canale 2"
+      ],
       "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 2))<br />INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 2))"
     },
     {
@@ -48,7 +52,9 @@
       "room": "Ke [POLO DIDATTICO DI VIA GRADENIGO]",
       "color": "#14b8a6",
       "note": "",
-      "canale": "Canale 1",
+      "canali": [
+        "Canale 1"
+      ],
       "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 1))<br />INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 1))"
     },
     {
@@ -62,7 +68,10 @@
       "room": "De [POLO DIDATTICO DI VIA GRADENIGO]",
       "color": "#8b5cf6",
       "note": "",
-      "canale": "Canale 1",
+      "canali": [
+        "Canale 1",
+        "Canale 2"
+      ],
       "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 2))<br />INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 1))<br />INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 2))<br />INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 1))"
     },
     {
@@ -76,7 +85,9 @@
       "room": "Ke [POLO DIDATTICO DI VIA GRADENIGO]",
       "color": "#3b82f6",
       "note": "",
-      "canale": "Canale 2",
+      "canali": [
+        "Canale 2"
+      ],
       "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 2))<br />INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 2))"
     },
     {
@@ -90,7 +101,9 @@
       "room": "Ke [POLO DIDATTICO DI VIA GRADENIGO]",
       "color": "#f43f5e",
       "note": "",
-      "canale": "Canale 1",
+      "canali": [
+        "Canale 1"
+      ],
       "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 1))<br />INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 1))"
     },
     {
@@ -104,7 +117,9 @@
       "room": "Ke [POLO DIDATTICO DI VIA GRADENIGO]",
       "color": "#6366f1",
       "note": "",
-      "canale": "Canale 1",
+      "canali": [
+        "Canale 1"
+      ],
       "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 1))<br />INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 1))"
     },
     {
@@ -118,7 +133,10 @@
       "room": "Le [POLO DIDATTICO DI VIA GRADENIGO]",
       "color": "#8b5cf6",
       "note": "",
-      "canale": "Canale 1",
+      "canali": [
+        "Canale 1",
+        "Canale 2"
+      ],
       "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 2))<br />INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 1))<br />INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 2))<br />INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 1))"
     },
     {
@@ -132,7 +150,10 @@
       "room": "Ae [POLO DIDATTICO DI VIA GRADENIGO]",
       "color": "#f59e0b",
       "note": "",
-      "canale": "Canale 1",
+      "canali": [
+        "Canale 1",
+        "Canale 2"
+      ],
       "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 2))<br />INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 1))<br />INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 2))<br />INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 1))"
     },
     {
@@ -146,7 +167,9 @@
       "room": "Ke [POLO DIDATTICO DI VIA GRADENIGO]",
       "color": "#14b8a6",
       "note": "",
-      "canale": "Canale 1",
+      "canali": [
+        "Canale 1"
+      ],
       "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 1))<br />INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 1))"
     },
     {
@@ -160,7 +183,9 @@
       "room": "Ke [POLO DIDATTICO DI VIA GRADENIGO]",
       "color": "#ef4444",
       "note": "",
-      "canale": "Canale 2",
+      "canali": [
+        "Canale 2"
+      ],
       "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 2))<br />INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 2))"
     },
     {
@@ -174,7 +199,9 @@
       "room": "Ke [POLO DIDATTICO DI VIA GRADENIGO]",
       "color": "#3b82f6",
       "note": "",
-      "canale": "Canale 2",
+      "canali": [
+        "Canale 2"
+      ],
       "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 2))<br />INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 2))"
     },
     {
@@ -188,7 +215,9 @@
       "room": "Ke [POLO DIDATTICO DI VIA GRADENIGO]",
       "color": "#f43f5e",
       "note": "",
-      "canale": "Canale 1",
+      "canali": [
+        "Canale 1"
+      ],
       "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 1))<br />INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 1))"
     },
     {
@@ -202,7 +231,9 @@
       "room": "Ke [POLO DIDATTICO DI VIA GRADENIGO]",
       "color": "#14b8a6",
       "note": "",
-      "canale": "Canale 1",
+      "canali": [
+        "Canale 1"
+      ],
       "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 1))<br />INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 1))"
     },
     {
@@ -216,7 +247,9 @@
       "room": "Ke [POLO DIDATTICO DI VIA GRADENIGO]",
       "color": "#10b981",
       "note": "",
-      "canale": "Canale 2",
+      "canali": [
+        "Canale 2"
+      ],
       "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 2))<br />INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 2))"
     },
     {
@@ -230,7 +263,9 @@
       "room": "Ke [POLO DIDATTICO DI VIA GRADENIGO]",
       "color": "#ef4444",
       "note": "",
-      "canale": "Canale 2",
+      "canali": [
+        "Canale 2"
+      ],
       "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 2))<br />INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 2))"
     },
     {
@@ -244,7 +279,9 @@
       "room": "Ke [POLO DIDATTICO DI VIA GRADENIGO]",
       "color": "#3b82f6",
       "note": "",
-      "canale": "Canale 2",
+      "canali": [
+        "Canale 2"
+      ],
       "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 2))<br />INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 2))"
     },
     {
@@ -258,7 +295,9 @@
       "room": "Ke [POLO DIDATTICO DI VIA GRADENIGO]",
       "color": "#6366f1",
       "note": "",
-      "canale": "Canale 1",
+      "canali": [
+        "Canale 1"
+      ],
       "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 1))<br />INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 1))"
     },
     {
@@ -272,7 +311,10 @@
       "room": "Ae [POLO DIDATTICO DI VIA GRADENIGO]",
       "color": "#ec4899",
       "note": "",
-      "canale": "Canale 1",
+      "canali": [
+        "Canale 1",
+        "Canale 2"
+      ],
       "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 2))<br />INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 1))<br />INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 2))<br />INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 1))"
     },
     {
@@ -286,7 +328,9 @@
       "room": "Ke [POLO DIDATTICO DI VIA GRADENIGO]",
       "color": "#f43f5e",
       "note": "",
-      "canale": "Canale 1",
+      "canali": [
+        "Canale 1"
+      ],
       "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 1))<br />INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 1))"
     },
     {
@@ -300,7 +344,9 @@
       "room": "Ke [POLO DIDATTICO DI VIA GRADENIGO]",
       "color": "#6366f1",
       "note": "",
-      "canale": "Canale 1",
+      "canali": [
+        "Canale 1"
+      ],
       "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 1))<br />INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 1))"
     },
     {
@@ -314,7 +360,9 @@
       "room": "Ke [POLO DIDATTICO DI VIA GRADENIGO]",
       "color": "#10b981",
       "note": "",
-      "canale": "Canale 2",
+      "canali": [
+        "Canale 2"
+      ],
       "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 2))<br />INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 2))"
     },
     {
@@ -328,7 +376,10 @@
       "room": "Ae [POLO DIDATTICO DI VIA GRADENIGO]",
       "color": "#f59e0b",
       "note": "",
-      "canale": "Canale 1",
+      "canali": [
+        "Canale 1",
+        "Canale 2"
+      ],
       "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 2))<br />INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 1))<br />INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 2))<br />INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 1))"
     },
     {
@@ -342,7 +393,10 @@
       "room": "Ae [POLO DIDATTICO DI VIA GRADENIGO]",
       "color": "#ec4899",
       "note": "",
-      "canale": "Canale 1",
+      "canali": [
+        "Canale 1",
+        "Canale 2"
+      ],
       "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 2))<br />INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 1))<br />INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 2))<br />INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 1))"
     }
   ]
