@@ -1,5 +1,13 @@
-body::-webkit-scrollbar { display: none; }
-body { scrollbar-width: none; }
+
+html, body {
+  scrollbar-width: none !important; /* Firefox */
+  -ms-overflow-style: none !important;  /* IE and Edge */
+}
+html::-webkit-scrollbar, body::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
 /* ================================================
    ORARIO LEZIONI — style.css
    slapomarda.github.io/orario
@@ -159,10 +167,10 @@ body {
   position: relative;
   z-index: 5;
   flex: 1;
-  max-width: 1400px;
-  width: 95%;
+  width: 95% !important;
+  max-width: 1500px !important;
   margin: 0 auto;
-  padding: 1.5rem 1.5rem 2rem;
+  padding: 1.5rem 0 2rem;
   display: flex;
   flex-direction: column;
 }
@@ -262,7 +270,7 @@ body {
   box-shadow: 0 20px 50px rgba(0,0,0,0.8);
   animation: fade-in 0.2s ease-out;
 }
-.filter-panel::-webkit-scrollbar { width: 6px; }
+.filter-panel
 .filter-panel::-webkit-scrollbar-thumb { background: var(--glass-border); border-radius: 3px; }
 
 .filter-panel h3 { margin-bottom: 0.5rem; font-size: 1.2rem; }
@@ -528,15 +536,14 @@ body {
 .cal-lesson {
   position: relative;
   border-radius: 8px;
-  background: rgba(255,255,255,0.04);
-  border-left: 4px solid var(--lesson-color);
+  background: rgba(255,255,255,0.06);
+  border-left: 5px solid var(--lesson-color);
   padding: 8px 10px;
-  font-size: 0.75rem;
+  font-size: 0.85rem !important;
   cursor: pointer;
   transition: var(--transition);
   z-index: 5;
   min-height: calc(var(--slot-height) - 4px);
-  
   display: flex;
   flex-direction: column;
   gap: 4px;
@@ -544,13 +551,17 @@ body {
 
 .lesson-short {
   font-weight: 700;
-  line-height: 1.1;
+  line-height: 1.2;
+  font-size: 0.95rem !important;
   display: block;
+  color: #ffffff !important;
 }
 
 .lesson-time {
-  opacity: 0.8;
-  font-size: 0.7rem;
+  opacity: 1 !important;
+  font-weight: 600;
+  font-size: 0.85rem !important;
+  color: #ffffff !important;
   display: block;
 }
 
@@ -573,19 +584,19 @@ body {
 }
 
 .cal-lesson .lesson-short {
-  font-size: 0.72rem;
   font-weight: 700;
-  color: var(--lesson-color, var(--accent));
   line-height: 1.2;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  font-size: 0.95rem !important;
+  display: block;
+  color: #ffffff !important;
 }
 
 .cal-lesson .lesson-time {
-  font-size: 0.65rem;
-  color: var(--text-muted);
-  margin-top: 2px;
+  opacity: 1 !important;
+  font-weight: 600;
+  font-size: 0.85rem !important;
+  color: #ffffff !important;
+  display: block;
 }
 
 .cal-lesson .lesson-room {
@@ -821,4 +832,11 @@ body {
 @media (min-width: 768px) {
   .timeline-view { display: none !important; }
   .calendar-wrapper:not([hidden]) { display: block !important; }
+}
+
+.lesson-room, .lesson-teacher {
+  display: block;
+  font-size: 0.8rem !important;
+  color: #ffffff !important;
+  opacity: 0.9;
 }
