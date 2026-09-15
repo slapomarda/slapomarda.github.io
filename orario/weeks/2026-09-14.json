@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-15T21:06:48Z",
+  "generated_at": "2026-09-15T21:20:06Z",
   "anno_accademico": "2026/2027",
   "corso": "INGEGNERIA INFORMATICA (Laurea)",
   "anni_corso": [
@@ -20,7 +20,8 @@
       "room": "",
       "color": "#10b981",
       "note": "",
-      "curriculum": ""
+      "canale": "Canale 2",
+      "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 2))<br />INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 2))"
     },
     {
       "day": "28-09-2026",
@@ -33,7 +34,8 @@
       "room": "",
       "color": "#ef4444",
       "note": "",
-      "curriculum": ""
+      "canale": "Canale 2",
+      "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 2))<br />INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 2))"
     },
     {
       "day": "28-09-2026",
@@ -46,7 +48,8 @@
       "room": "",
       "color": "#14b8a6",
       "note": "",
-      "curriculum": ""
+      "canale": "Canale 1",
+      "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 1))<br />INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 1))"
     },
     {
       "day": "28-09-2026",
@@ -59,7 +62,8 @@
       "room": "",
       "color": "#8b5cf6",
       "note": "",
-      "curriculum": ""
+      "canale": "Canale 1",
+      "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 2))<br />INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 1))<br />INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 2))<br />INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 1))"
     },
     {
       "day": "28-09-2026",
@@ -72,7 +76,8 @@
       "room": "",
       "color": "#3b82f6",
       "note": "",
-      "curriculum": ""
+      "canale": "Canale 2",
+      "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 2))<br />INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 2))"
     },
     {
       "day": "29-09-2026",
@@ -85,7 +90,8 @@
       "room": "",
       "color": "#f43f5e",
       "note": "",
-      "curriculum": ""
+      "canale": "Canale 1",
+      "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 1))<br />INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 1))"
     },
     {
       "day": "29-09-2026",
@@ -98,7 +104,8 @@
       "room": "",
       "color": "#6366f1",
       "note": "",
-      "curriculum": ""
+      "canale": "Canale 1",
+      "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 1))<br />INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 1))"
     },
     {
       "day": "29-09-2026",
@@ -111,7 +118,8 @@
       "room": "",
       "color": "#8b5cf6",
       "note": "",
-      "curriculum": ""
+      "canale": "Canale 1",
+      "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 2))<br />INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 1))<br />INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 2))<br />INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 1))"
     },
     {
       "day": "29-09-2026",
@@ -124,7 +132,8 @@
       "room": "",
       "color": "#f59e0b",
       "note": "",
-      "curriculum": ""
+      "canale": "Canale 1",
+      "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 2))<br />INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 1))<br />INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 2))<br />INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 1))"
     },
     {
       "day": "29-09-2026",
@@ -137,7 +146,8 @@
       "room": "",
       "color": "#14b8a6",
       "note": "",
-      "curriculum": ""
+      "canale": "Canale 1",
+      "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 1))<br />INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 1))"
     },
     {
       "day": "30-09-2026",
@@ -150,7 +160,8 @@
       "room": "",
       "color": "#ef4444",
       "note": "",
-      "curriculum": ""
+      "canale": "Canale 2",
+      "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 2))<br />INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 2))"
     },
     {
       "day": "30-09-2026",
@@ -163,7 +174,8 @@
       "room": "",
       "color": "#3b82f6",
       "note": "",
-      "curriculum": ""
+      "canale": "Canale 2",
+      "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 2))<br />INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 2))"
     },
     {
       "day": "30-09-2026",
@@ -176,7 +188,8 @@
       "room": "",
       "color": "#f43f5e",
       "note": "",
-      "curriculum": ""
+      "canale": "Canale 1",
+      "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 1))<br />INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 1))"
     },
     {
       "day": "30-09-2026",
@@ -189,7 +202,8 @@
       "room": "",
       "color": "#14b8a6",
       "note": "",
-      "curriculum": ""
+      "canale": "Canale 1",
+      "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 1))<br />INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 1))"
     },
     {
       "day": "01-10-2026",
@@ -202,7 +216,8 @@
       "room": "",
       "color": "#10b981",
       "note": "",
-      "curriculum": ""
+      "canale": "Canale 2",
+      "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 2))<br />INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 2))"
     },
     {
       "day": "01-10-2026",
@@ -215,7 +230,8 @@
       "room": "",
       "color": "#ef4444",
       "note": "",
-      "curriculum": ""
+      "canale": "Canale 2",
+      "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 2))<br />INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 2))"
     },
     {
       "day": "01-10-2026",
@@ -228,7 +244,8 @@
       "room": "",
       "color": "#3b82f6",
       "note": "",
-      "curriculum": ""
+      "canale": "Canale 2",
+      "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 2))<br />INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 2))"
     },
     {
       "day": "01-10-2026",
@@ -241,7 +258,8 @@
       "room": "",
       "color": "#6366f1",
       "note": "",
-      "curriculum": ""
+      "canale": "Canale 1",
+      "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 1))<br />INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 1))"
     },
     {
       "day": "01-10-2026",
@@ -254,7 +272,8 @@
       "room": "",
       "color": "#ec4899",
       "note": "",
-      "curriculum": ""
+      "canale": "Canale 1",
+      "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 2))<br />INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 1))<br />INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 2))<br />INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 1))"
     },
     {
       "day": "02-10-2026",
@@ -267,7 +286,8 @@
       "room": "",
       "color": "#f43f5e",
       "note": "",
-      "curriculum": ""
+      "canale": "Canale 1",
+      "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 1))<br />INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 1))"
     },
     {
       "day": "02-10-2026",
@@ -280,7 +300,8 @@
       "room": "",
       "color": "#6366f1",
       "note": "",
-      "curriculum": ""
+      "canale": "Canale 1",
+      "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 1))<br />INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 1))"
     },
     {
       "day": "02-10-2026",
@@ -293,7 +314,8 @@
       "room": "",
       "color": "#10b981",
       "note": "",
-      "curriculum": ""
+      "canale": "Canale 2",
+      "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 2))<br />INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 2))"
     },
     {
       "day": "02-10-2026",
@@ -306,7 +328,8 @@
       "room": "",
       "color": "#f59e0b",
       "note": "",
-      "curriculum": ""
+      "canale": "Canale 1",
+      "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 2))<br />INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 1))<br />INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 2))<br />INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 1))"
     },
     {
       "day": "02-10-2026",
@@ -319,7 +342,8 @@
       "room": "",
       "color": "#ec4899",
       "note": "",
-      "curriculum": ""
+      "canale": "Canale 1",
+      "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 2))<br />INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 1))<br />INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 2))<br />INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 1))"
     }
   ]
 }
