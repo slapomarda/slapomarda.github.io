@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-15T20:30:12Z",
+  "generated_at": "2026-09-15T20:36:36Z",
   "anno_accademico": "2026/2027",
   "corso": "INGEGNERIA INFORMATICA (Laurea)",
   "anni_corso": [
@@ -11,26 +11,13 @@
     {
       "day": "28-09-2026",
       "day_label": "Lunedì 28/09",
-      "start": "00:00",
-      "end": "24:00",
-      "subject": "",
-      "subject_short": "",
-      "teacher": "",
-      "room": "",
-      "color": "#f59e0b",
-      "note": "",
-      "curriculum": ""
-    },
-    {
-      "day": "28-09-2026",
-      "day_label": "Lunedì 28/09",
       "start": "08:30",
       "end": "10:30",
       "subject": "FONDAMENTI DI TELECOMUNICAZIONI (B)",
       "subject_short": "EC958147",
       "teacher": "",
       "room": "",
-      "color": "#f59e0b",
+      "color": "#10b981",
       "note": "",
       "curriculum": ""
     },
@@ -43,7 +30,7 @@
       "subject_short": "EC957968",
       "teacher": "",
       "room": "",
-      "color": "#f59e0b",
+      "color": "#ef4444",
       "note": "",
       "curriculum": ""
     },
@@ -56,7 +43,7 @@
       "subject_short": "EC957955",
       "teacher": "",
       "room": "",
-      "color": "#f59e0b",
+      "color": "#8b5cf6",
       "note": "",
       "curriculum": ""
     },
@@ -69,20 +56,7 @@
       "subject_short": "EC957945",
       "teacher": "",
       "room": "",
-      "color": "#f59e0b",
-      "note": "",
-      "curriculum": ""
-    },
-    {
-      "day": "29-09-2026",
-      "day_label": "Martedì 29/09",
-      "start": "00:00",
-      "end": "24:00",
-      "subject": "",
-      "subject_short": "",
-      "teacher": "",
-      "room": "",
-      "color": "#f59e0b",
+      "color": "#3b82f6",
       "note": "",
       "curriculum": ""
     },
@@ -95,7 +69,7 @@
       "subject_short": "EC957955",
       "teacher": "",
       "room": "",
-      "color": "#f59e0b",
+      "color": "#8b5cf6",
       "note": "",
       "curriculum": ""
     },
@@ -115,26 +89,13 @@
     {
       "day": "30-09-2026",
       "day_label": "Mercoledì 30/09",
-      "start": "00:00",
-      "end": "24:00",
-      "subject": "",
-      "subject_short": "",
-      "teacher": "",
-      "room": "",
-      "color": "#f59e0b",
-      "note": "",
-      "curriculum": ""
-    },
-    {
-      "day": "30-09-2026",
-      "day_label": "Mercoledì 30/09",
       "start": "08:30",
       "end": "10:30",
       "subject": "FONDAMENTI DI ELETTRONICA (B)",
       "subject_short": "EC957968",
       "teacher": "",
       "room": "",
-      "color": "#f59e0b",
+      "color": "#ef4444",
       "note": "",
       "curriculum": ""
     },
@@ -147,20 +108,7 @@
       "subject_short": "EC957945",
       "teacher": "",
       "room": "",
-      "color": "#f59e0b",
-      "note": "",
-      "curriculum": ""
-    },
-    {
-      "day": "01-10-2026",
-      "day_label": "Giovedì 01/10",
-      "start": "00:00",
-      "end": "24:00",
-      "subject": "",
-      "subject_short": "",
-      "teacher": "",
-      "room": "",
-      "color": "#f59e0b",
+      "color": "#3b82f6",
       "note": "",
       "curriculum": ""
     },
@@ -173,7 +121,7 @@
       "subject_short": "EC958147",
       "teacher": "",
       "room": "",
-      "color": "#f59e0b",
+      "color": "#10b981",
       "note": "",
       "curriculum": ""
     },
@@ -186,7 +134,7 @@
       "subject_short": "EC957968",
       "teacher": "",
       "room": "",
-      "color": "#f59e0b",
+      "color": "#ef4444",
       "note": "",
       "curriculum": ""
     },
@@ -199,7 +147,7 @@
       "subject_short": "EC957945",
       "teacher": "",
       "room": "",
-      "color": "#f59e0b",
+      "color": "#3b82f6",
       "note": "",
       "curriculum": ""
     },
@@ -212,20 +160,7 @@
       "subject_short": "EC958263",
       "teacher": "",
       "room": "",
-      "color": "#f59e0b",
-      "note": "",
-      "curriculum": ""
-    },
-    {
-      "day": "02-10-2026",
-      "day_label": "Venerdì 02/10",
-      "start": "00:00",
-      "end": "24:00",
-      "subject": "",
-      "subject_short": "",
-      "teacher": "",
-      "room": "",
-      "color": "#f59e0b",
+      "color": "#ec4899",
       "note": "",
       "curriculum": ""
     },
@@ -238,7 +173,7 @@
       "subject_short": "EC958147",
       "teacher": "",
       "room": "",
-      "color": "#f59e0b",
+      "color": "#10b981",
       "note": "",
       "curriculum": ""
     },
@@ -264,20 +199,7 @@
       "subject_short": "EC958263",
       "teacher": "",
       "room": "",
-      "color": "#f59e0b",
-      "note": "",
-      "curriculum": ""
-    },
-    {
-      "day": "03-10-2026",
-      "day_label": "Sabato 03/10",
-      "start": "00:00",
-      "end": "24:00",
-      "subject": "",
-      "subject_short": "",
-      "teacher": "",
-      "room": "",
-      "color": "#f59e0b",
+      "color": "#ec4899",
       "note": "",
       "curriculum": ""
     }
