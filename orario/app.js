@@ -115,32 +115,57 @@ function buildFilterPanel(lessons) {
   const list = document.getElementById('filter-list');
   list.innerHTML = '';
   
-  // Estrai tutte le materie uniche
-  const uniqueSubjects = [...new Set(lessons.map(l => l.subject))].filter(Boolean).sort();
+  // Raggruppa le materie per canale
+  const subjectsMap = {}; // { 'Canale 1': { 'Matematica': '#ff0000', ... } }
   
-  uniqueSubjects.forEach(subject => {
-    const isHidden = hiddenSubjects.includes(subject);
-    const label = el('label', 'filter-item');
+  lessons.forEach(l => {
+    if (!l.subject) return;
+    const c = l.canale || 'Materie Comuni / Altri Corsi';
+    if (!subjectsMap[c]) subjectsMap[c] = {};
+    subjectsMap[c][l.subject] = l.color;
+  });
+  
+  const channels = Object.keys(subjectsMap).sort();
+  
+  channels.forEach(channel => {
+    // Intestazione sezione
+    const title = el('div', 'filter-section-title');
+    title.textContent = channel;
+    title.style.gridColumn = '1 / -1';
+    list.appendChild(title);
     
-    const cb = el('input');
-    cb.type = 'checkbox';
-    cb.checked = !isHidden;
-    
-    cb.addEventListener('change', (e) => {
-      if (e.target.checked) {
-        hiddenSubjects = hiddenSubjects.filter(s => s !== subject);
-      } else {
-        if (!hiddenSubjects.includes(subject)) hiddenSubjects.push(subject);
-      }
-      localStorage.setItem('unipd_hidden_subjects', JSON.stringify(hiddenSubjects));
+    const subjects = Object.keys(subjectsMap[channel]).sort();
+    subjects.forEach(subject => {
+      const isHidden = hiddenSubjects.includes(subject);
+      const label = el('label', 'filter-item');
+      
+      const cb = el('input');
+      cb.type = 'checkbox';
+      cb.checked = !isHidden;
+      
+      cb.addEventListener('change', (e) => {
+        if (e.target.checked) {
+          hiddenSubjects = hiddenSubjects.filter(s => s !== subject);
+        } else {
+          if (!hiddenSubjects.includes(subject)) hiddenSubjects.push(subject);
+        }
+        localStorage.setItem('unipd_hidden_subjects', JSON.stringify(hiddenSubjects));
+        
+        // Aggiornamento in tempo reale
+        if (currentData) renderAll(currentData);
+      });
+      
+      const dot = el('div', 'filter-color-dot');
+      dot.style.backgroundColor = subjectsMap[channel][subject];
+      
+      const span = el('span');
+      span.textContent = subject;
+      
+      label.appendChild(cb);
+      label.appendChild(dot);
+      label.appendChild(span);
+      list.appendChild(label);
     });
-    
-    const span = el('span');
-    span.textContent = subject;
-    
-    label.appendChild(cb);
-    label.appendChild(span);
-    list.appendChild(label);
   });
 }
 
@@ -332,7 +357,7 @@ function buildCalLessonCard(lesson) {
   subject.style.color = lesson.color || '';
   
   const time = el('span', 'lesson-time');
-  time.textContent = `${lesson.start}–${lesson.end}`;
+  time.textContent = `${lesson.start}-${lesson.end}`;
 
   const detailsContainer = el('div', 'lesson-details-inline');
   

@@ -196,6 +196,18 @@ def normalize_schedule(raw: dict, aa_label: str, corso_label: str, anni2_labels:
         else:
             room = str(aule)
 
+        # Estrai il canale (es. canale 1, canale 2) dal percorso didattico
+        percorso = cell.get("percorso_didattico") or ""
+        canale = ""
+        if "canale 1" in percorso.lower() or "c1" in percorso.lower():
+            canale = "Canale 1"
+        elif "canale 2" in percorso.lower() or "c2" in percorso.lower():
+            canale = "Canale 2"
+        elif "canale 3" in percorso.lower() or "c3" in percorso.lower():
+            canale = "Canale 3"
+        elif "canale 4" in percorso.lower() or "c4" in percorso.lower():
+            canale = "Canale 4"
+
         lesson = {
             "day": day_date,
             "day_label": _day_label(day_date),
@@ -207,7 +219,8 @@ def normalize_schedule(raw: dict, aa_label: str, corso_label: str, anni2_labels:
             "room": room,
             "color": color_map[subject],
             "note": cell.get("nota") or "",
-            "curriculum": cell.get("curriculum_des") or "",
+            "canale": canale,
+            "curriculum": percorso,
         }
         lessons.append(lesson)
 
