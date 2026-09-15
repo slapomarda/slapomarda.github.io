@@ -208,23 +208,27 @@ function renderCalendarGrid(lessons, data) {
       // Sub-column offset for overlapping lessons (CSS fractional width)
       if (subCols > 1) {
         const pct  = 100 / subCols;
-        card.style.position    = 'absolute';
-        card.style.width       = `calc(${pct}% - 6px)`;
-        card.style.left        = `calc(${subCol * pct}%)`;
-        card.style.margin      = '0';
-
-        // Wrap in a relative container if not already
-        // (simpler: use inline positioning on the grid cell itself)
+        
         const wrapper = el('div');
         wrapper.style.gridColumn   = String(gridColBase);
         wrapper.style.gridRow      = `${rowStart} / ${rowEnd}`;
         wrapper.style.position     = 'relative';
-        wrapper.style.overflow     = 'hidden';
+        
+        card.style.position    = 'absolute';
+        card.style.width       = `calc(${pct}% - 2px)`;
+        card.style.left        = `calc(${subCol * pct}%)`;
+        card.style.top         = '0';
+        card.style.bottom      = '0';
+        card.style.margin      = '0';
+        card.style.height      = '100%';
+
         wrapper.appendChild(card);
         elCalGrid.appendChild(wrapper);
         return;
       }
 
+      // Normal card (no collision)
+      card.style.height = '100%';
       elCalGrid.appendChild(card);
     });
   });

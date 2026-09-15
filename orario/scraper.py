@@ -137,6 +137,14 @@ def normalize_schedule(raw: dict, aa_label: str, corso_label: str, anni2_labels:
     if isinstance(celle, dict):
         celle = list(celle.values())
 
+    # Colori vibranti predefiniti per le materie
+    PALETTE = [
+        "#3b82f6", "#ef4444", "#10b981", "#8b5cf6", 
+        "#f59e0b", "#ec4899", "#14b8a6", "#6366f1",
+        "#f43f5e", "#0ea5e9", "#84cc16", "#a855f7"
+    ]
+    color_map = {}
+
     for cell in celle:
         if not isinstance(cell, dict):
             continue
@@ -158,6 +166,17 @@ def normalize_schedule(raw: dict, aa_label: str, corso_label: str, anni2_labels:
 
         time_start = _parse_time(fascia_inizio)
         time_end = _parse_time(fascia_fine)
+
+        subject = cell.get("nome_insegnamento") or cell.get("titolo") or ""
+        subject = subject.strip()
+
+        # Filtra eventi fantasma (es. 00:00 - 24:00 o senza materia)
+        if not subject or (time_start == "00:00" and time_end == "24:00"):
+            continue
+
+        # Assegna colore stabile basato sul nome materia
+        if subject not in color_map:
+            color_map[subject] = PALETTE[len(color_map) % len(PALETTE)]
 
         docenti = cell.get("docenti", [])
         if isinstance(docenti, list):
@@ -182,11 +201,11 @@ def normalize_schedule(raw: dict, aa_label: str, corso_label: str, anni2_labels:
             "day_label": _day_label(day_date),
             "start": time_start,
             "end": time_end,
-            "subject": cell.get("nome_insegnamento") or cell.get("titolo") or "",
+            "subject": subject,
             "subject_short": cell.get("codice_insegnamento") or "",
             "teacher": teacher,
             "room": room,
-            "color": cell.get("colore") or "#f59e0b",
+            "color": color_map[subject],
             "note": cell.get("nota") or "",
             "curriculum": cell.get("curriculum_des") or "",
         }
