@@ -825,8 +825,23 @@ body {
   .calendar-wrapper { display: none !important; }
   .timeline-view:not([hidden]) { display: flex !important; }
 
-  .week-nav { gap: 0.5rem; }
-  .week-label { font-size: 0.82rem; }
+  .week-nav { 
+    flex-direction: column;
+    gap: 0.8rem;
+    align-items: stretch;
+  }
+  .week-display {
+    padding: 0;
+    text-align: center;
+  }
+  .week-controls {
+    justify-content: space-between;
+  }
+  .channel-select {
+    flex: 1;
+    margin-right: 0.5rem;
+  }
+  .week-label { font-size: 0.9rem; }
 }
 
 @media (min-width: 768px) {

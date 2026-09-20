@@ -212,11 +212,28 @@ function renderHeader(data) {
 
 function renderWeekLabel(data) {
   const ws = data.week_start || '';
-  const we = data.week_end   || '';
-  if (ws && we) {
-    const fmtStart = formatDateLabel(ws);
-    const fmtEnd   = formatDateLabel(we);
-    elWeekLabel.textContent = `Settimana dal ${fmtStart} al ${fmtEnd}`;
+  if (ws) {
+    const dStart = parseDate(ws);
+    const dEnd = new Date(dStart);
+    dEnd.setDate(dEnd.getDate() + 6);
+
+    const fmtStart = [
+      String(dStart.getDate()).padStart(2, '0'),
+      String(dStart.getMonth() + 1).padStart(2, '0'),
+      dStart.getFullYear()
+    ].join('/');
+    
+    const fmtEnd = [
+      String(dEnd.getDate()).padStart(2, '0'),
+      String(dEnd.getMonth() + 1).padStart(2, '0'),
+      dEnd.getFullYear()
+    ].join('/');
+    
+    if (mediaQuery.matches) {
+      elWeekLabel.textContent = `${fmtStart} - ${fmtEnd}`;
+    } else {
+      elWeekLabel.textContent = `Settimana dal ${fmtStart} al ${fmtEnd}`;
+    }
   } else {
     elWeekLabel.textContent = 'Settimana corrente';
   }
@@ -712,6 +729,7 @@ function renderView() {
   const isMobile = mediaQuery.matches;
   elCalWrapper.hidden = isMobile;
   elTimeline.hidden   = !isMobile;
+  renderWeekLabel(currentData);
   // Re-setup observer after switching view
   setupIntersectionObserver();
 }
