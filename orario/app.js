@@ -1,4 +1,4 @@
-﻿/**
+/**
  * app.js â€” Orario Lezioni
  * slapomarda.github.io/orario
  * Vanilla JS, no dependencies
@@ -207,7 +207,7 @@ function renderHeader(data) {
   const aa   = data.anno_accademico || '';
   const corso = data.corso || '';
   const anni  = Array.isArray(data.anni_corso) ? data.anni_corso.join(', ') : '';
-  elSubtitle.textContent = [corso, anni, aa ? `A.A. ${aa}` : ''].filter(Boolean).join(' Â· ');
+  elSubtitle.textContent = [corso, anni, aa ? `A.A. ${aa}` : ''].filter(Boolean).join(' · ');
 }
 
 function renderWeekLabel(data) {

@@ -163,11 +163,11 @@ body {
 }
 
 /* ── Main Content ── */
-.page-content {
+.main-content {
   position: relative;
   z-index: 5;
   flex: 1;
-  width: 95% !important;
+  width: 90% !important;
   max-width: 1500px !important;
   margin: 0 auto;
   padding: 1.5rem 0 2rem;
