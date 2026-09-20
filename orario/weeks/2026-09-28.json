@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-20T09:49:50Z",
+  "generated_at": "2026-09-20T09:51:10Z",
   "anno_accademico": "2026/2027",
   "corso": "INGEGNERIA INFORMATICA (Laurea)",
   "anni_corso": [
@@ -7,7 +7,7 @@
     "Anno 3"
   ],
   "week_start": "28-09-2026",
-  "week_end": "17-01-2027",
+  "week_end": "04-10-2026",
   "lessons": [
     {
       "day": "28-09-2026",
@@ -18,7 +18,7 @@
       "subject_short": "EC958147",
       "teacher": "GUGLIELMI ANNA VALERIA",
       "room": "Ke [POLO DIDATTICO DI VIA GRADENIGO]",
-      "color": "#10b981",
+      "color": "#3b82f6",
       "note": "",
       "canali": [
         "Canale 2"
@@ -50,7 +50,7 @@
       "subject_short": "EC957939",
       "teacher": "DI NUNZIO GIORGIO MARIA, FERRO NICOLA, MARCHESIN STEFANO",
       "room": "Ke [POLO DIDATTICO DI VIA GRADENIGO]",
-      "color": "#14b8a6",
+      "color": "#10b981",
       "note": "",
       "canali": [
         "Canale 1"
@@ -83,7 +83,7 @@
       "subject_short": "EC957945",
       "teacher": "FERRO NICOLA, MARCHESIN STEFANO",
       "room": "Ke [POLO DIDATTICO DI VIA GRADENIGO]",
-      "color": "#3b82f6",
+      "color": "#f59e0b",
       "note": "",
       "canali": [
         "Canale 2"
@@ -99,7 +99,7 @@
       "subject_short": "EC958146",
       "teacher": "CORVAJA ROBERTO",
       "room": "Ke [POLO DIDATTICO DI VIA GRADENIGO]",
-      "color": "#f43f5e",
+      "color": "#ec4899",
       "note": "",
       "canali": [
         "Canale 1"
@@ -115,7 +115,7 @@
       "subject_short": "EC957967",
       "teacher": "CESTER ANDREA",
       "room": "Ke [POLO DIDATTICO DI VIA GRADENIGO]",
-      "color": "#6366f1",
+      "color": "#14b8a6",
       "note": "",
       "canali": [
         "Canale 1"
@@ -148,7 +148,7 @@
       "subject_short": "EC958257",
       "teacher": "SALVAGNIN DOMENICO",
       "room": "Ae [POLO DIDATTICO DI VIA GRADENIGO]",
-      "color": "#f59e0b",
+      "color": "#6366f1",
       "note": "",
       "canali": [
         "Canale 1",
@@ -165,7 +165,7 @@
       "subject_short": "EC957939",
       "teacher": "DI NUNZIO GIORGIO MARIA, FERRO NICOLA, MARCHESIN STEFANO",
       "room": "Ke [POLO DIDATTICO DI VIA GRADENIGO]",
-      "color": "#14b8a6",
+      "color": "#10b981",
       "note": "",
       "canali": [
         "Canale 1"
@@ -197,7 +197,7 @@
       "subject_short": "EC957945",
       "teacher": "FERRO NICOLA, MARCHESIN STEFANO",
       "room": "Ke [POLO DIDATTICO DI VIA GRADENIGO]",
-      "color": "#3b82f6",
+      "color": "#f59e0b",
       "note": "",
       "canali": [
         "Canale 2"
@@ -213,7 +213,7 @@
       "subject_short": "EC958146",
       "teacher": "CORVAJA ROBERTO",
       "room": "Ke [POLO DIDATTICO DI VIA GRADENIGO]",
-      "color": "#f43f5e",
+      "color": "#ec4899",
       "note": "",
       "canali": [
         "Canale 1"
@@ -229,7 +229,7 @@
       "subject_short": "EC957939",
       "teacher": "DI NUNZIO GIORGIO MARIA, FERRO NICOLA, MARCHESIN STEFANO",
       "room": "Ke [POLO DIDATTICO DI VIA GRADENIGO]",
-      "color": "#14b8a6",
+      "color": "#10b981",
       "note": "",
       "canali": [
         "Canale 1"
@@ -245,7 +245,7 @@
       "subject_short": "EC958147",
       "teacher": "GUGLIELMI ANNA VALERIA",
       "room": "Ke [POLO DIDATTICO DI VIA GRADENIGO]",
-      "color": "#10b981",
+      "color": "#3b82f6",
       "note": "",
       "canali": [
         "Canale 2"
@@ -277,7 +277,7 @@
       "subject_short": "EC957945",
       "teacher": "FERRO NICOLA, MARCHESIN STEFANO",
       "room": "Ke [POLO DIDATTICO DI VIA GRADENIGO]",
-      "color": "#3b82f6",
+      "color": "#f59e0b",
       "note": "",
       "canali": [
         "Canale 2"
@@ -293,7 +293,7 @@
       "subject_short": "EC957967",
       "teacher": "CESTER ANDREA",
       "room": "Ke [POLO DIDATTICO DI VIA GRADENIGO]",
-      "color": "#6366f1",
+      "color": "#14b8a6",
       "note": "",
       "canali": [
         "Canale 1"
@@ -309,7 +309,7 @@
       "subject_short": "EC958263",
       "teacher": "MELLEA ANTONIO",
       "room": "Ae [POLO DIDATTICO DI VIA GRADENIGO]",
-      "color": "#ec4899",
+      "color": "#f43f5e",
       "note": "",
       "canali": [
         "Canale 1",
@@ -326,7 +326,7 @@
       "subject_short": "EC958146",
       "teacher": "CORVAJA ROBERTO",
       "room": "Ke [POLO DIDATTICO DI VIA GRADENIGO]",
-      "color": "#f43f5e",
+      "color": "#ec4899",
       "note": "",
       "canali": [
         "Canale 1"
@@ -342,7 +342,7 @@
       "subject_short": "EC957967",
       "teacher": "CESTER ANDREA",
       "room": "Ke [POLO DIDATTICO DI VIA GRADENIGO]",
-      "color": "#6366f1",
+      "color": "#14b8a6",
       "note": "",
       "canali": [
         "Canale 1"
@@ -358,7 +358,7 @@
       "subject_short": "EC958147",
       "teacher": "GUGLIELMI ANNA VALERIA",
       "room": "Ke [POLO DIDATTICO DI VIA GRADENIGO]",
-      "color": "#10b981",
+      "color": "#3b82f6",
       "note": "",
       "canali": [
         "Canale 2"
@@ -374,7 +374,7 @@
       "subject_short": "EC958257",
       "teacher": "SALVAGNIN DOMENICO",
       "room": "Ae [POLO DIDATTICO DI VIA GRADENIGO]",
-      "color": "#f59e0b",
+      "color": "#6366f1",
       "note": "",
       "canali": [
         "Canale 1",
@@ -391,7 +391,7 @@
       "subject_short": "EC958263",
       "teacher": "MELLEA ANTONIO",
       "room": "Ae [POLO DIDATTICO DI VIA GRADENIGO]",
-      "color": "#ec4899",
+      "color": "#f43f5e",
       "note": "",
       "canali": [
         "Canale 1",
