@@ -98,7 +98,7 @@ def get_schedule(aa_id: str, corso_id: str, anni2: list, date_str: str, ctx) -> 
         ("corso", corso_id),
         ("visualizzazione_orario", "cal"),
         ("date", date_str),
-        ("all_events", "1")
+        ("all_events", "0")
     ]
     for a in anni2:
         params.append(("anno2[]", a))
