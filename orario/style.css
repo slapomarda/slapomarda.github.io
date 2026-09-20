@@ -772,24 +772,7 @@ body {
   margin-top: 0.3rem;
 }
 
-/* ── Footer ── */
-.site-footer {
-  position: relative;
-  z-index: 5;
-  text-align: center;
-  padding: 1.5rem 1rem;
-  border-top: 1px solid var(--glass-border);
-  font-size: 0.82rem;
-  color: var(--text-muted);
-}
 
-.site-footer a {
-  color: var(--accent);
-  text-decoration: none;
-  font-weight: 500;
-}
-
-.site-footer a:hover { text-decoration: underline; }
 
 /* ── Utility ── */
 [hidden] { display: none !important; }
