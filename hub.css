@@ -128,33 +128,31 @@ html, body {
 
 /* ── Grid ────────────────────────────────────────────────── */
 .hub-grid {
-    display: grid;
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 1rem;
 }
 
+.hub-card {
+    width: 100%;
+}
+
 @media (min-width: 580px) {
-    .hub-grid {
-        grid-template-columns: 1fr 1fr;
-    }
-    /* With 4 cards: 2+2 layout — no need for spanning */
-    .hub-card:last-child {
-        grid-column: auto;
+    .hub-card {
+        width: calc(50% - 0.5rem);
     }
 }
 
 @media (min-width: 800px) {
-    .hub-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    .hub-card:last-child {
-        grid-column: auto;
+    .hub-card {
+        width: calc(50% - 0.5rem);
     }
 }
 
 @media (min-width: 1024px) {
-    .hub-grid {
-        grid-template-columns: repeat(4, 1fr);
+    .hub-card {
+        width: calc(33.333% - 0.67rem);
     }
 }
 
