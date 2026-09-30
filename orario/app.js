@@ -572,6 +572,18 @@ function renderTimeline(lessons) {
       const details = el('div', 'tl-details');
       const subjEl  = el('div', 'tl-subject');
       subjEl.textContent = lesson.subject || '';
+      
+      let badge = null;
+      if (lesson.is_cancelled) {
+        badge = el('div', 'badge-cancelled');
+        badge.textContent = 'ANNULLATA';
+        subjEl.style.textDecoration = 'line-through';
+        subjEl.style.opacity = '0.7';
+        card.style.opacity = '0.6';
+        card.style.border = '2px dashed #ef4444';
+      }
+      
+      if (badge) details.appendChild(badge);
 
       const roomEl = el('span', 'tl-room');
       const cleanRoom = lesson.room ? lesson.room.split('[')[0].trim() : '';
