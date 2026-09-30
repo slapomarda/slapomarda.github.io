@@ -373,6 +373,15 @@ function buildTimelineCard(lesson) {
 
   const title = el('h4', 'tl-title');
   title.textContent = lesson.subject || lesson.subject_short || '';
+  if (lesson.is_cancelled) {
+    const badge = el('div', 'badge-cancelled');
+    badge.textContent = 'ANNULLATA';
+    infoCol.appendChild(badge);
+    title.style.textDecoration = 'line-through';
+    title.style.opacity = '0.7';
+    card.style.opacity = '0.6';
+    card.style.border = '2px dashed #ef4444';
+  }
   infoCol.appendChild(title);
 
   if (lesson.room) {
@@ -406,6 +415,16 @@ function buildCalLessonCard(lesson) {
   // Nome materia esteso invece del codice
   const subject = el('span', 'lesson-short');
   subject.textContent = lesson.subject || lesson.subject_short || '';
+  
+  if (lesson.is_cancelled) {
+    const badge = el('div', 'badge-cancelled');
+    badge.textContent = 'ANNULLATA';
+    card.insertBefore(badge, subject);
+    subject.style.textDecoration = 'line-through';
+    subject.style.opacity = '0.7';
+    card.style.opacity = '0.6';
+    card.style.border = '2px dashed #ef4444';
+  }
   subject.style.color = lesson.color || '';
   
   const time = el('span', 'lesson-time');

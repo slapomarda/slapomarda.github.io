@@ -209,6 +209,7 @@ def normalize_schedule(raw: dict, aa_label: str, corso_label: str, anni2_labels:
             "note": cell.get("nota") or "",
             "canali": canali,
             "curriculum": percorso,
+            "is_cancelled": cell.get("Annullato") == "1",
         }
         lessons.append(lesson)
 
