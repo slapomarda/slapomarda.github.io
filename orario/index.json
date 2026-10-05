@@ -1,20 +1,13 @@
 {
-  "generated_at": "2026-10-04T08:16:40Z",
+  "generated_at": "2026-10-05T08:47:39Z",
   "anno_accademico": "2026/2027",
   "corso": "INGEGNERIA INFORMATICA (Laurea)",
   "anni_corso": [
     "Anno 3",
     "Anno 3"
   ],
-  "current_week": "2026-09-28",
+  "current_week": "2026-10-05",
   "weeks": [
-    {
-      "key": "2026-09-28",
-      "file": "weeks/2026-09-28.json",
-      "week_start": "28-09-2026",
-      "week_end": "04-10-2026",
-      "n_lessons": 24
-    },
     {
       "key": "2026-10-05",
       "file": "weeks/2026-10-05.json",
@@ -91,6 +84,13 @@
       "week_start": "14-12-2026",
       "week_end": "20-12-2026",
       "n_lessons": 24
+    },
+    {
+      "key": "2026-12-21",
+      "file": "weeks/2026-12-21.json",
+      "week_start": "21-12-2026",
+      "week_end": "27-12-2026",
+      "n_lessons": 14
     }
   ]
 }
