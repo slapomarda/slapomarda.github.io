@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-05T08:47:35Z",
+  "generated_at": "2026-10-06T08:50:19Z",
   "anno_accademico": "2026/2027",
   "corso": "INGEGNERIA INFORMATICA (Laurea)",
   "anni_corso": [
@@ -23,7 +23,7 @@
       "canali": [
         "Canale 2"
       ],
-      "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 2))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 2))",
+      "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 2))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 2))",
       "is_cancelled": false
     },
     {
@@ -40,7 +40,7 @@
       "canali": [
         "Canale 2"
       ],
-      "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 2))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 2))",
+      "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 2))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 2))",
       "is_cancelled": false
     },
     {
@@ -57,7 +57,7 @@
       "canali": [
         "Canale 1"
       ],
-      "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 1))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 1))",
+      "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 1))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 1))",
       "is_cancelled": false
     },
     {
@@ -75,7 +75,7 @@
         "Canale 1",
         "Canale 2"
       ],
-      "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 2))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 1))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 2))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 1))",
+      "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 2))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 1))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 2))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 1))",
       "is_cancelled": false
     },
     {
@@ -92,7 +92,7 @@
       "canali": [
         "Canale 2"
       ],
-      "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 2))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 2))",
+      "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 2))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 2))",
       "is_cancelled": false
     },
     {
@@ -109,7 +109,7 @@
       "canali": [
         "Canale 2"
       ],
-      "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 2))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 2))",
+      "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 2))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 2))",
       "is_cancelled": false
     },
     {
@@ -126,7 +126,7 @@
       "canali": [
         "Canale 2"
       ],
-      "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 2))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 2))",
+      "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 2))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 2))",
       "is_cancelled": false
     },
     {
@@ -143,7 +143,7 @@
       "canali": [
         "Canale 1"
       ],
-      "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 1))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 1))",
+      "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 1))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 1))",
       "is_cancelled": false
     },
     {
@@ -160,7 +160,7 @@
       "canali": [
         "Canale 1"
       ],
-      "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 1))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 1))",
+      "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 1))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 1))",
       "is_cancelled": false
     },
     {
@@ -177,7 +177,7 @@
       "canali": [
         "Canale 2"
       ],
-      "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 2))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 2))",
+      "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 2))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 2))",
       "is_cancelled": false
     },
     {
@@ -194,7 +194,7 @@
       "canali": [
         "Canale 2"
       ],
-      "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 2))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 2))",
+      "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 2))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 2))",
       "is_cancelled": false
     },
     {
@@ -211,7 +211,7 @@
       "canali": [
         "Canale 2"
       ],
-      "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 2))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 2))",
+      "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 2))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 2))",
       "is_cancelled": false
     },
     {
@@ -228,7 +228,7 @@
       "canali": [
         "Canale 1"
       ],
-      "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 1))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 1))",
+      "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 1))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 1))",
       "is_cancelled": false
     },
     {
@@ -246,7 +246,7 @@
         "Canale 1",
         "Canale 2"
       ],
-      "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 2))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 1))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 2))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 1))",
+      "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 2))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 1))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 2))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 1))",
       "is_cancelled": false
     },
     {
@@ -263,7 +263,7 @@
       "canali": [
         "Canale 1"
       ],
-      "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 1))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 1))",
+      "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 1))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 1))",
       "is_cancelled": false
     },
     {
@@ -280,7 +280,7 @@
       "canali": [
         "Canale 1"
       ],
-      "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 1))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 1))",
+      "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 1))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 1))",
       "is_cancelled": false
     },
     {
@@ -297,7 +297,7 @@
       "canali": [
         "Canale 2"
       ],
-      "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 2))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 2))",
+      "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 2))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 2))",
       "is_cancelled": false
     },
     {
@@ -315,7 +315,7 @@
         "Canale 1",
         "Canale 2"
       ],
-      "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 2))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 1))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 2))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 1))",
+      "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 2))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 1))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 2))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 1))",
       "is_cancelled": false
     },
     {
@@ -333,7 +333,7 @@
         "Canale 1",
         "Canale 2"
       ],
-      "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 2))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 1))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 2))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 1))",
+      "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 2))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 1))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 2))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 1))",
       "is_cancelled": true
     }
   ]
