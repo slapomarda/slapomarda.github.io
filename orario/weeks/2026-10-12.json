@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-13T09:13:39Z",
+  "generated_at": "2026-10-14T07:24:13Z",
   "anno_accademico": "2026/2027",
   "corso": "INGEGNERIA INFORMATICA (Laurea)",
   "anni_corso": [
@@ -33,7 +33,7 @@
       "end": "12:30",
       "subject": "FONDAMENTI DI ELETTRONICA (B)",
       "subject_short": "EC957968",
-      "teacher": "ROSSETTO ISABELLA",
+      "teacher": "MENEGHESSO GAUDENZIO, ROSSETTO ISABELLA",
       "room": "Ke [POLO DIDATTICO DI VIA GRADENIGO]",
       "color": "#ef4444",
       "note": "",
@@ -189,7 +189,7 @@
       "end": "10:30",
       "subject": "FONDAMENTI DI ELETTRONICA (B)",
       "subject_short": "EC957968",
-      "teacher": "ROSSETTO ISABELLA",
+      "teacher": "MENEGHESSO GAUDENZIO, ROSSETTO ISABELLA",
       "room": "Ke [POLO DIDATTICO DI VIA GRADENIGO]",
       "color": "#ef4444",
       "note": "",
@@ -274,7 +274,7 @@
       "end": "12:30",
       "subject": "FONDAMENTI DI ELETTRONICA (B)",
       "subject_short": "EC957968",
-      "teacher": "ROSSETTO ISABELLA",
+      "teacher": "MENEGHESSO GAUDENZIO, ROSSETTO ISABELLA",
       "room": "Ke [POLO DIDATTICO DI VIA GRADENIGO]",
       "color": "#ef4444",
       "note": "",
