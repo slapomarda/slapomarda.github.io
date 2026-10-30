@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-29T08:18:34Z",
+  "generated_at": "2026-10-30T08:26:10Z",
   "anno_accademico": "2026/2027",
   "corso": "INGEGNERIA INFORMATICA (Laurea)",
   "anni_corso": [
@@ -391,7 +391,7 @@
       "day": "04-12-2026",
       "day_label": "Venerdì 04/12",
       "start": "14:30",
-      "end": "16:30",
+      "end": "18:30",
       "subject": "MODELLI E SOFTWARE PER L'OTTIMIZZAZIONE DISCRETA",
       "subject_short": "EC958257",
       "teacher": "SALVAGNIN DOMENICO",
@@ -421,7 +421,7 @@
         "Canale 2"
       ],
       "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 2))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 1))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 2))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 1))",
-      "is_cancelled": false
+      "is_cancelled": true
     }
   ]
 }
