@@ -1,17 +1,17 @@
 {
-  "generated_at": "2026-11-01T08:59:35Z",
+  "generated_at": "2026-11-02T09:13:23Z",
   "anno_accademico": "2026/2027",
   "corso": "INGEGNERIA INFORMATICA (Laurea)",
   "anni_corso": [
     "Anno 3",
     "Anno 3"
   ],
-  "week_start": "26-10-2026",
-  "week_end": "01-11-2026",
+  "week_start": "02-11-2026",
+  "week_end": "08-11-2026",
   "lessons": [
     {
-      "day": "26-10-2026",
-      "day_label": "Lunedì 26/10",
+      "day": "02-11-2026",
+      "day_label": "Lunedì 02/11",
       "start": "08:30",
       "end": "10:30",
       "subject": "FONDAMENTI DI TELECOMUNICAZIONI (B)",
@@ -27,8 +27,8 @@
       "is_cancelled": false
     },
     {
-      "day": "26-10-2026",
-      "day_label": "Lunedì 26/10",
+      "day": "02-11-2026",
+      "day_label": "Lunedì 02/11",
       "start": "10:30",
       "end": "12:30",
       "subject": "FONDAMENTI DI ELETTRONICA (B)",
@@ -44,8 +44,8 @@
       "is_cancelled": false
     },
     {
-      "day": "26-10-2026",
-      "day_label": "Lunedì 26/10",
+      "day": "02-11-2026",
+      "day_label": "Lunedì 02/11",
       "start": "12:30",
       "end": "14:30",
       "subject": "BASI DI DATI (A)",
@@ -57,12 +57,12 @@
       "canali": [
         "Canale 1"
       ],
-      "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 1))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 1))",
+      "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 1))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 1))",
       "is_cancelled": false
     },
     {
-      "day": "26-10-2026",
-      "day_label": "Lunedì 26/10",
+      "day": "02-11-2026",
+      "day_label": "Lunedì 02/11",
       "start": "14:30",
       "end": "16:30",
       "subject": "CONCURRENT AND REAL TIME PROGRAMMING",
@@ -75,12 +75,12 @@
         "Canale 1",
         "Canale 2"
       ],
-      "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 2))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 1))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 2))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 1))",
+      "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 1))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 2))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 1))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 2))",
       "is_cancelled": false
     },
     {
-      "day": "26-10-2026",
-      "day_label": "Lunedì 26/10",
+      "day": "02-11-2026",
+      "day_label": "Lunedì 02/11",
       "start": "16:30",
       "end": "18:30",
       "subject": "BASI DI DATI (B)",
@@ -96,8 +96,8 @@
       "is_cancelled": false
     },
     {
-      "day": "27-10-2026",
-      "day_label": "Martedì 27/10",
+      "day": "03-11-2026",
+      "day_label": "Martedì 03/11",
       "start": "08:30",
       "end": "10:30",
       "subject": "FONDAMENTI DI TELECOMUNICAZIONI (A)",
@@ -109,12 +109,12 @@
       "canali": [
         "Canale 1"
       ],
-      "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 1))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 1))",
+      "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 1))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 1))",
       "is_cancelled": false
     },
     {
-      "day": "27-10-2026",
-      "day_label": "Martedì 27/10",
+      "day": "03-11-2026",
+      "day_label": "Martedì 03/11",
       "start": "10:30",
       "end": "12:30",
       "subject": "FONDAMENTI DI ELETTRONICA (A)",
@@ -126,12 +126,12 @@
       "canali": [
         "Canale 1"
       ],
-      "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 1))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 1))",
+      "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 1))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 1))",
       "is_cancelled": false
     },
     {
-      "day": "27-10-2026",
-      "day_label": "Martedì 27/10",
+      "day": "03-11-2026",
+      "day_label": "Martedì 03/11",
       "start": "12:30",
       "end": "14:30",
       "subject": "CONCURRENT AND REAL TIME PROGRAMMING",
@@ -144,12 +144,12 @@
         "Canale 1",
         "Canale 2"
       ],
-      "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 2))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 1))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 2))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 1))",
+      "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 1))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 2))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 1))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 2))",
       "is_cancelled": false
     },
     {
-      "day": "27-10-2026",
-      "day_label": "Martedì 27/10",
+      "day": "03-11-2026",
+      "day_label": "Martedì 03/11",
       "start": "14:30",
       "end": "16:30",
       "subject": "MODELLI E SOFTWARE PER L'OTTIMIZZAZIONE DISCRETA",
@@ -162,12 +162,12 @@
         "Canale 1",
         "Canale 2"
       ],
-      "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 2))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 1))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 2))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 1))",
+      "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 1))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 2))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 1))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 2))",
       "is_cancelled": false
     },
     {
-      "day": "27-10-2026",
-      "day_label": "Martedì 27/10",
+      "day": "03-11-2026",
+      "day_label": "Martedì 03/11",
       "start": "16:30",
       "end": "18:30",
       "subject": "BASI DI DATI (A)",
@@ -179,12 +179,12 @@
       "canali": [
         "Canale 1"
       ],
-      "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 1))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 1))",
+      "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 1))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 1))",
       "is_cancelled": false
     },
     {
-      "day": "28-10-2026",
-      "day_label": "Mercoledì 28/10",
+      "day": "04-11-2026",
+      "day_label": "Mercoledì 04/11",
       "start": "08:30",
       "end": "10:30",
       "subject": "FONDAMENTI DI ELETTRONICA (B)",
@@ -200,8 +200,8 @@
       "is_cancelled": false
     },
     {
-      "day": "28-10-2026",
-      "day_label": "Mercoledì 28/10",
+      "day": "04-11-2026",
+      "day_label": "Mercoledì 04/11",
       "start": "10:30",
       "end": "12:30",
       "subject": "BASI DI DATI (B)",
@@ -217,8 +217,8 @@
       "is_cancelled": false
     },
     {
-      "day": "28-10-2026",
-      "day_label": "Mercoledì 28/10",
+      "day": "04-11-2026",
+      "day_label": "Mercoledì 04/11",
       "start": "14:30",
       "end": "16:30",
       "subject": "FONDAMENTI DI TELECOMUNICAZIONI (A)",
@@ -230,12 +230,12 @@
       "canali": [
         "Canale 1"
       ],
-      "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 1))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 1))",
+      "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 1))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 1))",
       "is_cancelled": false
     },
     {
-      "day": "28-10-2026",
-      "day_label": "Mercoledì 28/10",
+      "day": "04-11-2026",
+      "day_label": "Mercoledì 04/11",
       "start": "16:30",
       "end": "18:30",
       "subject": "BASI DI DATI (A)",
@@ -247,12 +247,12 @@
       "canali": [
         "Canale 1"
       ],
-      "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 1))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 1))",
+      "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 1))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 1))",
       "is_cancelled": false
     },
     {
-      "day": "29-10-2026",
-      "day_label": "Giovedì 29/10",
+      "day": "05-11-2026",
+      "day_label": "Giovedì 05/11",
       "start": "08:30",
       "end": "10:30",
       "subject": "FONDAMENTI DI TELECOMUNICAZIONI (B)",
@@ -268,8 +268,8 @@
       "is_cancelled": false
     },
     {
-      "day": "29-10-2026",
-      "day_label": "Giovedì 29/10",
+      "day": "05-11-2026",
+      "day_label": "Giovedì 05/11",
       "start": "10:30",
       "end": "12:30",
       "subject": "FONDAMENTI DI ELETTRONICA (B)",
@@ -285,8 +285,8 @@
       "is_cancelled": false
     },
     {
-      "day": "29-10-2026",
-      "day_label": "Giovedì 29/10",
+      "day": "05-11-2026",
+      "day_label": "Giovedì 05/11",
       "start": "12:30",
       "end": "14:30",
       "subject": "BASI DI DATI (B)",
@@ -302,8 +302,8 @@
       "is_cancelled": false
     },
     {
-      "day": "29-10-2026",
-      "day_label": "Giovedì 29/10",
+      "day": "05-11-2026",
+      "day_label": "Giovedì 05/11",
       "start": "14:30",
       "end": "16:30",
       "subject": "FONDAMENTI DI ELETTRONICA (A)",
@@ -315,12 +315,12 @@
       "canali": [
         "Canale 1"
       ],
-      "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 1))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 1))",
+      "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 1))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 1))",
       "is_cancelled": false
     },
     {
-      "day": "29-10-2026",
-      "day_label": "Giovedì 29/10",
+      "day": "05-11-2026",
+      "day_label": "Giovedì 05/11",
       "start": "16:30",
       "end": "18:30",
       "subject": "PROJECT MANAGEMENT",
@@ -333,12 +333,12 @@
         "Canale 1",
         "Canale 2"
       ],
-      "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 2))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 1))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 2))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 1))",
+      "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 1))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 2))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 1))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 2))",
       "is_cancelled": false
     },
     {
-      "day": "30-10-2026",
-      "day_label": "Venerdì 30/10",
+      "day": "06-11-2026",
+      "day_label": "Venerdì 06/11",
       "start": "08:30",
       "end": "10:30",
       "subject": "FONDAMENTI DI TELECOMUNICAZIONI (A)",
@@ -350,12 +350,12 @@
       "canali": [
         "Canale 1"
       ],
-      "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 1))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 1))",
+      "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 1))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 1))",
       "is_cancelled": false
     },
     {
-      "day": "30-10-2026",
-      "day_label": "Venerdì 30/10",
+      "day": "06-11-2026",
+      "day_label": "Venerdì 06/11",
       "start": "10:30",
       "end": "12:30",
       "subject": "FONDAMENTI DI ELETTRONICA (A)",
@@ -367,12 +367,12 @@
       "canali": [
         "Canale 1"
       ],
-      "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 1))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 1))",
+      "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 1))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 1))",
       "is_cancelled": false
     },
     {
-      "day": "30-10-2026",
-      "day_label": "Venerdì 30/10",
+      "day": "06-11-2026",
+      "day_label": "Venerdì 06/11",
       "start": "12:30",
       "end": "14:30",
       "subject": "FONDAMENTI DI TELECOMUNICAZIONI (B)",
@@ -388,8 +388,8 @@
       "is_cancelled": false
     },
     {
-      "day": "30-10-2026",
-      "day_label": "Venerdì 30/10",
+      "day": "06-11-2026",
+      "day_label": "Venerdì 06/11",
       "start": "14:30",
       "end": "16:30",
       "subject": "MODELLI E SOFTWARE PER L'OTTIMIZZAZIONE DISCRETA",
@@ -402,26 +402,26 @@
         "Canale 1",
         "Canale 2"
       ],
-      "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 2))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 1))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 2))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 1))",
+      "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 1))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 2))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 1))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 2))",
       "is_cancelled": false
     },
     {
-      "day": "30-10-2026",
-      "day_label": "Venerdì 30/10",
+      "day": "06-11-2026",
+      "day_label": "Venerdì 06/11",
       "start": "16:30",
       "end": "18:30",
       "subject": "PROJECT MANAGEMENT",
       "subject_short": "EC958263",
       "teacher": "MELLEA ANTONIO",
-      "room": "Ae [POLO DIDATTICO DI VIA GRADENIGO]",
+      "room": "Le [POLO DIDATTICO DI VIA GRADENIGO]",
       "color": "#f43f5e",
       "note": "",
       "canali": [
         "Canale 1",
         "Canale 2"
       ],
-      "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 2))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 1))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 2))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 1))",
-      "is_cancelled": false
+      "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 1))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 2))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 1))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 2))",
+      "is_cancelled": true
     }
   ]
 }
