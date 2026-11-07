@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-06T09:11:03Z",
+  "generated_at": "2026-11-07T08:36:47Z",
   "anno_accademico": "2026/2027",
   "corso": "INGEGNERIA INFORMATICA (Laurea)",
   "anni_corso": [
@@ -335,6 +335,23 @@
       ],
       "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 2))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 1))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 2))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 1))",
       "is_cancelled": true
+    },
+    {
+      "day": "12-11-2026",
+      "day_label": "Giovedì 12/11",
+      "start": "16:30",
+      "end": "18:30",
+      "subject": "FONDAMENTI DI ELETTRONICA (A)",
+      "subject_short": "EC957967",
+      "teacher": "CESTER ANDREA",
+      "room": "Ae [POLO DIDATTICO DI VIA GRADENIGO]",
+      "color": "#14b8a6",
+      "note": "",
+      "canali": [
+        "Canale 1"
+      ],
+      "curriculum": "INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - GENERALE ((canale 1))<hr style='border-top:1px solid #c6c6c6'>INGEGNERIA INFORMATICA [IN0508] Laurea - 3 - APPLICATIVO ((canale 1))",
+      "is_cancelled": false
     },
     {
       "day": "13-11-2026",

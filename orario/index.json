@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-06T09:11:22Z",
+  "generated_at": "2026-11-07T08:37:04Z",
   "anno_accademico": "2026/2027",
   "corso": "INGEGNERIA INFORMATICA (Laurea)",
   "anni_corso": [
@@ -20,7 +20,7 @@
       "file": "weeks/2026-11-09.json",
       "week_start": "09-11-2026",
       "week_end": "15-11-2026",
-      "n_lessons": 24
+      "n_lessons": 25
     },
     {
       "key": "2026-11-16",
